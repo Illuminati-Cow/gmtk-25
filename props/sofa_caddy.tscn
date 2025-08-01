@@ -1,0 +1,21 @@
+[gd_scene load_steps=7 format=3 uid="uid://dd7nt8kkyhyl3"]
+
+[ext_resource type="PackedScene" uid="uid://cq4v6g5ppdl5d" path="res://meshes/sofa_caddy/sofa_caddy.glb" id="1_oldov"]
+[ext_resource type="Texture2D" uid="uid://pailgen84h5d" path="res://meshes/sofa_caddy/sofa_caddy_color.png" id="2_y8f1f"]
+[ext_resource type="Texture2D" uid="uid://bsllckp1u2xlr" path="res://meshes/sofa_caddy/sofa_caddy_ao.png" id="3_h4285"]
+[ext_resource type="Texture2D" uid="uid://tgw7d8fakg27" path="res://meshes/sofa_caddy/sofa_caddy_normal.png" id="4_4d03s"]
+[ext_resource type="Texture2D" uid="uid://dxqasb77xdpu" path="res://meshes/sofa_caddy/sofa_caddy_rough.png" id="5_age1w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ryepo"]
+albedo_texture = ExtResource("2_y8f1f")
+roughness_texture = ExtResource("5_age1w")
+normal_enabled = true
+normal_scale = 5.16
+normal_texture = ExtResource("4_4d03s")
+ao_enabled = true
+ao_texture = ExtResource("3_h4285")
+
+[node name="SofaCaddy" instance=ExtResource("1_oldov")]
+
+[node name="sofa_caddy" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_ryepo")

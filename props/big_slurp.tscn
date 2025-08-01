@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0vwsywd7v1pf"]
+
+[ext_resource type="PackedScene" uid="uid://noh6m202vh53" path="res://meshes/big_slurp/big_slurp.glb" id="1_jx8e6"]
+[ext_resource type="Texture2D" uid="uid://jfjuwpojbs7s" path="res://meshes/big_slurp/big_slurp_color.png" id="1_usor2"]
+[ext_resource type="Texture2D" uid="uid://c02fotl3ty10l" path="res://meshes/big_slurp/big_slurp_ao.png" id="2_jx8e6"]
+[ext_resource type="Texture2D" uid="uid://dso1qoh6nmea8" path="res://meshes/big_slurp/big_slurp_rough.png" id="3_3wlhn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wlhn"]
+albedo_texture = ExtResource("1_usor2")
+roughness_texture = ExtResource("3_3wlhn")
+ao_enabled = true
+ao_texture = ExtResource("2_jx8e6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dqxx"]
+albedo_texture = ExtResource("1_usor2")
+roughness_texture = ExtResource("3_3wlhn")
+ao_enabled = true
+ao_texture = ExtResource("2_jx8e6")
+
+[node name="big_slurp" instance=ExtResource("1_jx8e6")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Circle" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_3wlhn")
+
+[node name="Circle_001" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_1dqxx")
+
+[node name="Circle_002" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_1dqxx")

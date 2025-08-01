@@ -1,0 +1,24 @@
+[gd_scene load_steps=8 format=3 uid="uid://do0j3wuutw3vo"]
+
+[ext_resource type="PackedScene" uid="uid://u4j087lsloht" path="res://meshes/room/room.fbx" id="1_jhm6h"]
+[ext_resource type="Texture2D" uid="uid://c5ecsvawuma12" path="res://meshes/room/room_DefaultMaterial_BaseColor.png" id="2_h84k3"]
+[ext_resource type="Texture2D" uid="uid://bs3752mc6rsp7" path="res://meshes/room/room_DefaultMaterial_Normal.png" id="3_tni7k"]
+[ext_resource type="Texture2D" uid="uid://cbkemenq5cxd1" path="res://meshes/room/room_DefaultMaterial_Roughness.png" id="4_tkhst"]
+[ext_resource type="PackedScene" uid="uid://k3od3seglw68" path="res://props/door.tscn" id="5_h84k3"]
+[ext_resource type="PackedScene" uid="uid://bd4alfedd4x5s" path="res://props/lamp.tscn" id="6_tni7k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyiu6"]
+albedo_color = Color(0.741385, 0.741385, 0.741385, 1)
+albedo_texture = ExtResource("2_h84k3")
+roughness_texture = ExtResource("4_tkhst")
+normal_enabled = true
+normal_texture = ExtResource("3_tni7k")
+
+[node name="Room" instance=ExtResource("1_jhm6h")]
+
+[node name="room" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_jyiu6")
+
+[node name="door" parent="." index="1" instance=ExtResource("5_h84k3")]
+
+[node name="lamp" parent="." index="2" instance=ExtResource("6_tni7k")]

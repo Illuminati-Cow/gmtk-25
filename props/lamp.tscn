@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd4alfedd4x5s"]
+
+[ext_resource type="PackedScene" uid="uid://shvp6quxwaov" path="res://meshes/lamp/lamp.fbx" id="1_r68qb"]
+[ext_resource type="Texture2D" uid="uid://ceq2reqnjqhcp" path="res://meshes/lamp/lamp_DefaultMaterial_BaseColor.png" id="2_ffg1u"]
+[ext_resource type="Texture2D" uid="uid://82pryym7icc5" path="res://meshes/lamp/lamp_DefaultMaterial_Normal.png" id="3_5dpdv"]
+[ext_resource type="Texture2D" uid="uid://eeirh07hhwq3" path="res://meshes/lamp/lamp_DefaultMaterial_Roughness.png" id="4_0325w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wh3as"]
+albedo_texture = ExtResource("2_ffg1u")
+roughness_texture = ExtResource("4_0325w")
+normal_enabled = true
+normal_texture = ExtResource("3_5dpdv")
+
+[node name="lamp" instance=ExtResource("1_r68qb")]
+
+[node name="lamp" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_wh3as")

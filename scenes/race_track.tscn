@@ -1,0 +1,2003 @@
+[gd_scene load_steps=143 format=3 uid="uid://bo8dc5wvrt11k"]
+
+[ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://addons/proto-csgs/proto_csg_box_3d.tscn" id="1_a8xlo"]
+[ext_resource type="Texture2D" uid="uid://cej3yoosomfd2" path="res://addons/proto-csgs/textures/dark/texture_13.png" id="2_imslj"]
+[ext_resource type="PackedScene" uid="uid://dilcl7aco8lba" path="res://addons/proto-csgs/proto_csg_cylinder_3d.tscn" id="3_k26un"]
+[ext_resource type="Texture2D" uid="uid://cd3fcinti1un5" path="res://addons/proto-csgs/textures/dark/texture_01.png" id="4_338i0"]
+[ext_resource type="ArrayMesh" uid="uid://f5rd8oynak8u" path="res://meshes/bleachers.obj" id="5_338i0"]
+[ext_resource type="Script" uid="uid://4y8ej74k2kjk" path="res://scripts/HorseController3D.gd" id="6_0ddct"]
+[ext_resource type="Script" uid="uid://bijh2q3krcoeg" path="res://addons/proto-csgs/scripts/proto_csg_box_3d.gd" id="7_htlp4"]
+[ext_resource type="Script" uid="uid://bvc46tid01qnl" path="res://scripts/finish_line.gd" id="8_klpv8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_338i0"]
+
+[sub_resource type="Sky" id="Sky_0ddct"]
+sky_material = SubResource("ProceduralSkyMaterial_338i0")
+
+[sub_resource type="Environment" id="Environment_338i0"]
+background_mode = 2
+background_energy_multiplier = 1.53
+sky = SubResource("Sky_0ddct")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k26un"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("2_imslj")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ddct"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_htlp4"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_klpv8"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5bxeu"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yyl80"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o0dix"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k7obx"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rbx75"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7tfb"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q523l"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pgsk4"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wo7jt"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g48qy"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xd4lj"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="Curve3D" id="Curve3D_k26un"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -21.605, 0, 0, 0, 0, 0, 0, 0, 0, -26.8255, -2.38419e-07, 0.709512, 0, 0, 0, 0, 0, 0, -30.5179, -7.15256e-07, 4.07855, 0, 0, 0, 0, 0, 0, -31.7858, 0, 8.8618, 0, 0, 0, 0, 0, 0, -30.4844, 0, 13.7635, 0, 0, 0, 0, 0, 0, -26.6888, 0, 17.0427, 0, 0, 0, 0, 0, 0, -21.6609, 0, 17.86, 0, 0, 0, 0, 0, 0, -21.6609, 0, 17.86, 0, 0, 0, 0, 0, 0, 13.081, 0, 17.8702, 0, 0, 0, 0, 0, 0, 18.2153, 0, 17.195, 0, 0, 0, 0, 0, 0, 21.9851, 0, 13.7852, 0, 0, 0, 0, 0, 0, 23.2488, 0, 9.03972, 0, 0, 0, 0, 0, 0, 21.9244, 0, 4.15277, 0, 0, 0, 0, 0, 0, 18.1231, 0, 0.886629, 0, 0, 0, 0, 0, 0, 13.039, 0, -0.0375483),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 16
+
+[sub_resource type="GDScript" id="GDScript_k26un"]
+script/source = "@tool
+extends Path3D
+
+@export_tool_button(\"Spread Children Along Path\")
+var update_button: Callable = update_children
+
+func _ready() -> void:
+	update_children()
+	update_button = update_children
+
+func _on_child_entered_tree(node: Node) -> void:
+	update_children()
+
+func update_children():
+	var follow_nodes: Array = get_children().filter(func(e): return e is PathFollow3D).map(func(e): return e as PathFollow3D)
+	if curve.get_baked_length() == 0:
+		printerr(\"Curve has a length of 0, returning without moving children\")
+		return
+	var i := 0.0
+	for follow: PathFollow3D in follow_nodes:
+		var dist := curve.get_baked_length()
+		var pos: float = dist * (i / len(follow_nodes))
+		print(\"Progress %d %f\" % [i, pos])
+		follow.progress = pos
+		i += 1
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j8gtt"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2l5r7"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vsnt0"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7x4w"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8i8vl"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oks6k"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3xsnp"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81585"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4pcyp"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fm7ua"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jr5f4"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1qpf5"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5pn18"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_68vdt"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddcf3"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1tlis"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f1olv"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ke34w"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3v225"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8vpc"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4xutl"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20kjh"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ra7cb"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxy33"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nse8y"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13wuw"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kb70l"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5evg0"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5gu2w"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fotj3"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gar46"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7qr3l"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7a7e"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pk0sr"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_edqbe"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kvlj0"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1yd5q"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6vosb"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obfw3"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6gaa"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xv2r3"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_72gn4"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7uvoo"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ait4"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c6wib"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d8ia8"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fcnkh"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u47hk"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7n1tl"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrmxo"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgtpr"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tcki"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qqr5t"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wce2y"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d14a6"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nu8l2"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfe2n"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_onfco"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ujsvp"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qak2g"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_irdxe"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_buwcy"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbsol"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_28wjf"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwfk3"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmhsc"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6dffy"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jioh0"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yfqjn"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2x7m0"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpfrf"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_arq48"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8j46b"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qc1nh"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_33au3"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_77uj1"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdx1m"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5ik38"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dp4m6"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w33p5"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qcj1"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omck5"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4bout"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tam17"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rv3ab"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hw024"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hsjby"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wyyro"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hiync"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("4_338i0")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_0ddct"]
+vertices = PackedVector3Array(-100.015, 0.0512178, -38.6084, -97.7655, 0.0512178, -38.8584, -98.0155, 0.0512178, -41.6084, -122.515, 0.0512178, -15.8584, -117.765, 0.0512178, -15.3584, -116.015, 0.0512178, -22.8584, -122.515, 0.0512178, -41.6084, -79.7655, 0.0512178, -41.3584, -5.76549, 0.0512178, -41.3584, -5.76549, 0.0512178, -41.6084, 67.7345, 0.0512178, -41.3584, 85.9845, 0.0512178, -38.8584, 86.2345, 0.0512178, -41.6084, 88.2345, 0.0512178, -38.6084, 104.235, 0.0512178, -22.8584, 105.485, 0.0512178, -17.1084, 115.735, 0.0512178, -17.3584, 115.735, 0.0512178, -41.6084, -69.2655, 0.0512178, -39.1084, -79.0155, 0.0512178, -39.1084, -83.7655, 0.0512178, -38.3584, -83.2655, 0.0512178, -22.6084, -69.0155, 0.0512178, -24.3584, -66.5155, 0.0512178, -24.6084, -66.5155, 0.0512178, -39.1084, -66.0155, 0.0512178, -23.8584, 54.2345, 0.0512178, -24.1084, 54.2345, 0.0512178, -39.1084, 60.4845, 0.0512178, -23.3584, 60.7345, 0.0512178, -39.1084, 72.7345, 0.0512178, -38.1084, 66.9845, 0.0512178, -39.1084, 71.7345, 0.0512178, -21.8584, -97.5155, 0.0512178, -36.6084, -98.7655, 0.0512178, -36.3584, -99.0155, 0.0512178, -35.8584, -96.5155, 0.0512178, -15.1084, -84.7655, 0.0512178, -22.3584, 83.9845, 0.0512178, -14.3584, 86.2345, 0.0512178, -36.3584, -99.2655, 4.05122, -37.3584, -98.0155, 4.05122, -37.3584, -99.5155, 4.05122, -37.6084, -100.765, 4.05122, -35.6084, -101.265, 4.05122, -35.8584, 87.7345, 4.05122, -37.6084, 86.2345, 4.05122, -37.6084, 87.4845, 4.05122, -37.3584, 93.7345, 4.05122, -30.8584, 94.2345, 4.05122, -30.8584, 90.2345, 0.0512178, -32.8584, 86.9845, 0.0512178, -36.3584, 84.9845, 0.0512178, -13.6084, -99.2655, 0.0512178, -15.8584, -98.0155, 0.0512178, -14.1084, -101.765, 0.0512178, -33.3584, -104.765, 0.0512178, -30.3584, 85.7345, 0.0512178, -13.1084, 85.9845, 0.0512178, -12.1084, 104.235, 0.0512178, -12.3584, 101.985, 0.0512178, -21.6084, -112.265, 4.05122, -24.3584, -105.265, 4.05122, -31.3584, -105.765, 4.05122, -31.6084, -112.765, 4.05122, -24.6084, -98.7655, 0.0512178, -13.3584, -114.015, 0.0512178, -21.6084, -115.765, 0.0512178, -13.6084, 98.2345, 4.05122, -26.8584, 103.235, 4.05122, -21.6084, 103.235, 4.05122, -22.3584, 98.7345, 4.05122, -26.8584, -67.5155, 0.0512178, -21.6084, -67.7655, 0.0512178, -22.1084, -68.5155, 0.0512178, -22.1084, -74.7655, 0.0512178, -21.1084, -74.7655, 0.0512178, 19.1416, -66.5155, 0.0512178, 20.1416, 63.9845, 0.0512178, 19.3916, 63.9845, 0.0512178, -20.3584, 55.7345, 0.0512178, -21.6084, 54.2345, 0.0512178, 20.3916, -77.0155, 0.0512178, 18.6416, -77.0155, 0.0512178, -20.8584, -92.5155, 0.0512178, -14.3584, -96.0155, 0.0512178, -12.6084, -96.7655, 0.0512178, -11.8584, -100.765, 0.0512178, -1.35843, -100.265, 0.0512178, 1.14157, -96.2655, 0.0512178, 10.6416, -84.2655, 0.0512178, 18.1416, -83.7655, 0.0512178, -20.1084, 70.7345, 4.05122, -20.8584, 74.9845, 4.05122, -18.3584, 71.9845, 4.05122, -20.6084, 84.9845, 0.0512178, 7.64157, 87.7345, 0.0512178, 0.141575, 87.7345, 0.0512178, -1.10843, 83.2345, 0.0512178, 11.1416, 83.7345, 0.0512178, -11.6084, 70.2345, 0.0512178, -19.8584, 71.2345, 0.0512178, 18.6416, 106.985, 0.0512178, -10.8584, 115.735, 0.0512178, -11.1084, -122.515, 0.0512178, -7.60843, -119.765, 0.0512178, -7.10843, -101.015, 0.0512178, -7.10843, -117.265, 0.0512178, -7.35843, 88.4845, 0.0512178, -5.60843, 105.735, 0.0512178, -5.85843, 108.485, 0.0512178, -4.60843, 115.735, 0.0512178, -4.85843, -121.265, 0.0512178, -1.85843, -121.265, 0.0512178, 0.141575, -122.515, 0.0512178, 9.64157, -118.765, 0.0512178, 9.39157, -103.265, 0.0512178, -1.35843, -118.765, 0.0512178, -1.35843, 106.735, 0.0512178, 0.391575, 106.985, 0.0512178, -1.60843, 90.2345, 0.0512178, -1.35843, 90.2345, 0.0512178, 0.141575, 109.485, 0.0512178, -0.608425, 115.735, 0.0512178, -0.608425, 107.985, 4.05122, -1.85843, 107.985, 4.05122, 0.391575, 108.485, 4.05122, -0.608425, -119.015, 0.0512178, -0.608425, -117.265, 0.0512178, 5.64157, -103.265, 0.0512178, -0.108425, -101.015, 0.0512178, 5.39157, 87.9845, 4.05122, 1.89157, 88.2345, 4.05122, 2.64157, 89.2345, 4.05122, 0.141575, 88.9845, 4.05122, -0.858425, 115.735, 0.0512178, 5.39157, 107.985, 0.0512178, 5.14157, 104.985, 0.0512178, 7.14157, 87.7345, 0.0512178, 6.64157, 87.2345, 4.05122, 3.89157, 87.4845, 4.05122, 4.64157, 87.9845, 4.05122, 3.39157, 87.7345, 4.05122, 2.64157, 115.735, 0.0512178, 15.1416, 105.485, 0.0512178, 14.8916, -98.5155, 0.0512178, 12.3916, -98.2655, 0.0512178, 12.1416, -98.7655, 0.0512178, 11.8916, -115.515, 0.0512178, 12.6416, 85.2345, 0.0512178, 12.6416, 85.2345, 0.0512178, 12.8916, 85.4845, 0.0512178, 12.8916, 85.9845, 0.0512178, 11.8916, 103.485, 0.0512178, 13.1416, -122.515, 0.0512178, 17.6416, -116.765, 0.0512178, 17.3916, -97.7655, 4.05122, 10.6416, -97.7655, 4.05122, 11.1416, -97.0155, 4.05122, 11.3916, -97.2655, 0.0512178, 12.8916, -103.265, 0.0512178, 30.3916, -99.2655, 0.0512178, 34.1416, -113.515, 0.0512178, 21.1416, 73.4845, 0.0512178, 20.1416, 73.7345, 0.0512178, 37.1416, 86.4845, 0.0512178, 34.8916, -85.2655, 0.0512178, 20.3916, -98.2655, 0.0512178, 35.1416, -77.7655, 0.0512178, 38.6416, -77.7655, 0.0512178, 21.1416, 88.7345, 0.0512178, 16.3916, 90.4845, 0.0512178, 31.1416, 98.4845, 0.0512178, 23.8916, 101.735, 0.0512178, 20.8916, 103.735, 0.0512178, 22.3916, 115.735, 0.0512178, 40.6416, 87.9845, 0.0512178, 37.1416, 68.7345, 0.0512178, 40.6416, -115.765, 0.0512178, 22.3916, -122.515, 0.0512178, 40.6416, -99.7655, 0.0512178, 37.1416, -80.5155, 0.0512178, 40.6416, 58.4845, 0.0512178, 38.6416, 66.2345, 0.0512178, 38.6416, 72.2345, 0.0512178, 20.8916, 58.2345, 0.0512178, 22.1416, -67.5155, 0.0512178, 22.3916, -68.7655, 0.0512178, 21.8916, -75.5155, 0.0512178, 21.3916, -75.5155, 0.0512178, 38.6416, 55.7345, 0.0512178, 22.6416, 100.485, 4.05122, 23.3916, 100.985, 4.05122, 23.6416, 102.735, 4.05122, 21.8916, 102.485, 4.05122, 21.3916, -111.265, 4.05122, 25.1416, -110.765, 4.05122, 25.1416, -112.765, 4.05122, 22.8916, -113.265, 4.05122, 22.8916, 97.2345, 4.05122, 27.1416, 99.2345, 4.05122, 25.1416, 98.7345, 4.05122, 24.8916, 96.7345, 4.05122, 26.8916, -107.515, 4.05122, 28.6416, -107.015, 4.05122, 28.6416, -109.015, 4.05122, 26.3916, -109.515, 4.05122, 26.3916, 93.4845, 4.05122, 30.6416, 95.4845, 4.05122, 28.6416, 94.9845, 4.05122, 28.3916, 92.9845, 4.05122, 30.3916, -103.765, 4.05122, 32.1416, -103.265, 4.05122, 32.1416, -105.265, 4.05122, 29.8916, -105.765, 4.05122, 29.8916, 89.7345, 4.05122, 34.1416, 91.7345, 4.05122, 32.1416, 91.2345, 4.05122, 31.8916, 89.2345, 4.05122, 33.8916, -100.265, 4.05122, 35.3916, -99.7655, 4.05122, 35.3916, -101.765, 4.05122, 33.1416, -102.265, 4.05122, 33.1416, 87.4845, 4.05122, 36.1416, 88.2345, 4.05122, 35.3916, 87.7345, 4.05122, 35.1416, 86.9845, 4.05122, 35.8916)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Array(5, 3, 6), PackedInt32Array(2, 0, 6), PackedInt32Array(6, 0, 5), PackedInt32Array(7, 1, 2), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 2), PackedInt32Array(12, 11, 10), PackedInt32Array(8, 9, 10), PackedInt32Array(10, 9, 12), PackedInt32Array(13, 11, 12), PackedInt32Array(15, 14, 16), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 16), PackedInt32Array(16, 12, 17), PackedInt32Array(19, 18, 20), PackedInt32Array(20, 18, 22), PackedInt32Array(20, 22, 21), PackedInt32Array(23, 22, 24), PackedInt32Array(24, 22, 18), PackedInt32Array(23, 24, 25), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(27, 29, 26), PackedInt32Array(26, 29, 28), PackedInt32Array(31, 30, 29), PackedInt32Array(29, 30, 28), PackedInt32Array(28, 30, 32), PackedInt32Array(34, 33, 35), PackedInt32Array(35, 33, 20), PackedInt32Array(35, 20, 37), PackedInt32Array(35, 37, 36), PackedInt32Array(20, 21, 37), PackedInt32Array(30, 39, 32), PackedInt32Array(32, 39, 38), PackedInt32Array(41, 40, 42), PackedInt32Array(40, 43, 42), PackedInt32Array(42, 43, 44), PackedInt32Array(47, 46, 45), PackedInt32Array(47, 45, 48), PackedInt32Array(48, 45, 49), PackedInt32Array(51, 50, 39), PackedInt32Array(39, 50, 38), PackedInt32Array(38, 50, 52), PackedInt32Array(54, 53, 36), PackedInt32Array(36, 53, 55), PackedInt32Array(36, 55, 35), PackedInt32Array(56, 55, 53), PackedInt32Array(58, 57, 59), PackedInt32Array(59, 57, 60), PackedInt32Array(57, 52, 60), PackedInt32Array(60, 52, 50), PackedInt32Array(64, 63, 61), PackedInt32Array(61, 63, 62), PackedInt32Array(65, 53, 54), PackedInt32Array(53, 65, 56), PackedInt32Array(56, 65, 66), PackedInt32Array(66, 65, 67), PackedInt32Array(71, 70, 68), PackedInt32Array(68, 70, 69), PackedInt32Array(73, 72, 74), PackedInt32Array(74, 72, 75), PackedInt32Array(75, 72, 76), PackedInt32Array(76, 72, 77), PackedInt32Array(79, 78, 80), PackedInt32Array(80, 78, 81), PackedInt32Array(80, 81, 77), PackedInt32Array(80, 77, 72), PackedInt32Array(83, 75, 82), PackedInt32Array(82, 75, 76), PackedInt32Array(85, 84, 86), PackedInt32Array(86, 84, 87), PackedInt32Array(89, 88, 87), PackedInt32Array(90, 89, 82), PackedInt32Array(82, 89, 87), PackedInt32Array(82, 87, 84), PackedInt32Array(82, 84, 83), PackedInt32Array(84, 91, 83), PackedInt32Array(93, 92, 94), PackedInt32Array(96, 95, 97), PackedInt32Array(97, 95, 98), PackedInt32Array(100, 99, 79), PackedInt32Array(79, 99, 97), PackedInt32Array(79, 97, 98), PackedInt32Array(79, 98, 78), PackedInt32Array(98, 101, 78), PackedInt32Array(103, 102, 16), PackedInt32Array(16, 102, 15), PackedInt32Array(104, 3, 105), PackedInt32Array(105, 3, 4), PackedInt32Array(107, 67, 106), PackedInt32Array(106, 67, 65), PackedInt32Array(109, 108, 59), PackedInt32Array(59, 108, 58), PackedInt32Array(111, 110, 103), PackedInt32Array(103, 110, 102), PackedInt32Array(112, 104, 105), PackedInt32Array(112, 113, 104), PackedInt32Array(104, 113, 114), PackedInt32Array(113, 115, 114), PackedInt32Array(117, 107, 116), PackedInt32Array(116, 107, 106), PackedInt32Array(119, 118, 109), PackedInt32Array(109, 118, 120), PackedInt32Array(120, 118, 121), PackedInt32Array(120, 108, 109), PackedInt32Array(123, 122, 111), PackedInt32Array(111, 122, 110), PackedInt32Array(126, 125, 124), PackedInt32Array(127, 117, 128), PackedInt32Array(128, 117, 129), PackedInt32Array(129, 117, 116), PackedInt32Array(129, 130, 128), PackedInt32Array(132, 131, 133), PackedInt32Array(133, 131, 134), PackedInt32Array(123, 135, 122), PackedInt32Array(122, 135, 136), PackedInt32Array(118, 137, 121), PackedInt32Array(121, 137, 138), PackedInt32Array(142, 141, 139), PackedInt32Array(139, 141, 140), PackedInt32Array(135, 143, 136), PackedInt32Array(136, 143, 144), PackedInt32Array(146, 145, 147), PackedInt32Array(147, 145, 148), PackedInt32Array(128, 130, 148), PackedInt32Array(148, 130, 147), PackedInt32Array(151, 150, 149), PackedInt32Array(149, 152, 151), PackedInt32Array(151, 152, 153), PackedInt32Array(152, 138, 153), PackedInt32Array(153, 138, 137), PackedInt32Array(114, 115, 154), PackedInt32Array(154, 115, 155), PackedInt32Array(158, 157, 156), PackedInt32Array(146, 159, 145), PackedInt32Array(145, 159, 160), PackedInt32Array(160, 159, 161), PackedInt32Array(148, 145, 162), PackedInt32Array(162, 145, 160), PackedInt32Array(163, 149, 150), PackedInt32Array(164, 163, 165), PackedInt32Array(165, 163, 150), PackedInt32Array(161, 159, 166), PackedInt32Array(161, 166, 167), PackedInt32Array(167, 166, 169), PackedInt32Array(167, 169, 168), PackedInt32Array(151, 170, 150), PackedInt32Array(150, 170, 171), PackedInt32Array(150, 171, 165), PackedInt32Array(173, 172, 153), PackedInt32Array(153, 172, 170), PackedInt32Array(153, 170, 151), PackedInt32Array(174, 144, 143), PackedInt32Array(143, 175, 174), PackedInt32Array(174, 175, 176), PackedInt32Array(175, 177, 176), PackedInt32Array(170, 172, 171), PackedInt32Array(154, 155, 178), PackedInt32Array(154, 178, 179), PackedInt32Array(179, 178, 180), PackedInt32Array(180, 181, 179), PackedInt32Array(183, 182, 164), PackedInt32Array(164, 182, 185), PackedInt32Array(164, 185, 184), PackedInt32Array(184, 163, 164), PackedInt32Array(187, 186, 188), PackedInt32Array(188, 186, 189), PackedInt32Array(190, 185, 182), PackedInt32Array(190, 182, 186), PackedInt32Array(186, 182, 189), PackedInt32Array(192, 191, 193), PackedInt32Array(193, 191, 194), PackedInt32Array(198, 197, 195), PackedInt32Array(195, 197, 196), PackedInt32Array(202, 201, 199), PackedInt32Array(199, 201, 200), PackedInt32Array(206, 205, 203), PackedInt32Array(203, 205, 204), PackedInt32Array(210, 209, 207), PackedInt32Array(207, 209, 208), PackedInt32Array(214, 213, 211), PackedInt32Array(211, 213, 212), PackedInt32Array(218, 217, 215), PackedInt32Array(215, 217, 216), PackedInt32Array(222, 221, 219), PackedInt32Array(219, 221, 220), PackedInt32Array(226, 225, 223), PackedInt32Array(223, 225, 224)]
+geometry_parsed_geometry_type = 1
+geometry_collision_mask = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ddct"]
+size = Vector3(121.179, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xd4lj"]
+size = Vector3(17.5878, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o0dix"]
+size = Vector3(16.0351, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q523l"]
+size = Vector3(13.0167, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pgsk4"]
+size = Vector3(12.9043, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wo7jt"]
+size = Vector3(15.7926, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g48qy"]
+size = Vector3(17.9297, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j8gtt"]
+size = Vector3(145.191, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2l5r7"]
+size = Vector3(145.766, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_htlp4"]
+size = Vector3(21.4499, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_klpv8"]
+size = Vector3(22.248, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5bxeu"]
+size = Vector3(22.1998, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yyl80"]
+size = Vector3(22.9676, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k7obx"]
+size = Vector3(21.6162, 3.89624, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rbx75"]
+size = Vector3(21.6875, 3.89624, 1)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_0ddct"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y7tfb"]
+size = Vector3(239.347, 0.97644, 83.2951)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vsnt0"]
+size = Vector3(1, 4.84985, 20.0812)
+
+[sub_resource type="Curve" id="Curve_0ddct"]
+_data = [Vector2(0, 0.507514), 0.0, 0.0, 0, 0, Vector2(0.503484, 0.50032), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.95622, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_htlp4"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_htlp4"]
+radius = 0.35059
+height = 1.63574
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0ddct"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_meqmy"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("2_imslj")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l7x4w"]
+size = Vector3(1, 2.34985, 17.1594)
+
+[node name="RaceTrack" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.421875, 0.906654, 0, -0.906654, -0.421875, -2.44773, 22.3992, -7.95924)
+light_energy = 1.57
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_338i0")
+
+[node name="Ground" parent="." instance=ExtResource("1_a8xlo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.012, 0, -98.6645)
+size = Vector3(1227, 1, 972)
+material = SubResource("StandardMaterial3D_k26un")
+
+[node name="InnerRailing" type="Node3D" parent="."]
+transform = Transform3D(3.47889, 0, 0, 0, 1, 0, 0, 0, 2.48018, 8.30258, -0.432644, 8.28897)
+
+[node name="ProtoCSGCylinder3D2" parent="InnerRailing" instance=ExtResource("3_k26un")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 1.17916, 1.88259, -8.72793)
+radius = 0.0917969
+height = 34.7278
+material = SubResource("StandardMaterial3D_0ddct")
+
+[node name="ProtoCSGCylinder3D12" parent="InnerRailing" instance=ExtResource("3_k26un")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 1.17916, 1.88259, 9.1188)
+radius = 0.0917969
+height = 34.7278
+material = SubResource("StandardMaterial3D_htlp4")
+
+[node name="End" type="Node3D" parent="InnerRailing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0859, 1.90735e-06, -8.45)
+
+[node name="ProtoCSGCylinder3D6" parent="InnerRailing/End" instance=ExtResource("3_k26un")]
+transform = Transform3D(0.159554, -0.987189, -4.31968e-08, 2.90666e-10, -4.37104e-08, 1, -0.987189, -0.159554, -6.68722e-09, 31.1513, 1.88259, 0.125754)
+radius = 0.0917969
+height = 5.07456
+material = SubResource("StandardMaterial3D_klpv8")
+
+[node name="ProtoCSGCylinder3D11" parent="InnerRailing/End" instance=ExtResource("3_k26un")]
+transform = Transform3D(0.128571, 0.9917, 4.33486e-08, 4.41656e-16, -4.37114e-08, 1, 0.9917, -0.128571, -5.62e-09, 31.1861, 1.88259, 17.2355)
+radius = 0.0917969
+height = 5.17325
+material = SubResource("StandardMaterial3D_5bxeu")
+
+[node name="ProtoCSGCylinder3D7" parent="InnerRailing/End" instance=ExtResource("3_k26un")]
+transform = Transform3D(0.656059, -0.75471, -3.29894e-08, 0, -4.37114e-08, 1, -0.75471, -0.656059, -2.86773e-08, 35.563, 1.88259, 2.17877)
+radius = 0.0917969
+height = 4.98076
+material = SubResource("StandardMaterial3D_yyl80")
+
+[node name="ProtoCSGCylinder3D10" parent="InnerRailing/End" instance=ExtResource("3_k26un")]
+transform = Transform3D(-0.669131, -0.743145, -3.24839e-08, 0, -4.37114e-08, 1, -0.743145, 0.669131, 2.92486e-08, 35.6412, 1.88259, 15.2203)
+radius = 0.0917969
+height = 5.06382
+material = SubResource("StandardMaterial3D_o0dix")
+
+[node name="ProtoCSGCylinder3D9" parent="InnerRailing/End" instance=ExtResource("3_k26un")]
+transform = Transform3D(0.965826, 0.25919, 1.13296e-08, 0, -4.37114e-08, 1, 0.25919, -0.965826, -4.22176e-08, 38.15, 1.88259, 11.1388)
+radius = 0.0917969
+height = 4.84883
+material = SubResource("StandardMaterial3D_k7obx")
+
+[node name="ProtoCSGCylinder3D8" parent="InnerRailing/End" instance=ExtResource("3_k26un")]
+transform = Transform3D(0.965926, -0.258819, -1.13133e-08, 0, -4.37114e-08, 1, -0.258819, -0.965926, -4.2222e-08, 38.1238, 1.88259, 6.30094)
+radius = 0.0917969
+height = 5.07491
+material = SubResource("StandardMaterial3D_rbx75")
+
+[node name="End2" type="Node3D" parent="InnerRailing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0859, 1.90735e-06, -8.45)
+
+[node name="ProtoCSGCylinder3D13" parent="InnerRailing/End2" instance=ExtResource("3_k26un")]
+transform = Transform3D(-0.159554, 0.987189, 1.3062e-07, -7.20635e-08, -1.43962e-07, 1, 0.987189, 0.159554, 9.411e-08, -8.62179, 1.88258, 17.1628)
+radius = 0.0917969
+height = 5.07456
+material = SubResource("StandardMaterial3D_y7tfb")
+
+[node name="ProtoCSGCylinder3D14" parent="InnerRailing/End2" instance=ExtResource("3_k26un")]
+transform = Transform3D(-0.128571, -0.9917, 4.40742e-08, 9.79372e-08, 3.17458e-08, 1, -0.9917, 0.128571, 9.30428e-08, -8.65658, 1.88259, 0.0531006)
+radius = 0.0917969
+height = 5.17325
+material = SubResource("StandardMaterial3D_q523l")
+
+[node name="ProtoCSGCylinder3D15" parent="InnerRailing/End2" instance=ExtResource("3_k26un")]
+transform = Transform3D(-0.656059, 0.75471, 1.20412e-07, -8.6243e-09, -1.67045e-07, 1, 0.75471, 0.656059, 1.161e-07, -13.0335, 1.88259, 15.1098)
+radius = 0.0917969
+height = 4.98076
+material = SubResource("StandardMaterial3D_pgsk4")
+
+[node name="ProtoCSGCylinder3D16" parent="InnerRailing/End2" instance=ExtResource("3_k26un")]
+transform = Transform3D(0.669131, 0.743145, 1.19907e-07, -1.23465e-07, -5.01819e-08, 1, 0.743145, -0.669131, 5.81742e-08, -13.1116, 1.88259, 2.0683)
+radius = 0.0917969
+height = 5.06382
+material = SubResource("StandardMaterial3D_wo7jt")
+
+[node name="ProtoCSGCylinder3D17" parent="InnerRailing/End2" instance=ExtResource("3_k26un")]
+transform = Transform3D(-0.965826, -0.25919, 7.60932e-08, 1.07094e-07, -1.05488e-07, 1, -0.25919, 0.965826, 1.2964e-07, -15.6204, 1.88259, 6.14983)
+radius = 0.0917969
+height = 4.84883
+material = SubResource("StandardMaterial3D_g48qy")
+
+[node name="ProtoCSGCylinder3D18" parent="InnerRailing/End2" instance=ExtResource("3_k26un")]
+transform = Transform3D(-0.965926, 0.258819, 9.87361e-08, 6.18172e-08, -1.50782e-07, 1, 0.258819, 0.965926, 1.29645e-07, -15.5942, 1.88259, 10.9877)
+radius = 0.0917969
+height = 5.07491
+material = SubResource("StandardMaterial3D_xd4lj")
+
+[node name="Path3D" type="Path3D" parent="InnerRailing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.47227, 1.18655, -8.74488)
+curve = SubResource("Curve3D_k26un")
+script = SubResource("GDScript_k26un")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_j8gtt")
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.33983, 0, 0)
+progress = 4.33992
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D2" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_2l5r7")
+
+[node name="PathFollow3D3" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.67982, 0, 0)
+progress = 8.67984
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D3" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_vsnt0")
+
+[node name="PathFollow3D4" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -13.0198, 0, 0)
+progress = 13.0198
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D4" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_l7x4w")
+
+[node name="PathFollow3D5" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.3598, 0, 0)
+progress = 17.3597
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D5" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_8i8vl")
+
+[node name="PathFollow3D6" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.134671, -4.52537e-08, 0.99089, -3.06111e-09, 1, 4.52537e-08, -0.99089, 3.06113e-09, -0.134671, -21.6925, -3.99748e-09, 0.0118961)
+progress = 21.6996
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D6" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_oks6k")
+
+[node name="PathFollow3D7" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.13467, -4.52537e-08, 0.990887, -3.06109e-09, 1, 4.52536e-08, -0.990887, 3.06114e-09, -0.13467, -25.9994, -2.0069e-07, 0.597233)
+progress = 26.0395
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D7" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_3xsnp")
+
+[node name="PathFollow3D8" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.674019, -1.0209e-07, 0.738712, -4.69112e-08, 1, 9.53974e-08, -0.738712, 2.96459e-08, -0.674019, -29.4155, -5.72891e-07, 3.07269)
+progress = 30.3794
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D8" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_81585")
+
+[node name="PathFollow3D9" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.966614, 5.65983e-09, 0.256221, -3.24584e-08, 1, -1.44541e-07, -0.256221, -1.48033e-07, -0.966614, -31.2475, -3.03672e-07, 6.831)
+progress = 34.7194
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D9" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_4pcyp")
+
+[node name="PathFollow3D10" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.966507, 5.6892e-09, -0.256608, 5.88625e-09, 1, -2.33094e-17, 0.256608, -1.51048e-09, -0.966507, -31.2113, 0, 11.0257)
+progress = 39.0593
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D10" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_fm7ua")
+
+[node name="PathFollow3D11" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.653751, 3.84821e-09, -0.756702, 5.88628e-09, 1, 4.44086e-16, 0.756702, -4.45421e-09, -0.653751, -29.3439, 0, 14.7488)
+progress = 43.3992
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D11" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_jr5f4")
+
+[node name="PathFollow3D12" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.160447, 9.44442e-10, -0.987042, 5.8863e-09, 1, 0, 0.987042, -5.81005e-09, -0.160447, -25.8694, 0, 17.1759)
+progress = 47.7391
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D12" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_1qpf5")
+
+[node name="PathFollow3D13" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(0.34458, -8.33105e-10, -0.938739, 4.691e-09, 1, 8.34468e-10, 0.938739, -4.69132e-09, 0.34458, -21.587, 0, 17.86)
+progress = 52.079
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D13" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_5pn18")
+
+[node name="PathFollow3D14" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.00029363, 1.72843e-12, -0.999911, 5.8858e-09, 1, -1.23588e-16, 0.999912, -5.88632e-09, -0.00029363, -17.2438, 0, 17.8613)
+progress = 56.419
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D14" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_68vdt")
+
+[node name="PathFollow3D15" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.000293629, 1.72843e-12, -0.999907, 5.88577e-09, 1, -1.21853e-16, 0.999908, -5.88631e-09, -0.000293629, -12.9038, 0, 17.8626)
+progress = 60.7589
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D15" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_ddcf3")
+
+[node name="PathFollow3D16" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.000293629, 1.72843e-12, -0.999907, 5.88577e-09, 1, -1.21853e-16, 0.999908, -5.88631e-09, -0.000293629, -8.56388, 0, 17.8638)
+progress = 65.0988
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D16" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_1tlis")
+
+[node name="PathFollow3D17" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.000293629, 1.72843e-12, -0.999907, 5.88577e-09, 1, -1.21853e-16, 0.999908, -5.88631e-09, -0.000293629, -4.22393, 0, 17.8651)
+progress = 69.4387
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D17" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_f1olv")
+
+[node name="PathFollow3D18" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.000293629, 1.72843e-12, -0.999907, 5.88577e-09, 1, -1.21853e-16, 0.999908, -5.88631e-09, -0.000293629, 0.116013, 0, 17.8664)
+progress = 73.7786
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D18" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_ke34w")
+
+[node name="PathFollow3D19" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.000293629, 1.72843e-12, -0.999907, 5.88577e-09, 1, -1.21853e-16, 0.999908, -5.88631e-09, -0.000293629, 4.456, 0, 17.8677)
+progress = 78.1186
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D19" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_3v225")
+
+[node name="PathFollow3D20" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.000293629, 1.72887e-12, -0.999907, 5.88578e-09, 1, 3.20135e-16, 0.999908, -5.88632e-09, -0.000293629, 8.79598, 0, 17.8689)
+progress = 82.4585
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D20" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_y8vpc")
+
+[node name="PathFollow3D21" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(0.122751, -7.23042e-10, -0.992347, 5.88915e-09, 1, -1.30439e-14, 0.992348, -5.84512e-09, 0.122751, 13.1326, 0, 17.8634)
+progress = 86.7984
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D21" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_4xutl")
+
+[node name="PathFollow3D22" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(0.130382, -7.67952e-10, -0.991441, 5.88975e-09, 1, -4.99589e-16, 0.991441, -5.8396e-09, 0.130382, 17.4391, 0, 17.2971)
+progress = 91.1383
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D22" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_20kjh")
+
+[node name="PathFollow3D23" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(0.670802, -3.95098e-09, -0.741624, 5.88982e-09, 1, 2.22043e-16, 0.741624, -4.36812e-09, 0.670802, 20.8527, 0, 14.8094)
+progress = 95.4782
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D23" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_ra7cb")
+
+[node name="PathFollow3D24" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(0.96632, -5.69153e-09, -0.257327, 5.88986e-09, 1, 5.55109e-17, 0.257327, -1.51563e-09, 0.96632, 22.7089, 0, 11.067)
+progress = 99.8181
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D24" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_rxy33")
+
+[node name="PathFollow3D25" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(0.965181, -5.68482e-09, 0.261571, 5.88986e-09, 1, -5.5511e-17, -0.261571, 1.54063e-09, 0.965181, 22.6624, 0, 6.87593)
+progress = 104.158
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D25" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_nse8y")
+
+[node name="PathFollow3D26" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(0.651697, -3.83842e-09, 0.758478, 5.88988e-09, 1, 4.44089e-16, -0.758478, 4.46735e-09, 0.651697, 20.7728, 0, 3.16325)
+progress = 108.498
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D26" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_13wuw")
+
+[node name="PathFollow3D27" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(0.178847, -1.05339e-09, 0.983876, 5.88987e-09, 1, 7.77155e-16, -0.983875, 5.79492e-09, 0.178847, 17.2894, 0, 0.735086)
+progress = 112.838
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D27" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_kb70l")
+
+[node name="PathFollow3D28" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(0.155122, -9.1365e-10, 0.987893, 5.88987e-09, 1, -2.77555e-16, -0.987893, 5.81859e-09, 0.155122, 13.0244, 0, -0.0380297)
+progress = 117.178
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D28" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_5evg0")
+
+[node name="PathFollow3D29" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.00287963, 1.69611e-11, 0.999986, 5.88982e-09, 1, -2.6541e-16, -0.999986, 5.88986e-09, -0.00287963, 8.67994, 0, -0.0249955)
+progress = 121.518
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D29" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_5gu2w")
+
+[node name="PathFollow3D30" type="PathFollow3D" parent="InnerRailing/Path3D"]
+transform = Transform3D(-0.00287964, 1.69611e-11, 0.999991, 5.88985e-09, 1, -2.65411e-16, -0.999991, 5.88986e-09, -0.00287964, 4.33977, 0, -0.0124972)
+progress = 125.858
+
+[node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D30" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_fotj3")
+
+[node name="OuterRailing" type="Node3D" parent="."]
+transform = Transform3D(4.16, 0, 0, 0, 1, 0, 0, 0, 4.48, 8.30258, -0.432644, 8.28897)
+
+[node name="ProtoCSGCylinder3D2" parent="OuterRailing" instance=ExtResource("3_k26un")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 1.17916, 1.88259, -8.72793)
+radius = 0.0917969
+height = 34.7278
+material = SubResource("StandardMaterial3D_gar46")
+
+[node name="ProtoCSGCylinder3D12" parent="OuterRailing" instance=ExtResource("3_k26un")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 0, 1, -1, 4.37114e-08, -4.37114e-08, 1.17916, 1.88259, 9.1188)
+radius = 0.0917969
+height = 34.7278
+material = SubResource("StandardMaterial3D_7qr3l")
+
+[node name="End" type="Node3D" parent="OuterRailing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0859, 1.90735e-06, -8.45)
+
+[node name="ProtoCSGCylinder3D6" parent="OuterRailing/End" instance=ExtResource("3_k26un")]
+transform = Transform3D(0.159554, -0.987189, -4.31968e-08, 2.90666e-10, -4.37104e-08, 1, -0.987189, -0.159554, -6.68722e-09, 31.1513, 1.88259, 0.125754)
+radius = 0.0917969
+height = 5.07456
+material = SubResource("StandardMaterial3D_y7a7e")
+
+[node name="ProtoCSGCylinder3D11" parent="OuterRailing/End" instance=ExtResource("3_k26un")]
+transform = Transform3D(0.128571, 0.9917, 4.33486e-08, 4.41656e-16, -4.37114e-08, 1, 0.9917, -0.128571, -5.62e-09, 31.1861, 1.88259, 17.2355)
+radius = 0.0917969
+height = 5.17325
+material = SubResource("StandardMaterial3D_pk0sr")
+
+[node name="ProtoCSGCylinder3D7" parent="OuterRailing/End" instance=ExtResource("3_k26un")]
+transform = Transform3D(0.656059, -0.75471, -3.29894e-08, 0, -4.37114e-08, 1, -0.75471, -0.656059, -2.86773e-08, 35.563, 1.88259, 2.17877)
+radius = 0.0917969
+height = 4.98076
+material = SubResource("StandardMaterial3D_edqbe")
+
+[node name="ProtoCSGCylinder3D10" parent="OuterRailing/End" instance=ExtResource("3_k26un")]
+transform = Transform3D(-0.669131, -0.743145, -3.24839e-08, 0, -4.37114e-08, 1, -0.743145, 0.669131, 2.92486e-08, 35.6412, 1.88259, 15.2203)
+radius = 0.0917969
+height = 5.06382
+material = SubResource("StandardMaterial3D_kvlj0")
+
+[node name="ProtoCSGCylinder3D9" parent="OuterRailing/End" instance=ExtResource("3_k26un")]
+transform = Transform3D(0.965826, 0.25919, 1.13296e-08, 0, -4.37114e-08, 1, 0.25919, -0.965826, -4.22176e-08, 38.15, 1.88259, 11.1388)
+radius = 0.0917969
+height = 4.84883
+material = SubResource("StandardMaterial3D_1yd5q")
+
+[node name="ProtoCSGCylinder3D8" parent="OuterRailing/End" instance=ExtResource("3_k26un")]
+transform = Transform3D(0.965926, -0.258819, -1.13133e-08, 0, -4.37114e-08, 1, -0.258819, -0.965926, -4.2222e-08, 38.1238, 1.88259, 6.30094)
+radius = 0.0917969
+height = 5.07491
+material = SubResource("StandardMaterial3D_6vosb")
+
+[node name="End2" type="Node3D" parent="OuterRailing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0859, 1.90735e-06, -8.45)
+
+[node name="ProtoCSGCylinder3D13" parent="OuterRailing/End2" instance=ExtResource("3_k26un")]
+transform = Transform3D(-0.159554, 0.987189, 1.3062e-07, -7.20635e-08, -1.43962e-07, 1, 0.987189, 0.159554, 9.411e-08, -8.62179, 1.88258, 17.1628)
+radius = 0.0917969
+height = 5.07456
+material = SubResource("StandardMaterial3D_obfw3")
+
+[node name="ProtoCSGCylinder3D14" parent="OuterRailing/End2" instance=ExtResource("3_k26un")]
+transform = Transform3D(-0.128571, -0.9917, 4.40742e-08, 9.79372e-08, 3.17458e-08, 1, -0.9917, 0.128571, 9.30428e-08, -8.65658, 1.88259, 0.0531006)
+radius = 0.0917969
+height = 5.17325
+material = SubResource("StandardMaterial3D_m6gaa")
+
+[node name="ProtoCSGCylinder3D15" parent="OuterRailing/End2" instance=ExtResource("3_k26un")]
+transform = Transform3D(-0.656059, 0.75471, 1.20412e-07, -8.6243e-09, -1.67045e-07, 1, 0.75471, 0.656059, 1.161e-07, -13.0335, 1.88259, 15.1098)
+radius = 0.0917969
+height = 4.98076
+material = SubResource("StandardMaterial3D_xv2r3")
+
+[node name="ProtoCSGCylinder3D16" parent="OuterRailing/End2" instance=ExtResource("3_k26un")]
+transform = Transform3D(0.669131, 0.743145, 1.19907e-07, -1.23465e-07, -5.01819e-08, 1, 0.743145, -0.669131, 5.81742e-08, -13.1116, 1.88259, 2.0683)
+radius = 0.0917969
+height = 5.06382
+material = SubResource("StandardMaterial3D_72gn4")
+
+[node name="ProtoCSGCylinder3D17" parent="OuterRailing/End2" instance=ExtResource("3_k26un")]
+transform = Transform3D(-0.965826, -0.25919, 7.60932e-08, 1.07094e-07, -1.05488e-07, 1, -0.25919, 0.965826, 1.2964e-07, -15.6204, 1.88259, 6.14983)
+radius = 0.0917969
+height = 4.84883
+material = SubResource("StandardMaterial3D_7uvoo")
+
+[node name="ProtoCSGCylinder3D18" parent="OuterRailing/End2" instance=ExtResource("3_k26un")]
+transform = Transform3D(-0.965926, 0.258819, 9.87361e-08, 6.18172e-08, -1.50782e-07, 1, 0.258819, 0.965926, 1.29645e-07, -15.5942, 1.88259, 10.9877)
+radius = 0.0917969
+height = 5.07491
+material = SubResource("StandardMaterial3D_6ait4")
+
+[node name="Path3D" type="Path3D" parent="OuterRailing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.47227, 1.18655, -8.74488)
+curve = SubResource("Curve3D_k26un")
+script = SubResource("GDScript_k26un")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_c6wib")
+
+[node name="PathFollow3D31" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -2.89277, 0, 0)
+progress = 2.89328
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D31" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_d8ia8")
+
+[node name="PathFollow3D32" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.78655, 0, 0)
+progress = 5.78656
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D32" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_fcnkh")
+
+[node name="PathFollow3D33" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.67982, 0, 0)
+progress = 8.67984
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D33" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_u47hk")
+
+[node name="PathFollow3D34" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.5731, 0, 0)
+progress = 11.5731
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D34" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_7n1tl")
+
+[node name="PathFollow3D35" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-4.37113e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37113e-08, -14.4665, 0, 0)
+progress = 14.4664
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D35" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_rrmxo")
+
+[node name="PathFollow3D36" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-4.37113e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37113e-08, -17.3598, 0, 0)
+progress = 17.3597
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D36" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_wgtpr")
+
+[node name="PathFollow3D41" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-4.37113e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37113e-08, -20.2536, 0, 0)
+progress = 20.253
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D41" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_2tcki")
+
+[node name="PathFollow3D42" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.134671, -4.52537e-08, 0.99089, -3.06109e-09, 1, 4.52537e-08, -0.99089, 3.06114e-09, -0.134671, -23.1321, -6.97423e-08, 0.207546)
+progress = 23.1462
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D42" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_qqr5t")
+
+[node name="PathFollow3D43" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.134671, -4.52537e-08, 0.990889, -3.0611e-09, 1, 4.52537e-08, -0.990889, 3.06114e-09, -0.134671, -25.9994, -2.0069e-07, 0.597233)
+progress = 26.0395
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D43" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_wce2y")
+
+[node name="PathFollow3D44" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.674019, -1.0209e-07, 0.738712, -4.69112e-08, 1, 9.53974e-08, -0.738712, 2.96459e-08, -0.674019, -28.3467, -4.34864e-07, 2.09747)
+progress = 28.9328
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D44" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_d14a6")
+
+[node name="PathFollow3D45" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.674019, -1.0209e-07, 0.738712, -4.69112e-08, 1, 9.53974e-08, -0.738712, 2.96459e-08, -0.674019, -30.489, -7.11665e-07, 4.05166)
+progress = 31.8261
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D45" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_nu8l2")
+
+[node name="PathFollow3D37" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.966617, 5.65983e-09, 0.256222, -3.24585e-08, 1, -1.44542e-07, -0.256222, -1.48033e-07, -0.966617, -31.2475, -3.03672e-07, 6.831)
+progress = 34.7194
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D37" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_nfe2n")
+
+[node name="PathFollow3D38" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.966514, 5.6892e-09, -0.256609, 5.88629e-09, 1, -2.33096e-17, 0.256609, -1.51048e-09, -0.966514, -31.5825, 0, 9.62756)
+progress = 37.6126
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D38" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_onfco")
+
+[node name="PathFollow3D39" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.966514, 5.6892e-09, -0.256609, 5.88629e-09, 1, 1.98735e-16, 0.256609, -1.51048e-09, -0.966514, -30.84, 0, 12.424)
+progress = 40.5059
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D39" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_ujsvp")
+
+[node name="PathFollow3D40" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.653754, 3.84821e-09, -0.756705, 5.88631e-09, 1, 4.44089e-16, 0.756705, -4.45421e-09, -0.653754, -29.3439, 0, 14.7488)
+progress = 43.3992
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D40" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_qak2g")
+
+[node name="PathFollow3D2" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.653754, 3.84821e-09, -0.756706, 5.88631e-09, 1, 0, 0.756706, -4.45421e-09, -0.653754, -27.1544, 0, 16.6404)
+progress = 46.2925
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D2" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_irdxe")
+
+[node name="PathFollow3D3" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.160447, 9.44441e-10, -0.987044, 5.88631e-09, 1, -3.33067e-16, 0.987044, -5.81005e-09, -0.160447, -24.4404, 0, 17.4082)
+progress = 49.1858
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D3" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_buwcy")
+
+[node name="PathFollow3D4" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(0.344586, -8.33105e-10, -0.938754, 4.69108e-09, 1, 8.34481e-10, 0.938754, -4.69132e-09, 0.344586, -21.587, 0, 17.86)
+progress = 52.079
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D4" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_mbsol")
+
+[node name="PathFollow3D5" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.000293656, 1.72843e-12, -0.999999, 5.88631e-09, 1, -1.21647e-16, 0.999999, -5.88631e-09, -0.000293656, -18.6904, 0, 17.8609)
+progress = 54.9723
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D5" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_28wjf")
+
+[node name="PathFollow3D6" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.000293775, 1.72887e-12, -0.999999, 5.88631e-09, 1, -3.81097e-16, 0.999999, -5.88632e-09, -0.000293775, -15.7972, 0, 17.8617)
+progress = 57.8656
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D6" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_gwfk3")
+
+[node name="PathFollow3D7" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.000293655, 1.72843e-12, -0.999996, 5.88629e-09, 1, -1.21864e-16, 0.999996, -5.88631e-09, -0.000293655, -12.9038, 0, 17.8626)
+progress = 60.7589
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D7" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_lmhsc")
+
+[node name="PathFollow3D8" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.000293536, 1.72821e-12, -0.999998, 5.8863e-09, 1, 3.57786e-16, 0.999998, -5.88631e-09, -0.000293536, -10.0106, 0, 17.8634)
+progress = 63.6522
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D8" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_6dffy")
+
+[node name="PathFollow3D9" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.000293654, 1.72887e-12, -0.999994, 5.88628e-09, 1, 3.22006e-16, 0.999994, -5.88631e-09, -0.000293654, -7.11721, 0, 17.8643)
+progress = 66.5454
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D9" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_jioh0")
+
+[node name="PathFollow3D10" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.000293653, 1.72843e-12, -0.999991, 5.88626e-09, 1, -1.21863e-16, 0.999991, -5.88631e-09, -0.000293653, -4.22393, 0, 17.8651)
+progress = 69.4387
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D10" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_yfqjn")
+
+[node name="PathFollow3D11" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.000293654, 1.72821e-12, -0.999992, 5.88627e-09, 1, -3.43798e-16, 0.999992, -5.88631e-09, -0.000293654, -1.33065, 0, 17.866)
+progress = 72.332
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D11" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_2x7m0")
+
+[node name="PathFollow3D12" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.000293655, 1.72843e-12, -0.999996, 5.88629e-09, 1, -1.21864e-16, 0.999996, -5.88631e-09, -0.000293655, 1.56269, 0, 17.8668)
+progress = 75.2253
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D12" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_mpfrf")
+
+[node name="PathFollow3D13" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999982, 5.88621e-09, 1, -1.21862e-16, 0.999982, -5.88631e-09, -0.000293651, 4.456, 0, 17.8677)
+progress = 78.1186
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D13" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_arq48")
+
+[node name="PathFollow3D14" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.00029363, 1.72799e-12, -0.99991, 5.8858e-09, 1, -5.69263e-16, 0.999911, -5.88633e-09, -0.00029363, 7.34923, 0, 17.8685)
+progress = 81.0118
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D14" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_8j46b")
+
+[node name="PathFollow3D15" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.000293629, 1.72843e-12, -0.999906, 5.88577e-09, 1, -1.21853e-16, 0.999907, -5.88631e-09, -0.000293628, 10.2425, 0, 17.8694)
+progress = 83.9051
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D15" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_qc1nh")
+
+[node name="PathFollow3D16" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(0.122751, -7.23042e-10, -0.992342, 5.88913e-09, 1, -1.30439e-14, 0.992344, -5.84512e-09, 0.122751, 13.1326, 0, 17.8634)
+progress = 86.7984
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D16" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_33au3")
+
+[node name="PathFollow3D17" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(0.130373, -7.67952e-10, -0.99137, 5.88933e-09, 1, -4.99553e-16, 0.991371, -5.8396e-09, 0.130373, 16.0039, 0, 17.4858)
+progress = 89.6917
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D17" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_77uj1")
+
+[node name="PathFollow3D18" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(0.670747, -3.95098e-09, -0.741561, 5.88934e-09, 1, -2.22024e-16, 0.741563, -4.36812e-09, 0.670745, 18.7058, 0, 16.7514)
+progress = 92.585
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D18" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_bdx1m")
+
+[node name="PathFollow3D19" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(0.670747, -3.95098e-09, -0.741562, 5.88934e-09, 1, 2.22024e-16, 0.741563, -4.36812e-09, 0.670746, 20.8527, 0, 14.8094)
+progress = 95.4782
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D19" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_5ik38")
+
+[node name="PathFollow3D20" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(0.966235, -5.69153e-09, -0.257304, 5.88934e-09, 1, 5.5506e-17, 0.257304, -1.51563e-09, 0.966234, 22.3366, 0, 12.4652)
+progress = 98.3715
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D20" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_dp4m6")
+
+[node name="PathFollow3D21" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(0.966238, -5.69153e-09, -0.257305, 5.88936e-09, 1, -1.11012e-16, 0.257305, -1.51563e-09, 0.966238, 23.0816, 0, 9.66759)
+progress = 101.265
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D21" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_w33p5")
+
+[node name="PathFollow3D22" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(0.965162, -5.68482e-09, 0.261566, 5.88974e-09, 1, -5.55099e-17, -0.261566, 1.54063e-09, 0.965162, 22.6624, 0, 6.87593)
+progress = 104.158
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D22" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_3qcj1")
+
+[node name="PathFollow3D23" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(0.651691, -3.83842e-09, 0.758471, 5.88982e-09, 1, 4.44085e-16, -0.758471, 4.46735e-09, 0.651691, 21.8728, 0, 4.10842)
+progress = 107.051
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D23" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_omck5")
+
+[node name="PathFollow3D24" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(0.651695, -3.83842e-09, 0.758475, 5.88985e-09, 1, 0, -0.758475, 4.46735e-09, 0.651695, 19.6753, 0, 2.22031)
+progress = 109.945
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D24" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_4bout")
+
+[node name="PathFollow3D25" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(0.178846, -1.05339e-09, 0.983874, 5.88986e-09, 1, 7.77154e-16, -0.983874, 5.79492e-09, 0.178846, 17.2894, 0, 0.735086)
+progress = 112.838
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D25" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_tam17")
+
+[node name="PathFollow3D26" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(0.178847, -1.05339e-09, 0.983876, 5.88987e-09, 1, 4.44089e-16, -0.983876, 5.79492e-09, 0.178847, 14.4432, 0, 0.217704)
+progress = 115.731
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D26" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_rv3ab")
+
+[node name="PathFollow3D27" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.00287965, 1.69611e-11, 0.999995, 5.88987e-09, 1, -2.65412e-16, -0.999994, 5.88986e-09, -0.00287966, 11.5704, 0, -0.0333193)
+progress = 118.624
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D27" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_hw024")
+
+[node name="PathFollow3D28" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.00287965, 1.69611e-11, 0.999993, 5.88986e-09, 1, -2.65412e-16, -0.999993, 5.88986e-09, -0.00287965, 8.67994, 0, -0.0249955)
+progress = 121.518
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D28" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_hsjby")
+
+[node name="PathFollow3D29" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.00287963, 1.69611e-11, 0.999985, 5.88981e-09, 1, -2.6541e-16, -0.999985, 5.88986e-09, -0.00287963, 5.78652, 0, -0.0166634)
+progress = 124.411
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D29" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_wyyro")
+
+[node name="PathFollow3D30" type="PathFollow3D" parent="OuterRailing/Path3D"]
+transform = Transform3D(-0.00287964, 1.69607e-11, 0.99999, 5.88984e-09, 1, 1.76941e-16, -0.99999, 5.88986e-09, -0.00287964, 2.89326, 0, -0.0083317)
+progress = 127.304
+
+[node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D30" instance=ExtResource("3_k26un")]
+radius = 0.0693359
+height = 1.39771
+material = SubResource("StandardMaterial3D_hiync")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9567, 0.721, 9.45725)
+navigation_mesh = SubResource("NavigationMesh_0ddct")
+
+[node name="Colliders" type="Node3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.23984, 0, 0.501469)
+
+[node name="InnerRailing" type="StaticBody3D" parent="NavigationRegion3D/Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.39, -0.721, -9.13519)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60961, 2.43236, -14.2113)
+shape = SubResource("BoxShape3D_0ddct")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52044, 2.43236, 29.8948)
+shape = SubResource("BoxShape3D_0ddct")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(-0.992734, -8.3977e-08, 0.120327, -7.24486e-08, 1, 1.00183e-07, -0.120327, 9.07378e-08, -0.992734, 70.6026, 2.43236, -13.2058)
+shape = SubResource("BoxShape3D_xd4lj")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(-0.85285, -1.14099e-07, 0.522156, -7.24486e-08, 1, 1.00183e-07, -0.522156, 4.76117e-08, -0.85285, 85.9005, 2.43236, -7.9847)
+shape = SubResource("BoxShape3D_o0dix")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(-0.358368, 0, 0.93358, 0, 1, 0, -0.93358, 0, -0.358368, 95.0104, 2.43236, 2.20696)
+shape = SubResource("BoxShape3D_q523l")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(-0.358368, 0, -0.93358, 0, 1, 0, 0.93358, 0, -0.358368, 95.0745, 2.43236, 14.1771)
+shape = SubResource("BoxShape3D_pgsk4")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(-0.846212, 0, -0.532847, 0, 1, 0, 0.532847, 0, -0.846212, 86.3348, 2.43236, 24.2445)
+shape = SubResource("BoxShape3D_wo7jt")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(-0.994656, 0, -0.103244, 0, 1, 0, 0.103244, 0, -0.994656, 71.1011, 2.43236, 29.2256)
+shape = SubResource("BoxShape3D_g48qy")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(0.992734, -3.44576e-09, -0.120327, -1.4339e-08, -1, -8.96639e-08, -0.120327, 9.07378e-08, -0.992734, -67.2705, 2.43236, -13.6836)
+shape = SubResource("BoxShape3D_xd4lj")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(0.85285, 2.66763e-08, -0.522156, -2.10988e-09, -1, -5.45349e-08, -0.522156, 4.76117e-08, -0.85285, -82.5683, 2.43236, -8.46257)
+shape = SubResource("BoxShape3D_o0dix")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(0.358368, -8.74228e-08, -0.933581, -3.13295e-08, -1, 8.16162e-08, -0.933581, 0, -0.358368, -91.6782, 2.43236, 1.7291)
+shape = SubResource("BoxShape3D_q523l")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(0.358368, -8.74228e-08, 0.93358, -3.13295e-08, -1, -8.16162e-08, 0.93358, 0, -0.358368, -91.7423, 2.43236, 13.6992)
+shape = SubResource("BoxShape3D_pgsk4")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(0.846212, -8.74228e-08, 0.532847, -7.39782e-08, -1, -4.65829e-08, 0.532847, 0, -0.846212, -83.0027, 2.43236, 23.7666)
+shape = SubResource("BoxShape3D_wo7jt")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D24" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/InnerRailing"]
+transform = Transform3D(0.994656, -8.74228e-08, 0.103244, -8.69556e-08, -1, -9.02588e-09, 0.103244, 0, -0.994656, -67.7689, 2.43236, 28.7477)
+shape = SubResource("BoxShape3D_g48qy")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="OuterRailing" type="StaticBody3D" parent="NavigationRegion3D/Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.39, -0.721, -9.13519)
+
+[node name="Straight" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.48857, 2.43236, -31.6222)
+shape = SubResource("BoxShape3D_j8gtt")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Straight2" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1657, 2.43236, 48.2847)
+shape = SubResource("BoxShape3D_2l5r7")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D18" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(-0.992734, -8.3977e-08, 0.120327, -7.24486e-08, 1, 1.00183e-07, -0.120327, 9.07378e-08, -0.992734, 70.859, 2.43236, -13.1747)
+shape = SubResource("BoxShape3D_xd4lj")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(-0.846481, -1.14666e-07, 0.532418, -7.24486e-08, 1, 1.00183e-07, -0.532418, 4.62302e-08, -0.846481, 86.147, 2.43236, -7.88122)
+shape = SubResource("BoxShape3D_o0dix")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(-0.358368, 0, 0.93358, 0, 1, 0, -0.93358, 0, -0.358368, 95.0159, 2.43236, 2.22128)
+shape = SubResource("BoxShape3D_q523l")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(-0.343856, 0, -0.939022, 0, 1, 0, 0.939022, 0, -0.343856, 95.0955, 2.43236, 14.01)
+shape = SubResource("BoxShape3D_pgsk4")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D17" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(-0.994656, 0, -0.103244, 0, 1, 0, 0.103244, 0, -0.994656, 70.9184, 2.43236, 29.2445)
+shape = SubResource("BoxShape3D_g48qy")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D19" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(0.991146, -2.30685e-09, -0.132775, -1.4339e-08, -1, -8.96639e-08, -0.132775, 9.07739e-08, -0.991146, -80.6156, 2.43236, -30.2069)
+shape = SubResource("BoxShape3D_htlp4")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D20" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(0.714827, 3.66281e-08, -0.699302, -2.10988e-09, -1, -5.45349e-08, -0.699302, 4.04584e-08, -0.714827, -98.9645, 2.43236, -21.2099)
+shape = SubResource("BoxShape3D_klpv8")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D21" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(0.235481, -8.66986e-08, -0.971879, -3.13295e-08, -1, 8.16162e-08, -0.971879, 1.12294e-08, -0.235481, -109.395, 2.43236, -2.89328)
+shape = SubResource("BoxShape3D_5bxeu")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D22" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(0.244326, -8.67973e-08, 0.969693, -3.13295e-08, -1, -8.16162e-08, 0.969693, -1.04391e-08, -0.244326, -109.206, 2.43236, 19.0179)
+shape = SubResource("BoxShape3D_yyl80")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D23" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(0.731235, -8.58708e-08, 0.682126, -7.39782e-08, -1, -4.6583e-08, 0.682126, -1.63994e-08, -0.731235, -98.6686, 2.43236, 37.4936)
+shape = SubResource("BoxShape3D_k7obx")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D24" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(0.985235, -8.7217e-08, 0.171207, -8.69556e-08, -1, -9.02588e-09, 0.171207, -5.9948e-09, -0.985235, -80.5276, 2.43236, 46.5324)
+shape = SubResource("BoxShape3D_rbx75")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D25" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(-0.991146, 8.97296e-08, 0.132775, 1.00988e-07, 1, 7.80563e-08, -0.132775, 9.07739e-08, -0.991146, 85.0301, 2.43237, -30.2069)
+shape = SubResource("BoxShape3D_htlp4")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D26" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(-0.714827, 5.07947e-08, 0.699302, 6.4602e-08, 1, -6.60001e-09, -0.699302, 4.04584e-08, -0.714827, 103.379, 2.43236, -21.2099)
+shape = SubResource("BoxShape3D_klpv8")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D27" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(-0.235481, 1.74121e-07, 0.971879, 5.1916e-08, 1, -1.66581e-07, -0.971879, 1.12294e-08, -0.235481, 113.809, 2.43236, -2.89328)
+shape = SubResource("BoxShape3D_5bxeu")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D28" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(-0.244326, 1.7422e-07, -0.969693, 5.26892e-08, 1, 1.66389e-07, 0.969693, -1.04391e-08, -0.244326, 113.62, 2.43236, 19.0179)
+shape = SubResource("BoxShape3D_yyl80")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D29" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(-0.731235, 1.73294e-07, -0.682126, 1.37905e-07, 1, 1.06216e-07, 0.682126, -1.63994e-08, -0.731235, 103.083, 2.43236, 37.4936)
+shape = SubResource("BoxShape3D_k7obx")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="CollisionShape3D30" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/OuterRailing"]
+transform = Transform3D(-0.985235, 1.7464e-07, -0.171207, 1.73088e-07, 1, 2.39933e-08, 0.171207, -5.9948e-09, -0.985235, 84.942, 2.43237, 46.5324)
+shape = SubResource("BoxShape3D_rbx75")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Floor" type="StaticBody3D" parent="NavigationRegion3D/Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.11899, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.907576, 0)
+shape = SubResource("WorldBoundaryShape3D_0ddct")
+debug_color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5819, 0.408433, -0.962349)
+shape = SubResource("BoxShape3D_y7tfb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Colliders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -87.0869, 2.02444, 28.751)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Colliders/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.23477, 0.0445557, 0.131897)
+shape = SubResource("BoxShape3D_vsnt0")
+
+[node name="Bleachers" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 29.8325, 1.63445, -18.0706)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 18.6737, 1.63445, -18.0706)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, -3.32632, 1.63445, -18.0706)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 7.67368, 1.63445, -18.0706)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.01, 0, -8.74228e-10, 0, 0.01, 0, 8.74228e-10, 0, -0.01, -3.40572, 1.63445, 35.9294)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers6" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.01, 0, -8.74228e-10, 0, 0.01, 0, 8.74228e-10, 0, -0.01, 7.75308, 1.63445, 35.9294)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.01, 0, -8.74228e-10, 0, 0.01, 0, 8.74228e-10, 0, -0.01, 29.7531, 1.63445, 35.9294)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers8" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.01, 0, -8.74228e-10, 0, 0.01, 0, 8.74228e-10, 0, -0.01, 18.7531, 1.63445, 35.9294)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.31134e-09, 0, -0.01, 0, 0.01, 0, 0.01, 0, 1.31134e-09, 57.2531, 1.63445, 4.42944)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers10" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.31134e-09, 0, -0.01, 0, 0.01, 0, 0.01, 0, 1.31134e-09, 57.2531, 1.63445, 15.4294)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers11" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-10, 0, 0.01, 0, 0.01, 0, -0.01, 0, -4.37114e-10, -34.7469, 1.63445, 15.4294)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers12" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-10, 0, 0.01, 0, 0.01, 0, -0.01, 0, -4.37114e-10, -34.7469, 1.63445, 4.42944)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers13" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00866025, 0, 0.005, 0, 0.01, 0, -0.005, 0, -0.00866025, -18.9838, 1.63445, 35.6794)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers14" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00866025, 0, 0.005, 0, 0.01, 0, -0.005, 0, -0.00866025, -28.5101, 1.63445, 30.1794)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers15" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00707107, 0, -0.00707107, 0, 0.01, 0, 0.00707107, 0, -0.00707107, 53.1422, 1.63445, 29.0403)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Bleachers16" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.00707107, 0, -0.00707107, 0, 0.01, 0, 0.00707107, 0, -0.00707107, 45.364, 1.63445, 36.8185)
+visible = false
+mesh = ExtResource("5_338i0")
+
+[node name="Horse" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.2709, 1.27315, -14.9762)
+mass = 500.0
+script = ExtResource("6_0ddct")
+speed_dir_curve = SubResource("Curve_0ddct")
+ride_height = 0.6
+ride_spring_strength = 200.0
+ride_spring_damper = 20.0
+acceleration_dir_factor = SubResource("Curve_htlp4")
+metadata/_custom_type_script = "uid://4y8ej74k2kjk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Horse"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.124794, 0, 0)
+shape = SubResource("CapsuleShape3D_htlp4")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Horse"]
+path_desired_distance = 5.0
+target_desired_distance = 4.0
+
+[node name="GroundCast" type="RayCast3D" parent="Horse"]
+
+[node name="Model" type="Node3D" parent="Horse"]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Horse/Model"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_0ddct")
+skeleton = NodePath("../../root/@EditorNode@21302/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/RaceTrack/Horse")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Horse/Model"]
+transform = Transform3D(0.497094, -0.497094, 0, 0.497094, 0.497094, 0, 0, 0, 0.702997, -1.05776, 0.452646, 0)
+mesh = SubResource("CapsuleMesh_0ddct")
+skeleton = NodePath("../../root/@EditorNode@21302/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/RaceTrack/Horse")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Horse/Model"]
+transform = Transform3D(-0.273757, -0.474161, 0, 0.474161, -0.273757, 0, 0, 0, 0.547514, -1.61445, 0.626511, 0)
+mesh = SubResource("CapsuleMesh_0ddct")
+skeleton = NodePath("../../root/@EditorNode@21302/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/RaceTrack/Horse")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Horse/Model"]
+transform = Transform3D(0.130859, -0.395648, 0, 0.171777, 0.301403, 0, 0, 0, 0.215942, 1.029, 0.115, 0)
+mesh = SubResource("CapsuleMesh_0ddct")
+skeleton = NodePath("../../root/@EditorNode@21302/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/RaceTrack/Horse")
+
+[node name="ProtoCSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.2953, 2.56861, 39.4762)
+size = Vector3(1, 4.69824, 12.8214)
+script = ExtResource("7_htlp4")
+metadata/_custom_type_script = "uid://bijh2q3krcoeg"
+
+[node name="ProtoCSGBox3D2" parent="." instance=ExtResource("1_a8xlo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.43227, 2.92849, -12.498)
+size = Vector3(0.25, 5.431, 0.25)
+material = SubResource("StandardMaterial3D_meqmy")
+
+[node name="ProtoCSGBox3D3" parent="." instance=ExtResource("1_a8xlo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.43227, 2.92849, -31.833)
+size = Vector3(0.25, 5.431, 0.25)
+material = SubResource("StandardMaterial3D_meqmy")
+
+[node name="ProtoCSGBox3D4" parent="." instance=ExtResource("1_a8xlo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.43227, 5.05528, -22.0442)
+size = Vector3(0.25, 1.17741, 19.3423)
+material = SubResource("StandardMaterial3D_meqmy")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.43227, 0.713093, -22.4414)
+script = ExtResource("8_klpv8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.674927, 0.352333)
+shape = SubResource("BoxShape3D_l7x4w")
+
+[node name="FinishLine" type="Marker3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8203, 0, 6.63539)
+gizmo_extents = 8.57
+
+[connection signal="child_entered_tree" from="InnerRailing/Path3D" to="InnerRailing/Path3D" method="_on_child_entered_tree"]
+[connection signal="child_entered_tree" from="OuterRailing/Path3D" to="OuterRailing/Path3D" method="_on_child_entered_tree"]

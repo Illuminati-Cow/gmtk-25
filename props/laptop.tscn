@@ -1,0 +1,20 @@
+[gd_scene load_steps=7 format=3 uid="uid://dc3ln6bo1l2dn"]
+
+[ext_resource type="PackedScene" uid="uid://bqnb1o1g2mhb4" path="res://meshes/laptop/laptop.fbx" id="1_6trpo"]
+[ext_resource type="Texture2D" uid="uid://dx57mr5sr1kfq" path="res://meshes/laptop/laptop_color.png" id="2_fxlwf"]
+[ext_resource type="Texture2D" uid="uid://dc80vqsf0b805" path="res://meshes/laptop/laptop_ao.png" id="3_8gks2"]
+[ext_resource type="Texture2D" uid="uid://wl8qnep6sc10" path="res://meshes/laptop/laptop_normal.png" id="4_tdtqu"]
+[ext_resource type="Texture2D" uid="uid://dtq6uxtraruif" path="res://meshes/laptop/laptop_rough.png" id="5_31p7l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4hxr"]
+albedo_texture = ExtResource("2_fxlwf")
+roughness_texture = ExtResource("5_31p7l")
+normal_enabled = true
+normal_texture = ExtResource("4_tdtqu")
+ao_enabled = true
+ao_texture = ExtResource("3_8gks2")
+
+[node name="Laptop" instance=ExtResource("1_6trpo")]
+
+[node name="laptop" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_q4hxr")

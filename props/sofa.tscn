@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxhncsfrmtyq"]
+
+[ext_resource type="PackedScene" uid="uid://dqyb1b5a15tta" path="res://meshes/sofa/sofa.glb" id="1_t218c"]
+[ext_resource type="Material" uid="uid://dvuxsk3fsnsw4" path="res://materials/sofa.tres" id="2_evowu"]
+
+[node name="Sofa" instance=ExtResource("1_t218c")]
+
+[node name="sofa" parent="." index="0"]
+material_override = ExtResource("2_evowu")

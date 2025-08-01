@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://cxielyoe8nyv8"]
+
+[ext_resource type="PackedScene" uid="uid://cl0fs8n1cr23k" path="res://meshes/legs/legs.glb" id="1_2ry3m"]
+[ext_resource type="Texture2D" uid="uid://wt33r4fta8bi" path="res://meshes/legs/legs_color.png" id="2_etcnh"]
+[ext_resource type="Texture2D" uid="uid://b82ispu3kcbeq" path="res://meshes/legs/legs_normal.png" id="3_rh2hk"]
+[ext_resource type="Texture2D" uid="uid://bbujl5qvmy288" path="res://meshes/legs/legs_rough.png" id="4_6jaju"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_de72k"]
+albedo_texture = ExtResource("2_etcnh")
+roughness_texture = ExtResource("4_6jaju")
+normal_enabled = true
+normal_texture = ExtResource("3_rh2hk")
+
+[node name="Legs" instance=ExtResource("1_2ry3m")]
+
+[node name="legs" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_de72k")
