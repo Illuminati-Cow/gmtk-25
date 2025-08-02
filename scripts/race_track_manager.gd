@@ -2,6 +2,7 @@ extends Node3D
 
 var horses: Array[HorseController3D]
 var horse_data: Dictionary[StringName, HorseData]
+var selected_horse: HorseController3D
 var spawn_points: Array[Node3D]
 var race_active: bool = false
 var last_standings: Array[HorseController3D]
@@ -50,7 +51,9 @@ func reset():
 		horse_data[horse.name] = HorseData.new()\
 		.with_name(names.pick_random().to_upper().trim_suffix(" "))\
 		.with_number(5 * (i + 1) + randi() % 4)\
-		.with_odds(randf_range(3, 20))
+		.with_odds(randf_range(3, 20))\
+		.with_color(Color.from_hsv(randf_range(0.05 * i, 0.05 * (i + 1)), .8, randf_range(.7, 1)))
+		horse.initialize(horse_data[horse.name])
 		i += 1
 	var top6 = horses.slice(0, 6)
 	var new_standings: Array[HorseData]
@@ -111,7 +114,9 @@ func end_sequence():
 	race_finished.emit(placements)
 	fade_out(announcer)
 
-func _on_bet_placed() -> void:
+func _on_bet_placed(horse: StringName) -> void:
+	var index := horse_data.values().find_custom(func(hd): return hd.horse_name == horse)
+	selected_horse = horse_data.find_key(horse_data.values()[index])
 	start_sequence()
 
 func fade_out(player: AudioStreamPlayer) -> void:
@@ -132,3 +137,7 @@ func _on_standings_changed(new_standings: Array[HorseData]) -> void:
 	crowd.play()
 	ready_for_cheer = false
 	get_tree().create_timer(crowd.stream.get_length()).timeout.connect(func(): ready_for_cheer = true)
+
+
+func _on_room_encouraged() -> void:
+	pass # Replace with function body.

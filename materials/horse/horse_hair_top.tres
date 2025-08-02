@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b08m6xwpx681s"]
+
+[resource]
+resource_name = "horse_hair_top"
+cull_mode = 2
+albedo_color = Color(0.18, 0.18, 0.18, 1)
+roughness = 0.840909

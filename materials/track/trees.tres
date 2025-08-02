@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cyav0ykh6mwk0"]
+
+[ext_resource type="Texture2D" uid="uid://beykmjacnguqj" path="res://meshes/track/track_tree_cards.png" id="1_6kgpb"]
+
+[resource]
+resource_name = "trees"
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_6kgpb")
+roughness = 0.5

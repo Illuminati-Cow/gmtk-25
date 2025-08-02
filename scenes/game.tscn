@@ -53,3 +53,4 @@ metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [connection signal="race_finished" from="SubViewport/RaceTrack" to="Room" method="_on_race_track_race_finished"]
 [connection signal="bet_placed" from="Room" to="SubViewport/RaceTrack" method="_on_bet_placed"]
+[connection signal="encouraged" from="Room" to="SubViewport/RaceTrack" method="_on_room_encouraged"]

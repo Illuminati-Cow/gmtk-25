@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b3to2arbcddhl"]
+
+[resource]
+resource_name = "saddle_a"
+cull_mode = 2
+albedo_color = Color(0.273325, 0.273325, 0.273325, 1)
+roughness = 0.5

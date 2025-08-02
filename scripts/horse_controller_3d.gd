@@ -43,7 +43,8 @@ var debug_path: bool:
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
 @onready var collider: CollisionShape3D = $CollisionShape3D
 @onready var groundcast = $GroundCast
-@onready var model := $Model
+@onready var model := $HorseMesh
+@onready var anim_tree := $AnimationTree
 
 var goal_velocity: Vector3
 var navigating: bool = false
@@ -60,7 +61,30 @@ func _ready():
 	groundcast.target_position.y = -ride_height
 	debug_path = debug_path
 	%StartTimer.timeout.connect(_on_start_timer_timeout)
+	var helmet_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/person.get_active_material(3)
+	$HorseMesh/Armature/Skeleton3D/person.set_surface_override_material(3, helmet_mat.duplicate())
+	var saddle_trim_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/saddle/saddle.get_active_material(0)
+	$HorseMesh/Armature/Skeleton3D/saddle/saddle.set_surface_override_material(0, saddle_trim_mat.duplicate())
+	var shirt_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/person.get_active_material(2)
+	$HorseMesh/Armature/Skeleton3D/person.set_surface_override_material(2, shirt_mat.duplicate())
  
+func reset() -> void:
+	linear_velocity = Vector3.ZERO
+
+func initialize(data: HorseData) -> void:
+	var texture: GradientTexture2D = $SubViewport/Panel/TextureRect.get(&"texture")
+	texture.set(&"colors", [data.color, data.color, Color.TRANSPARENT])
+	$SubViewport/Panel/Label.text = "%d" % data.number
+	var saddle_trim_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/saddle/saddle.get_active_material(0)
+	$HorseMesh/Armature/Skeleton3D/saddle/saddle.set_surface_override_material(0, saddle_trim_mat.duplicate())
+	saddle_trim_mat.albedo_color = data.color
+	var helmet_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/person.get_active_material(3)
+	$HorseMesh/Armature/Skeleton3D/person.set_surface_override_material(3, helmet_mat.duplicate())
+	helmet_mat.albedo_color = data.color.darkened(0.2)
+	var shirt_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/person.get_active_material(2)
+	$HorseMesh/Armature/Skeleton3D/person.set_surface_override_material(2, shirt_mat.duplicate())
+	shirt_mat.albedo_color = data.color
+
 func _physics_process(delta: float) -> void:
 	if nav.is_navigation_finished() and navigating:
 		stop_navigation()
@@ -84,11 +108,9 @@ func start_navigation(target_pos: Vector3) -> void:
 		return
 	nav.target_position = target_pos
 	navigating = true
-	$AnimationPlayer.play(&"Run")
 	
 func stop_navigation():
 	navigating = false
-	$AnimationPlayer.play(&"RESET")
 	
 func apply_ride_force() -> void:
 	groundcast.force_raycast_update()
@@ -99,18 +121,19 @@ func apply_ride_force() -> void:
 		var x := ground_dist - ride_height
 		var spring_force := (x * ride_spring_strength) - (ray_dir_vel_dot * ride_spring_damper)
 		apply_central_force(Vector3.DOWN * spring_force * mass)
-		DebugDraw2D.set_text("ground_force", "%2.2f" % spring_force)
-	else:
-		DebugDraw2D.set_text("ground_force", "not grounded")
+		#DebugDraw2D.set_text("ground_force", "%2.2f" % spring_force)
+	#else:
+		#DebugDraw2D.set_text("ground_force", "not grounded")
 
 func calculate_goal_velocity(direction: Vector3) -> void:
 	var ground_vel: Vector3 = Vector3(linear_velocity.x, 0, linear_velocity.z)
+	anim_tree.set(&"parameters/RunBlend/blend_amount", ground_vel.length() / base_run_speed)
 	var goal_vel: Vector3 = direction.normalized() * _move_mode_modifier
 	var vel_dot: float = goal_vel.normalized().dot(ground_vel.normalized())
 	var accel := acceleration_dir_factor.sample_baked(vel_dot) * acceleration
 	goal_velocity = goal_velocity.move_toward(ground_vel + goal_vel, accel * (1. / Engine.physics_ticks_per_second))
 	nav.velocity = goal_velocity
-	DebugDraw3D.draw_ray(global_position, goal_velocity.normalized(), goal_velocity.length(), Color.RED)
+	#DebugDraw3D.draw_ray(global_position, goal_velocity.normalized(), goal_velocity.length(), Color.RED)
 	if !nav.avoidance_enabled or nav.is_navigation_finished():
 		var needed_accel := (goal_vel - ground_vel) / (1.0 / Engine.physics_ticks_per_second)
 		var max_accel := acceleration_dir_factor.sample_baked(vel_dot) * max_acceleration
@@ -127,19 +150,18 @@ func apply_rotation(delta: float):
 	var smoothed_rotation = lerp_angle(rotation.y, target_angle, rotate_speed * delta)
 	rotation.y = smoothed_rotation
 	var vel_dot := -basis.x.dot(linear_velocity.normalized())
-	var horizontal_energy := clampf(sqrt(abs(linear_velocity.x)) / 3, 0, 1) * vel_dot
-	DebugDraw2D.set_text("h_v", "%.2f" % horizontal_energy)
+	var horizontal_energy := clampf(sqrt(abs(linear_velocity.x)) / 2, 0, 1) * vel_dot
+	#DebugDraw2D.set_text("h_v", "%.2f" % horizontal_energy)
 	model.rotation.x = lerp_angle(model.rotation.x, deg_to_rad(horizontal_energy * 45), rotate_speed * delta) 
-
-func calculate_avoidance() -> Vector3:
-	var avoidance_force: Vector3 = Vector3.ZERO
-	return avoidance_force
 
 func _on_start_timer_timeout() -> void:
 	move_mode = MoveMode.RUN
 	nav.avoidance_enabled = false
 	start_navigation(%FinishLine.global_position)
 	get_tree().create_timer(2).timeout.connect(func(): nav.avoidance_enabled = true)
+	if "1" in name:
+		var helmet_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/person.get_active_material(3)
+		helmet_mat.albedo_color = Color.BLACK
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	if nav.is_navigation_finished():
@@ -153,5 +175,5 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	var max_accel := acceleration_dir_factor.sample_baked(vel_dot) * max_acceleration
 	needed_accel = needed_accel.limit_length(max_accel)
 	apply_central_force(needed_accel * mass)
-	DebugDraw2D.set_text("velocity", ground_vel)
-	DebugDraw3D.draw_ray(global_position, safe_velocity, needed_accel.length(), Color.GREEN)
+	#DebugDraw2D.set_text("velocity", ground_vel)
+	#DebugDraw3D.draw_ray(global_position, safe_velocity, needed_accel.length(), Color.GREEN)

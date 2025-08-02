@@ -3,5 +3,7 @@
 [ext_resource type="FontFile" uid="uid://bcul51i8dqo80" path="res://themes/fonts/DoppioOne/DoppioOne-Regular.ttf" id="1_w868k"]
 
 [resource]
+default_font = ExtResource("1_w868k")
+default_font_size = 18
 Label/font_sizes/font_size = 20
 Label/fonts/font = ExtResource("1_w868k")

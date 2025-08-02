@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d4j7wrn7q210q"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "saddle_b"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.324269, 0.370481, 1)
+roughness = 0.5

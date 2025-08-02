@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bdplp3us7r8rh"]
+[gd_scene load_steps=24 format=3 uid="uid://bdplp3us7r8rh"]
 
 [ext_resource type="Script" uid="uid://cqmopd1uel163" path="res://scripts/room.gd" id="1_3j2fx"]
 [ext_resource type="PackedScene" uid="uid://do0j3wuutw3vo" path="res://props/room.tscn" id="2_3j2fx"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dx2yd0mag8h7a" path="res://props/cabinet.tscn" id="13_w68ji"]
 [ext_resource type="PackedScene" uid="uid://c0vwsywd7v1pf" path="res://props/big_slurp.tscn" id="14_23wr2"]
 [ext_resource type="PackedScene" uid="uid://pbesfay12u6r" path="res://props/hand.tscn" id="16_dynfe"]
+[ext_resource type="Theme" uid="uid://duuroy3oaat4j" path="res://themes/race_ui_theme.tres" id="16_katsu"]
 [ext_resource type="PackedScene" uid="uid://bykkdixnk0p8b" path="res://props/newspaper.tscn" id="16_vfrn5"]
 
 [sub_resource type="Resource" id="Resource_ybpoa"]
@@ -30,6 +31,37 @@ size = Vector3(1.18658, 1.53772, 0.774536)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vfrn5"]
 size = Vector3(0.522896, 0.563309, 0.593445)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jxwrd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_dynfe"]
+font_size = 66
+
+[sub_resource type="GDScript" id="GDScript_dynfe"]
+script/source = "extends Label
+
+var move_tween: Tween
+var org_pos: Vector2
+var org_rot: float
+
+func _ready() -> void:
+	visible = false
+	org_pos = position
+	org_rot = rotation
+	print(position, rotation)
+
+func _on_hand_encouragement_sent() -> void:
+	if $Timer.time_left > 0:
+		return
+	visible = true
+	$Timer.start()
+	move_tween = create_tween().set_parallel().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
+	move_tween.tween_property(self, ^\"position\", $Marker2D.position, $Timer.wait_time).from(org_pos)
+	move_tween.tween_property(self, ^\"rotation\", $Marker2D.rotation, $Timer.wait_time).from(org_rot)
+
+func _on_timer_timeout() -> void:
+	visible = false
+"
 
 [node name="Room" type="Node3D"]
 script = ExtResource("1_3j2fx")
@@ -83,6 +115,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.791703, 0.0820416, -2.21054
 
 [node name="Hand" parent="Room" instance=ExtResource("16_dynfe")]
 transform = Transform3D(4.08, 0, 0, 0, 4.08, -6.16063e-07, 0, 6.16063e-07, 4.08, -1.15809, 2.04369, -0.155301)
+knee_slap_min_speed = 4.845
 
 [node name="BettingArea" type="Area3D" parent="."]
 transform = Transform3D(0.832738, 0, 0.553668, 0, 1, 0, -0.553668, 0, 0.832738, 0.360113, 2.00667, 0.100614)
@@ -112,8 +145,49 @@ monitoring = false
 transform = Transform3D(0.979678, 2.00508e-05, -0.200577, 0.00114009, 0.999983, 0.00566851, 0.200574, -0.00578199, 0.979662, 0.0220432, -0.21795, 0.020331)
 shape = SubResource("BoxShape3D_vfrn5")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jxwrd")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 89.9999
+offset_top = 83.0
+offset_right = 188.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.258863
+theme = ExtResource("16_katsu")
+text = "Go!"
+label_settings = SubResource("LabelSettings_dynfe")
+script = SubResource("GDScript_dynfe")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Panel/Label"]
+wait_time = 0.2
+one_shot = true
+
+[node name="Marker2D" type="Marker2D" parent="CanvasLayer/Panel/Label"]
+top_level = true
+position = Vector2(937, 112)
+rotation = -0.197477
+
 [connection signal="betting_locked" from="Room/SofaCaddy/Laptop" to="." method="_on_betting_locked"]
 [connection signal="mouse_entered" from="Room/SofaCaddy/Laptop/GUIPanel3D" to="Room/Hand" method="_on_gui_panel_3d_mouse_entered"]
 [connection signal="mouse_exited" from="Room/SofaCaddy/Laptop/GUIPanel3D" to="Room/Hand" method="_on_gui_panel_3d_mouse_exited"]
+[connection signal="encouragement_sent" from="Room/Hand" to="." method="_on_hand_encouragement_sent"]
+[connection signal="encouragement_sent" from="Room/Hand" to="CanvasLayer/Panel/Label" method="_on_hand_encouragement_sent"]
+[connection signal="timeout" from="CanvasLayer/Panel/Label/Timer" to="CanvasLayer/Panel/Label" method="_on_timer_timeout"]
 
 [editable path="Room/big_slurp"]

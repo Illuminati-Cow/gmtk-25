@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://chy4cki1b7xpu"]
+
+[resource]
+resource_name = "person"
+cull_mode = 2
+albedo_color = Color(0.826659, 0.67781, 0.586943, 1)
+roughness = 0.0106383

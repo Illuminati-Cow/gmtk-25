@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bi7gfxceajhko"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "helmet"
+cull_mode = 2
+albedo_color = Color(0.906332, 0.302111, 0.302111, 1)
+roughness = 0.5

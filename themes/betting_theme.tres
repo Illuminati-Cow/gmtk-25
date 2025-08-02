@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cxl7ueoemi3uv"]
+
+[ext_resource type="FontFile" uid="uid://bcul51i8dqo80" path="res://themes/fonts/DoppioOne/DoppioOne-Regular.ttf" id="1_fr30a"]
+
+[resource]
+Label/colors/font_color = Color(0.0646965, 0.0646965, 0.0646965, 1)
+Label/fonts/font = ExtResource("1_fr30a")
