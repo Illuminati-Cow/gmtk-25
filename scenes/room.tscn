@@ -1,12 +1,12 @@
-[gd_scene load_steps=18 format=3 uid="uid://bdplp3us7r8rh"]
+[gd_scene load_steps=16 format=3 uid="uid://bdplp3us7r8rh"]
 
+[ext_resource type="Script" uid="uid://cqmopd1uel163" path="res://scripts/room.gd" id="1_3j2fx"]
 [ext_resource type="PackedScene" uid="uid://do0j3wuutw3vo" path="res://props/room.tscn" id="2_3j2fx"]
-[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_ffxv4"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_14vil"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_jxe34"]
 [ext_resource type="PackedScene" uid="uid://cxielyoe8nyv8" path="res://props/legs.tscn" id="6_23wr2"]
 [ext_resource type="PackedScene" uid="uid://dc3ln6bo1l2dn" path="res://props/laptop.tscn" id="8_23wr2"]
-[ext_resource type="PackedScene" uid="uid://dvl383ispakmn" path="res://scenes/gui_panel_3d.tscn" id="10_eom3m"]
+[ext_resource type="PackedScene" uid="uid://dvl383ispakmn" path="res://scenes/elements/betting_screen_3d.tscn" id="10_eom3m"]
 [ext_resource type="Script" uid="uid://cnyg4036kkox0" path="res://scripts/hand.gd" id="10_qtoah"]
 [ext_resource type="PackedScene" uid="uid://bxhncsfrmtyq" path="res://props/sofa.tscn" id="11_eom3m"]
 [ext_resource type="PackedScene" uid="uid://dd7nt8kkyhyl3" path="res://props/sofa_caddy.tscn" id="11_tk5fv"]
@@ -15,11 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://c0vwsywd7v1pf" path="res://props/big_slurp.tscn" id="14_23wr2"]
 [ext_resource type="PackedScene" uid="uid://pbesfay12u6r" path="res://props/hand.tscn" id="16_dynfe"]
 
-[sub_resource type="Environment" id="Environment_eom3m"]
-background_energy_multiplier = 5.23
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_ybpoa"]
-
 [sub_resource type="Resource" id="Resource_ybpoa"]
 script = ExtResource("4_jxe34")
 duration = 1.0
@@ -27,32 +22,18 @@ transition = 0
 ease = 2
 
 [node name="Room" type="Node3D"]
+script = ExtResource("1_3j2fx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.421875, 0.906654, 0, -0.906654, -0.421875, -2.44773, 22.3992, -7.95924)
 light_energy = 1.57
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_eom3m")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, -1.74921e-08, 0.979778, 0.200086, 8.56549e-08, 0.200086, -0.979778, -0.184646, 2.54906, -1.06024)
-attributes = SubResource("CameraAttributesPractical_ybpoa")
-fov = 61.5
-size = 3.326
-
-[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("2_ffxv4")
-metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="Room" parent="." instance=ExtResource("2_3j2fx")]
 
 [node name="PhantomCamera3D" type="Node3D" parent="Room"]
 transform = Transform3D(-1, 0, -8.74228e-08, -1.74921e-08, 0.979778, 0.200086, 8.56549e-08, 0.200086, -0.979778, -0.184646, 2.54906, -1.06024)
 script = ExtResource("3_14vil")
+priority = 1
 tween_resource = SubResource("Resource_ybpoa")
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 

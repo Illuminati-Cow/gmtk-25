@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://duuroy3oaat4j"]
+
+[ext_resource type="FontFile" uid="uid://bcul51i8dqo80" path="res://themes/fonts/DoppioOne/DoppioOne-Regular.ttf" id="1_w868k"]
+
+[resource]
+Label/font_sizes/font_size = 20
+Label/fonts/font = ExtResource("1_w868k")

@@ -1,0 +1,191 @@
+[gd_scene load_steps=12 format=3 uid="uid://4cu0ofjimt1k"]
+
+[ext_resource type="Theme" uid="uid://duuroy3oaat4j" path="res://themes/race_ui_theme.tres" id="1_b1gl7"]
+[ext_resource type="PackedScene" uid="uid://wk6h2gu5k1dh" path="res://scenes/elements/standing.tscn" id="2_l2k7s"]
+
+[sub_resource type="GDScript" id="GDScript_7wwxs"]
+script/source = "extends Control
+
+func show_standings(show: bool) -> void:
+	%StandingsBox.visible = show
+
+func show_progress(show: bool) -> void:
+	%ProgressIndicator.visible = show
+
+func on_race_progressed(progress_ratio: float) -> void:
+	%ProgressIndicator.progress_ratio = progress_ratio
+
+func on_standings_changed(new_standings: Array[HorseData]) -> void:
+	var standings = %Standings.get_children()
+	for place in range(len(new_standings)):
+		var standing = standings[place]
+		var standing_data = new_standings[place]
+		standing.horse_name = standing_data.horse_name
+		standing.number = standing_data.number
+		standing.odds = standing_data.odds
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_b1gl7"]
+line_spacing = 0.0
+paragraph_spacing = 10.69
+font_size = 24
+font_color = Color(0.57, 0.418, 0, 1)
+outline_size = 1
+outline_color = Color(1, 1, 1, 0.556863)
+
+[sub_resource type="Gradient" id="Gradient_b1gl7"]
+offsets = PackedFloat32Array(0, 0.755556, 1)
+colors = PackedColorArray(0.625597, 0.625597, 0.625597, 0.784314, 0.823529, 0.823529, 0.823529, 0.882353, 0.860369, 0.860369, 0.860369, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_l2k7s"]
+gradient = SubResource("Gradient_b1gl7")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wwxs"]
+bg_color = Color(0.8, 0.8, 0.8, 0.305882)
+
+[sub_resource type="Curve2D" id="Curve2D_7wwxs"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, -24, 2.00868, 12.7399, -24, 24, -20.2694, -2.03051, 10.7738, 0, 0, 48, 0, 0, -11.7782, -0.0922959, 68, 48)
+}
+point_count = 5
+
+[sub_resource type="Gradient" id="Gradient_7wwxs"]
+offsets = PackedFloat32Array(0, 0.766304)
+colors = PackedColorArray(0, 0, 0, 1, 0.176419, 0.176419, 0.176419, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b1gl7"]
+gradient = SubResource("Gradient_7wwxs")
+width = 18
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7wwxs"]
+size = Vector2(64, 64)
+
+[node name="RaceUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_7wwxs")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_top = 435.0
+offset_right = 338.0
+offset_bottom = 628.0
+size_flags_vertical = 3
+color = Color(0.19, 0.19, 0.19, 0.415686)
+
+[node name="StandingsBox" type="VBoxContainer" parent="ColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -184.0
+offset_right = 338.0
+grow_vertical = 0
+theme = ExtResource("1_b1gl7")
+
+[node name="Label" type="Label" parent="ColorRect/StandingsBox"]
+z_index = 1
+layout_mode = 2
+text = "PRESTIGIOUS DERBY"
+label_settings = SubResource("LabelSettings_b1gl7")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="ColorRect/StandingsBox/Label"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_l2k7s")
+expand_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect/StandingsBox/Label"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+offset_top = 31.0
+offset_right = 338.0
+offset_bottom = 32.0
+size_flags_vertical = 4
+color = Color(0.730654, 0.589131, 1.34766e-06, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect/StandingsBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_bottom = 5
+
+[node name="Standings" type="VBoxContainer" parent="ColorRect/StandingsBox/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Standing" parent="ColorRect/StandingsBox/MarginContainer/Standings" instance=ExtResource("2_l2k7s")]
+layout_mode = 2
+
+[node name="Standing2" parent="ColorRect/StandingsBox/MarginContainer/Standings" instance=ExtResource("2_l2k7s")]
+layout_mode = 2
+
+[node name="Standing3" parent="ColorRect/StandingsBox/MarginContainer/Standings" instance=ExtResource("2_l2k7s")]
+layout_mode = 2
+
+[node name="Standing4" parent="ColorRect/StandingsBox/MarginContainer/Standings" instance=ExtResource("2_l2k7s")]
+layout_mode = 2
+
+[node name="Standing5" parent="ColorRect/StandingsBox/MarginContainer/Standings" instance=ExtResource("2_l2k7s")]
+layout_mode = 2
+
+[node name="Standing6" parent="ColorRect/StandingsBox/MarginContainer/Standings" instance=ExtResource("2_l2k7s")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(256, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -321.0
+offset_top = 32.0
+offset_right = -41.0
+offset_bottom = 114.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Panel" type="Panel" parent="HBoxContainer"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7wwxs")
+
+[node name="Path2D" type="Path2D" parent="HBoxContainer/Panel"]
+position = Vector2(41.505, 16)
+scale = Vector2(1.01087, 1)
+curve = SubResource("Curve2D_7wwxs")
+
+[node name="ProgressIndicator" type="PathFollow2D" parent="HBoxContainer/Panel/Path2D"]
+unique_name_in_owner = true
+position = Vector2(58, 9)
+rotation = 3.14159
+v_offset = -9.0
+cubic_interp = false
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/Path2D/ProgressIndicator"]
+offset_right = 40.0
+offset_bottom = 40.0
+rotation = 1.5708
+texture = SubResource("GradientTexture1D_b1gl7")
+stretch_mode = 2
+
+[node name="StationIcon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_7wwxs")
+stretch_mode = 4
+
+[node name="RaceIcon" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_7wwxs")
+stretch_mode = 4

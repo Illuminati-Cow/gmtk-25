@@ -1,0 +1,117 @@
+[gd_scene load_steps=9 format=3 uid="uid://cf2g0j46oq2cb"]
+
+[ext_resource type="Script" uid="uid://4y8ej74k2kjk" path="res://scripts/HorseController3D.gd" id="1_nnoq3"]
+
+[sub_resource type="Curve" id="Curve_0ddct"]
+_data = [Vector2(0, 0.507514), 0.0, 0.0, 0, 0, Vector2(0.503484, 0.50032), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.95622, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_htlp4"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_htlp4"]
+radius = 0.35059
+height = 1.63574
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0ddct"]
+
+[sub_resource type="Animation" id="Animation_rbx75"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:movement_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_k7obx"]
+resource_name = "Run"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:movement_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(1, 0, 0, 0),
+"points": PackedFloat32Array(1, 0, 0, 0, 0, 1.0002, -0.133, -0.5, 0, 0, 1.0002, -0.133, -0.5, 0, 0, 1, -0.133, -0.5, 0, 0),
+"times": PackedFloat32Array(0, 0.333333, 0.633333, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbx75"]
+_data = {
+&"RESET": SubResource("Animation_rbx75"),
+&"Run": SubResource("Animation_k7obx")
+}
+
+[node name="Horse" type="RigidBody3D"]
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+mass = 500.0
+script = ExtResource("1_nnoq3")
+acceleration = 7.0
+max_acceleration = 4.0
+rotate_speed = 6.0
+speed_dir_curve = SubResource("Curve_0ddct")
+ride_height = 0.6
+ride_spring_strength = 200.0
+ride_spring_damper = 20.0
+acceleration_dir_factor = SubResource("Curve_htlp4")
+debug_path = true
+metadata/_custom_type_script = "uid://4y8ej74k2kjk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_htlp4")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 5.0
+target_desired_distance = 4.0
+avoidance_enabled = true
+radius = 0.55
+max_neighbors = 8
+time_horizon_agents = 0.6
+max_speed = 8.0
+debug_enabled = true
+
+[node name="GroundCast" type="RayCast3D" parent="."]
+
+[node name="Model" type="Node3D" parent="."]
+transform = Transform3D(-2.62268e-08, 0.0253346, 0.599465, 0, 0.599465, -0.0253346, -0.6, -1.10741e-09, -2.62034e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_0ddct")
+skeleton = NodePath("../../root/@EditorNode@21302/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/RaceTrack/Horse")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(0.497094, -0.497094, 0, 0.497094, 0.497094, 0, 0, 0, 0.702997, -1.05776, 0.452646, 0)
+mesh = SubResource("CapsuleMesh_0ddct")
+skeleton = NodePath("../../root/@EditorNode@21302/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/RaceTrack/Horse")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(-0.273757, -0.474161, 0, 0.474161, -0.273757, 0, 0, 0, 0.547514, -1.61445, 0.626511, 0)
+mesh = SubResource("CapsuleMesh_0ddct")
+skeleton = NodePath("../../root/@EditorNode@21302/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/RaceTrack/Horse")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(0.130859, -0.395648, 0, 0.171777, 0.301403, 0, 0, 0, 0.215942, 1.029, 0.115, 0)
+mesh = SubResource("CapsuleMesh_0ddct")
+skeleton = NodePath("../../root/@EditorNode@21302/@Panel@14/@VBoxContainer@15/DockHSplitLeftL/DockHSplitLeftR/DockHSplitMain/@VBoxContainer@26/DockVSplitCenter/@VSplitContainer@54/@VBoxContainer@55/@EditorMainScreen@102/MainScreen/@CanvasItemEditor@11482/@VSplitContainer@11134/@HSplitContainer@11136/@HSplitContainer@11138/@Control@11139/@SubViewportContainer@11140/@SubViewport@11141/RaceTrack/Horse")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rbx75")
+}
+
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]

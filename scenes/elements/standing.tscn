@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://wk6h2gu5k1dh"]
+
+[sub_resource type="Gradient" id="Gradient_l2k7s"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.0851449)
+colors = PackedColorArray(0.398279, 0.350416, 0, 0, 0.38, 0.30096, 0.0152, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u4gxi"]
+gradient = SubResource("Gradient_l2k7s")
+
+[sub_resource type="GDScript" id="GDScript_oac6y"]
+script/source = "extends TextureRect
+
+var number: int:
+	set(value):
+		$HBoxContainer/Number.text = \"%d\" % value 
+
+var horse_name: String:
+	set(value):
+		$HBoxContainer/Name.text = value 
+
+var odds: float:
+	set(value):
+		$HBoxContainer/Odds.text = \"%d-%d\" % [value, 1] 
+"
+
+[node name="Standing" type="TextureRect"]
+custom_minimum_size = Vector2(0, 23)
+anchors_preset = -1
+anchor_right = 0.222
+anchor_bottom = 0.037
+offset_top = 1.0
+offset_right = 0.255981
+offset_bottom = 0.0240002
+size_flags_horizontal = 3
+size_flags_vertical = 0
+texture = SubResource("GradientTexture1D_u4gxi")
+script = SubResource("GDScript_oac6y")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.114
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.184
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Number" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "##"
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "HORSE NAME"
+
+[node name="Odds" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+text = "10-1"
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Odds"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.116183, 0.0848659, 4.21144e-08, 1)
