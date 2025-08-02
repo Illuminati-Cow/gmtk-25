@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://07vd4q1yr7yd"]
+[gd_scene load_steps=8 format=3 uid="uid://07vd4q1yr7yd"]
 
 [ext_resource type="PackedScene" uid="uid://bdplp3us7r8rh" path="res://scenes/room.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bo8dc5wvrt11k" path="res://scenes/race_track.tscn" id="2_lnu2h"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_lnu2h"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_yqjtg"]
-size = Vector2(3, 2)
+size = Vector2(1.69, 0.9)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_lnu2h"]
 viewport_path = NodePath("SubViewport")
@@ -16,13 +16,16 @@ transparency = 1
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_lnu2h")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_iywne"]
-size = Vector3(3, 2, 0.1)
-
 [sub_resource type="Environment" id="Environment_lnu2h"]
-background_energy_multiplier = 5.24
+background_energy_multiplier = 5.23
 
 [node name="Game" type="Node3D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1152, 648)
+
+[node name="RaceTrack" parent="SubViewport" instance=ExtResource("2_lnu2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 811.259)
 
 [node name="Room" parent="." instance=ExtResource("1_yqjtg")]
 
@@ -33,25 +36,9 @@ editor_description = "To setup this MeshInstance3D:
 * Set the Albedo Texture of StandardMaterial3D to new ViewportTexture and set the Viewport Path.
 * Transparency to Alpha.
 * Shading to Unshaded."
-transform = Transform3D(-0.999217, 0, 0.0395736, 0, 1, 0, -0.0395736, 0, -0.999217, -0.647578, 2.70633, 3.19552)
+transform = Transform3D(-2.06838, 0, 0.0819176, 0, 2.07, 0, -0.0819176, 0, -2.06838, -0.614766, 2.74931, 3.20171)
 mesh = SubResource("QuadMesh_yqjtg")
 surface_material_override/0 = SubResource("StandardMaterial3D_lbhrr")
-
-[node name="Area3D" type="Area3D" parent="Room/Quad"]
-collision_layer = 2
-input_capture_on_drag = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Quad/Area3D"]
-shape = SubResource("BoxShape3D_iywne")
-
-[node name="RaceTrack" parent="." instance=ExtResource("2_lnu2h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 811.259)
-
-[node name="SubViewport" type="SubViewport" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="SubViewport"]
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, -1.74921e-08, 0.979778, 0.200086, 8.56549e-08, 0.200086, -0.979778, -0.184646, 2.54906, -1.06024)
@@ -64,6 +51,5 @@ process_physics_priority = 300
 script = ExtResource("3_lnu2h")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.421875, 0.906654, 0, -0.906654, -0.421875, -2.44773, 22.3992, -7.95924)
-sky_mode = 1
+[connection signal="race_finished" from="SubViewport/RaceTrack" to="Room" method="_on_race_track_race_finished"]
+[connection signal="bet_placed" from="Room" to="SubViewport/RaceTrack" method="_on_bet_placed"]

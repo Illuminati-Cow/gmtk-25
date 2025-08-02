@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cf2g0j46oq2cb"]
 
-[ext_resource type="Script" uid="uid://4y8ej74k2kjk" path="res://scripts/HorseController3D.gd" id="1_nnoq3"]
+[ext_resource type="Script" uid="uid://4y8ej74k2kjk" path="res://scripts/horse_controller_3d.gd" id="1_nnoq3"]
 
 [sub_resource type="Curve" id="Curve_0ddct"]
 _data = [Vector2(0, 0.507514), 0.0, 0.0, 0, 0, Vector2(0.503484, 0.50032), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.95622, 0.0, 0, 0]

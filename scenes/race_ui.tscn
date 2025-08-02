@@ -71,10 +71,14 @@ grow_vertical = 2
 script = SubResource("GDScript_7wwxs")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 2
-offset_top = 435.0
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -206.0
 offset_right = 338.0
-offset_bottom = 628.0
+offset_bottom = -13.0
+grow_vertical = 0
 size_flags_vertical = 3
 color = Color(0.19, 0.19, 0.19, 0.415686)
 

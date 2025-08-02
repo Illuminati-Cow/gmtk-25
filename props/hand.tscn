@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://pbesfay12u6r"]
+[gd_scene load_steps=16 format=3 uid="uid://pbesfay12u6r"]
 
 [ext_resource type="PackedScene" uid="uid://c04dmth3tdnv7" path="res://meshes/hand/hand.fbx" id="1_ydxtg"]
+[ext_resource type="Script" uid="uid://cnyg4036kkox0" path="res://scripts/hand.gd" id="2_opunu"]
 [ext_resource type="Texture2D" uid="uid://cumorsb7clfyy" path="res://meshes/hand/hand1albedo.jpg" id="2_qbe60"]
 [ext_resource type="Texture2D" uid="uid://bce4qh7bcifqu" path="res://meshes/hand/newspaper_color.png" id="2_x7jrh"]
 [ext_resource type="Texture2D" uid="uid://dc0bw1l3aja8f" path="res://meshes/hand/newspaper_ao.png" id="3_4l04w"]
@@ -8,6 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://c4wcqgrn2x2nu" path="res://meshes/hand/hand1roughness.jpg" id="4_cb8dm"]
 [ext_resource type="Texture2D" uid="uid://blye0t1816fx" path="res://meshes/hand/newspaper_normal.png" id="4_opunu"]
 [ext_resource type="AnimationLibrary" uid="uid://dysrs5bkvucgb" path="res://animations/hand_animation_library.res" id="8_4l04w"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4l04w"]
+radius = 0.0315888
+height = 0.127538
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5e6my"]
 cull_mode = 2
@@ -171,15 +176,40 @@ tracks/19/path = NodePath("Armature/Skeleton3D:Bone.017")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = PackedFloat32Array(0, 1, 0.229823, -0.00926485, 0.0730293, 0.970444)
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("NewspaperArea/CollisionShape3D:disabled")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(-0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5e6my"]
 _data = {
 &"RESET": SubResource("Animation_opunu")
 }
 
-[node name="hand" instance=ExtResource("1_ydxtg")]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_opunu"]
+height = 0.188599
+radius = 0.043457
 
-[node name="Armature" parent="." index="0"]
+[node name="hand" instance=ExtResource("1_ydxtg")]
+script = ExtResource("2_opunu")
+
+[node name="Area3D" type="Area3D" parent="." index="0"]
+input_ray_pickable = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0.0661273)
+shape = SubResource("CapsuleShape3D_4l04w")
+
+[node name="Armature" parent="." index="1"]
 transform = Transform3D(-4.98982, 0.301551, -0.10363, 0.294077, 4.98028, 0.332112, -0.123251, -0.325341, 4.98788, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Armature" index="0"]
@@ -187,28 +217,25 @@ bones/1/position = Vector3(-1.10093e-10, 0.0102886, -9.61768e-11)
 bones/1/rotation = Quaternion(-0.0264558, -0.0112893, 0.263336, 0.964275)
 bones/1/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(-3.42789e-10, 0.00809699, -1.76692e-10)
-bones/3/rotation = Quaternion(0.112785, -0.00930353, -0.23358, 0.965729)
+bones/3/rotation = Quaternion(0.112785, -0.00930354, -0.23358, 0.965729)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(6.92977e-10, 0.00525497, -5.46173e-10)
 bones/4/rotation = Quaternion(0.137387, 0.0094629, -0.000154548, 0.990472)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/position = Vector3(-1.40914e-10, 0.00364372, 4.779e-10)
 bones/5/rotation = Quaternion(0.152072, -0.0118845, 0.0142248, 0.988196)
-bones/5/scale = Vector3(1, 1, 1)
 bones/7/position = Vector3(-1.10093e-10, 0.0102886, -9.61768e-11)
-bones/7/rotation = Quaternion(0.124576, 0.0963168, 0.642936, 0.749558)
-bones/7/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(0.124576, 0.0963167, 0.642936, 0.749558)
 bones/8/position = Vector3(5.27112e-10, 0.00542493, 2.76562e-10)
-bones/8/rotation = Quaternion(-0.0592022, -0.0802384, -0.302569, 0.947897)
+bones/8/rotation = Quaternion(-0.0592022, -0.0802385, -0.302569, 0.947897)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/position = Vector3(-1.75833e-09, 0.00278014, -1.29511e-10)
-bones/9/rotation = Quaternion(0.07089, -0.00463957, -0.216607, 0.973671)
+bones/9/rotation = Quaternion(0.07089, -0.00463958, -0.216607, 0.973671)
 bones/9/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(1.71103e-09, 0.00351368, -3.75635e-10)
 bones/10/rotation = Quaternion(-0.0183183, -0.0408475, 0.0101135, 0.998946)
-bones/10/scale = Vector3(1, 1, 1)
 bones/12/position = Vector3(-1.10093e-10, 0.0102886, -9.61768e-11)
-bones/12/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(-0.0185815, -0.00137192, 0.0303889, 0.999364)
 bones/13/position = Vector3(-7.7764e-11, 0.00734104, -1.56643e-10)
 bones/13/rotation = Quaternion(0.0897768, -0.000368022, 0.0160023, 0.995833)
 bones/13/scale = Vector3(1, 1, 1)
@@ -216,10 +243,10 @@ bones/14/position = Vector3(1.12167e-10, 0.00525733, 3.33982e-10)
 bones/14/rotation = Quaternion(0.0934841, 0.00345417, 0.0138874, 0.995518)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/position = Vector3(2.52389e-10, 0.00365946, -2.84371e-10)
-bones/15/rotation = Quaternion(0.296828, 0.033217, -0.0815814, 0.95086)
+bones/15/rotation = Quaternion(0.296828, 0.033217, -0.0815813, 0.95086)
 bones/15/scale = Vector3(1, 1, 1)
 bones/17/position = Vector3(-1.10093e-10, 0.0102886, -9.61768e-11)
-bones/17/rotation = Quaternion(0.000699208, 0.00232745, -0.151833, 0.988403)
+bones/17/rotation = Quaternion(0.000699209, 0.00232745, -0.151833, 0.988403)
 bones/17/scale = Vector3(1, 1, 1)
 bones/18/position = Vector3(1.22668e-09, 0.00774659, -2.18194e-10)
 bones/18/rotation = Quaternion(0.0613819, 0.00656048, 0.158596, 0.985412)
@@ -237,13 +264,12 @@ bones/23/rotation = Quaternion(0.208827, 0.0461999, 0.352243, 0.911143)
 bones/23/scale = Vector3(1, 1, 1)
 bones/24/position = Vector3(1.41619e-09, 0.00290244, -3.18982e-10)
 bones/24/rotation = Quaternion(0.0304139, 0.064422, 0.0203413, 0.997252)
-bones/24/scale = Vector3(1, 1, 1)
 bones/25/position = Vector3(-5.4657e-10, 0.00324439, 3.58797e-10)
-bones/25/rotation = Quaternion(0.229823, -0.00926485, 0.0730293, 0.970444)
+bones/25/rotation = Quaternion(0.229823, -0.00926486, 0.0730293, 0.970444)
 bones/25/scale = Vector3(1, 1, 1)
 
 [node name="newspaper" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.529656, -0.131999, -5.32744, 5.31861, 0.348462, 0.520145, 0.333826, -5.34235, 0.165557, 0.00887238, -0.00678201, 0.0142138)
+transform = Transform3D(0.529656, -0.131996, -5.32744, 5.31861, 0.348461, 0.520145, 0.333826, -5.34235, 0.165555, 0.00887238, -0.00678201, 0.0142138)
 bone_idx = 2
 
 [node name="newspaper" parent="Armature/Skeleton3D/newspaper" index="0"]
@@ -253,12 +279,24 @@ material_override = SubResource("StandardMaterial3D_5e6my")
 [node name="hand" parent="Armature/Skeleton3D" index="1"]
 material_override = SubResource("StandardMaterial3D_x7jrh")
 
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="2"]
 active = false
 libraries = {}
 
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="2"]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="3"]
 libraries = {
 &"": SubResource("AnimationLibrary_5e6my"),
 &"hand_animation_library": ExtResource("8_4l04w")
 }
+
+[node name="NewspaperArea" type="Area3D" parent="." index="4"]
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NewspaperArea" index="0"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0.0708618, -0.00600842, 0.0894174)
+shape = SubResource("CylinderShape3D_opunu")
+disabled = true
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
+[connection signal="area_entered" from="NewspaperArea" to="." method="_on_newspaper_area_area_entered"]

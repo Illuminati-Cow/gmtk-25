@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bykkdixnk0p8b"]
+
+[ext_resource type="ArrayMesh" uid="uid://bcljb21p1m1ut" path="res://meshes/newspaper/newspaper.res" id="1_bhcoo"]
+
+[node name="Newspaper" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(75.175, 0, 0, 0, 75.175, 0, 0, 0, 75.175, 0, 0, 0)
+mesh = ExtResource("1_bhcoo")

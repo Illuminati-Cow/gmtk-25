@@ -7,8 +7,27 @@ var race_active: bool = false
 var last_standings: Array[HorseController3D]
 var placements: Array[HorseData]
 var names: Array[String]
+var ready_for_cheer: bool = false
 @onready var progress_tracker: PhantomCamera3D = %ProgressTracker
 @onready var race_path: Path3D = $RacePath
+@onready var announcer := $Camera3D/AudioStreamPlayer
+@onready var crowd := $Camera3D/AudioStreamPlayer2
+
+var announcer_track_index := 0
+var announcer_tracks: Array[AudioStream] = [
+	preload("res://sounds/announcer1.mp3"),
+]
+var cheer_track_index := 0
+var cheer_tracks: Array[AudioStream] = [
+	preload("res://sounds/cheer1.mp3"),
+	preload("res://sounds/cheer2.mp3"),
+	preload("res://sounds/cheer3.mp3"),
+	preload("res://sounds/cheer4.mp3"),
+	preload("res://sounds/cheer5.mp3"),
+	preload("res://sounds/cheer6.mp3"),
+	preload("res://sounds/cheer7.mp3"),
+	preload("res://sounds/cheer8.mp3")
+]
 
 signal standings_changed(new_standings: Array[HorseData])
 signal race_progressed(progress_ratio: float)
@@ -21,6 +40,7 @@ func _ready() -> void:
 	reset()
 	
 func reset():
+	cheer_tracks.shuffle()
 	last_standings.clear()
 	placements.clear()
 	horses.shuffle()
@@ -29,20 +49,26 @@ func reset():
 		horse.global_position = spawn_points[i].global_position
 		horse_data[horse.name] = HorseData.new()\
 		.with_name(names.pick_random().to_upper().trim_suffix(" "))\
-		.with_number(5 * (1+ 1) + randi() % 4)\
+		.with_number(5 * (i + 1) + randi() % 4)\
 		.with_odds(randf_range(3, 20))
 		i += 1
 	var top6 = horses.slice(0, 6)
 	var new_standings: Array[HorseData]
 	new_standings.assign(top6.map(func(h): return horse_data[h.name]))
 	standings_changed.emit(new_standings)
+	announcer.volume_db = 0
 	start_sequence()
 	
 
 func start_sequence() -> void:
 	$CanvasLayer/RaceStartUi.visible = true
 	%StartTimer.start()
+	announcer.stream = announcer_tracks[announcer_track_index]
+	announcer_track_index += 1
+	announcer_track_index %= len(announcer_tracks)
+	announcer.play()
 	await %StartTimer.timeout
+	ready_for_cheer = true
 	$CanvasLayer/RaceStartUi.visible = false
 	race_active = true
 	await get_tree().create_timer(8).timeout
@@ -53,6 +79,7 @@ func update_standings() -> void:
 	order.assign(horses)
 	order.sort_custom(func(a, b): return a.nav.distance_to_target() < b.nav.distance_to_target())
 	progress_tracker.follow_target = order[0]
+	$LeadCamera.follow_target = order[0]
 	var offset = race_path.curve.get_closest_offset(race_path.to_local(progress_tracker.global_position))
 	var ratio = offset / race_path.curve.get_baked_length()
 	race_progressed.emit(ratio)
@@ -82,3 +109,26 @@ func end_sequence():
 	while wait_timer.time_left > 0 and len(placements) < 8:
 		await get_tree().physics_frame
 	race_finished.emit(placements)
+	fade_out(announcer)
+
+func _on_bet_placed() -> void:
+	start_sequence()
+
+func fade_out(player: AudioStreamPlayer) -> void:
+	const STEP = 0.01
+	while player.volume_linear > STEP:
+		player.volume_linear -= STEP
+		await get_tree().physics_frame
+	player.stop()
+
+func _on_standings_changed(new_standings: Array[HorseData]) -> void:
+	if !ready_for_cheer:
+		return
+	if new_standings.slice(0, 3) == last_standings.map(func(h): return horse_data[h.horse_name]).slice(0, 3):
+		return
+	crowd.stream = cheer_tracks[cheer_track_index]
+	cheer_track_index += 1
+	cheer_track_index %= len(cheer_tracks)
+	crowd.play()
+	ready_for_cheer = false
+	get_tree().create_timer(crowd.stream.get_length()).timeout.connect(func(): ready_for_cheer = true)

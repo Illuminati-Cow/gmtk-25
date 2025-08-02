@@ -1,5 +1,8 @@
 extends Node3D
 
+signal mouse_entered
+signal mouse_exited
+
 ## Used for checking if the mouse is inside the Area3D.
 var is_mouse_inside := false
 
@@ -32,12 +35,13 @@ func _mouse_entered_area() -> void:
 	is_mouse_inside = true
 	# Notify the viewport that the mouse is now hovering it.
 	node_viewport.notification(NOTIFICATION_VP_MOUSE_ENTER)
-
+	mouse_entered.emit()
 
 func _mouse_exited_area() -> void:
 	# Notify the viewport that the mouse is no longer hovering it.
 	node_viewport.notification(NOTIFICATION_VP_MOUSE_EXIT)
 	is_mouse_inside = false
+	mouse_exited.emit()
 
 
 func _unhandled_input(event: InputEvent) -> void:

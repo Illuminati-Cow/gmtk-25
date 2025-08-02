@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="race horse"
+run/main_scene="uid://07vd4q1yr7yd"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

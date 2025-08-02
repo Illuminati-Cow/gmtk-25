@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdplp3us7r8rh"]
+[gd_scene load_steps=20 format=3 uid="uid://bdplp3us7r8rh"]
 
 [ext_resource type="Script" uid="uid://cqmopd1uel163" path="res://scripts/room.gd" id="1_3j2fx"]
 [ext_resource type="PackedScene" uid="uid://do0j3wuutw3vo" path="res://props/room.tscn" id="2_3j2fx"]
@@ -6,14 +6,15 @@
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_jxe34"]
 [ext_resource type="PackedScene" uid="uid://cxielyoe8nyv8" path="res://props/legs.tscn" id="6_23wr2"]
 [ext_resource type="PackedScene" uid="uid://dc3ln6bo1l2dn" path="res://props/laptop.tscn" id="8_23wr2"]
+[ext_resource type="Script" uid="uid://rec0iehlnslr" path="res://scripts/betting_site.gd" id="9_3j2fx"]
 [ext_resource type="PackedScene" uid="uid://dvl383ispakmn" path="res://scenes/elements/betting_screen_3d.tscn" id="10_eom3m"]
-[ext_resource type="Script" uid="uid://cnyg4036kkox0" path="res://scripts/hand.gd" id="10_qtoah"]
 [ext_resource type="PackedScene" uid="uid://bxhncsfrmtyq" path="res://props/sofa.tscn" id="11_eom3m"]
 [ext_resource type="PackedScene" uid="uid://dd7nt8kkyhyl3" path="res://props/sofa_caddy.tscn" id="11_tk5fv"]
 [ext_resource type="PackedScene" uid="uid://b5ysplb6jgvyn" path="res://props/tv.tscn" id="12_tk5fv"]
 [ext_resource type="PackedScene" uid="uid://dx2yd0mag8h7a" path="res://props/cabinet.tscn" id="13_w68ji"]
 [ext_resource type="PackedScene" uid="uid://c0vwsywd7v1pf" path="res://props/big_slurp.tscn" id="14_23wr2"]
 [ext_resource type="PackedScene" uid="uid://pbesfay12u6r" path="res://props/hand.tscn" id="16_dynfe"]
+[ext_resource type="PackedScene" uid="uid://bykkdixnk0p8b" path="res://props/newspaper.tscn" id="16_vfrn5"]
 
 [sub_resource type="Resource" id="Resource_ybpoa"]
 script = ExtResource("4_jxe34")
@@ -21,11 +22,20 @@ duration = 1.0
 transition = 0
 ease = 2
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_3j2fx"]
+size = Vector3(1, 0.826174, 1.01624)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dynfe"]
+size = Vector3(1.18658, 1.53772, 0.774536)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vfrn5"]
+size = Vector3(0.522896, 0.563309, 0.593445)
+
 [node name="Room" type="Node3D"]
 script = ExtResource("1_3j2fx")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.421875, 0.906654, 0, -0.906654, -0.421875, -2.44773, 22.3992, -7.95924)
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.421875, 0.906654, 0, -0.906654, -0.421875, 0, 0, 0)
 light_energy = 1.57
 
 [node name="Room" parent="." instance=ExtResource("2_3j2fx")]
@@ -46,15 +56,18 @@ transform = Transform3D(-0.978148, 0, -0.207912, 0, 1, 0, 0.207912, 0, -0.978148
 [node name="RightLeg" parent="Room/Sofa" instance=ExtResource("6_23wr2")]
 transform = Transform3D(-0.978148, 0, 0.207912, 0, 1, 0, -0.207912, 0, -0.978148, -0.436925, 0.622293, 0.660188)
 
+[node name="Newspaper" parent="Room/Sofa" instance=ExtResource("16_vfrn5")]
+transform = Transform3D(0.734003, 0, -0.679147, 0, 1, 0, 0.679147, 0, 0.734003, -0.805651, 1.41924, 0.212671)
+
 [node name="SofaCaddy" parent="Room" instance=ExtResource("11_tk5fv")]
 transform = Transform3D(0.956666, 0, 0.291186, 0, 1, 0, -0.291186, 0, 0.956666, 0.282085, 0.651249, 0.428654)
 
 [node name="Laptop" parent="Room/SofaCaddy" instance=ExtResource("8_23wr2")]
 transform = Transform3D(-0.957011, 0, -0.290051, 0, 1, 0, 0.290051, 0, -0.957011, 0.226061, 1.17273, -0.00619695)
+script = ExtResource("9_3j2fx")
 
 [node name="GUIPanel3D" parent="Room/SofaCaddy/Laptop" instance=ExtResource("10_eom3m")]
 transform = Transform3D(0.274998, -0.000959929, 0, 0.000908175, 0.260172, 0.0890773, -0.000310938, -0.0890767, 0.260173, -0.000927175, 0.291634, -0.392087)
-script = null
 
 [node name="Cabinet" parent="Room" instance=ExtResource("13_w68ji")]
 transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -0.604139, 0.567382, 3.32538)
@@ -70,6 +83,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.791703, 0.0820416, -2.21054
 
 [node name="Hand" parent="Room" instance=ExtResource("16_dynfe")]
 transform = Transform3D(4.08, 0, 0, 0, 4.08, -6.16063e-07, 0, 6.16063e-07, 4.08, -1.15809, 2.04369, -0.155301)
-script = ExtResource("10_qtoah")
+
+[node name="BettingArea" type="Area3D" parent="."]
+transform = Transform3D(0.832738, 0, 0.553668, 0, 1, 0, -0.553668, 0, 0.832738, 0.360113, 2.00667, 0.100614)
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BettingArea"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.0294416, -0.0869153, 0.205621)
+shape = SubResource("BoxShape3D_3j2fx")
+disabled = true
+
+[node name="NewsArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7012, 1.63493, -0.0302089)
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NewsArea"]
+transform = Transform3D(0.999992, 2.00507e-05, -0.00397426, 2.93187e-06, 0.999983, 0.00578202, 0.00397431, -0.00578199, 0.999975, -0.139713, 0.269798, 0.112175)
+shape = SubResource("BoxShape3D_dynfe")
+
+[node name="SlapArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.592716, 1.63493, -0.0302089)
+input_ray_pickable = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SlapArea"]
+transform = Transform3D(0.979678, 2.00508e-05, -0.200577, 0.00114009, 0.999983, 0.00566851, 0.200574, -0.00578199, 0.979662, 0.0220432, -0.21795, 0.020331)
+shape = SubResource("BoxShape3D_vfrn5")
+
+[connection signal="betting_locked" from="Room/SofaCaddy/Laptop" to="." method="_on_betting_locked"]
+[connection signal="mouse_entered" from="Room/SofaCaddy/Laptop/GUIPanel3D" to="Room/Hand" method="_on_gui_panel_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Room/SofaCaddy/Laptop/GUIPanel3D" to="Room/Hand" method="_on_gui_panel_3d_mouse_exited"]
 
 [editable path="Room/big_slurp"]

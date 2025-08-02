@@ -1,4 +1,4 @@
-[gd_scene load_steps=263 format=3 uid="uid://bo8dc5wvrt11k"]
+[gd_scene load_steps=265 format=3 uid="uid://bo8dc5wvrt11k"]
 
 [ext_resource type="PackedScene" uid="uid://dxw7cledbpiia" path="res://addons/proto-csgs/proto_csg_box_3d.tscn" id="1_a8xlo"]
 [ext_resource type="Script" uid="uid://57n2ua0pw8w" path="res://scripts/race_track_manager.gd" id="1_rbx75"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dilcl7aco8lba" path="res://addons/proto-csgs/proto_csg_cylinder_3d.tscn" id="3_k26un"]
 [ext_resource type="PackedScene" uid="uid://4cu0ofjimt1k" path="res://scenes/race_ui.tscn" id="3_pgsk4"]
 [ext_resource type="Texture2D" uid="uid://cd3fcinti1un5" path="res://addons/proto-csgs/textures/dark/texture_01.png" id="4_338i0"]
+[ext_resource type="Shader" uid="uid://b51fbthc45bra" path="res://shaders/VHS.gdshader" id="4_q523l"]
 [ext_resource type="Script" uid="uid://ojq11881jgox" path="res://scripts/place_along_path.gd" id="5_5bxeu"]
 [ext_resource type="ArrayMesh" uid="uid://f5rd8oynak8u" path="res://meshes/bleachers.obj" id="5_338i0"]
 [ext_resource type="Script" uid="uid://bijh2q3krcoeg" path="res://addons/proto-csgs/scripts/proto_csg_box_3d.gd" id="7_htlp4"]
@@ -14,6 +15,30 @@
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="10_k7obx"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="11_rbx75"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="12_y7tfb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pgsk4"]
+shader = ExtResource("4_q523l")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.0
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = true
+shader_parameter/roll = false
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.0
+shader_parameter/noise_opacity = 0.075
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.07
+shader_parameter/aberration = 4.75e-08
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.0
+shader_parameter/vignette_opacity = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k26un"]
 resource_local_to_scene = true
@@ -1438,7 +1463,6 @@ sky_material = SubResource("ProceduralSkyMaterial_338i0")
 
 [sub_resource type="Environment" id="Environment_338i0"]
 background_mode = 2
-background_energy_multiplier = 1.53
 sky = SubResource("Sky_0ddct")
 
 [node name="RaceTrack" type="Node3D"]
@@ -1449,6 +1473,14 @@ script = ExtResource("1_rbx75")
 [node name="RaceUi" parent="CanvasLayer" instance=ExtResource("3_pgsk4")]
 
 [node name="RaceStartUi" parent="CanvasLayer" instance=ExtResource("2_q523l")]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_pgsk4")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Ground" parent="." instance=ExtResource("1_a8xlo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.012, 0, -98.6645)
@@ -1877,7 +1909,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_sawxd")
 
 [node name="PathFollow3D37" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72821e-12, -0.999986, 5.88623e-09, 1, -3.43904e-16, 0.999986, -5.88631e-09, -0.000293652, -20.9997, 0, 17.8602)
+transform = Transform3D(-0.000293651, 1.72821e-12, -0.999983, 5.88622e-09, 1, -3.43903e-16, 0.999983, -5.88631e-09, -0.000293651, -20.9997, 0, 17.8602)
 progress = 52.6642
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D37" instance=ExtResource("3_k26un")]
@@ -1886,7 +1918,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_lk1nw")
 
 [node name="PathFollow3D38" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72821e-12, -0.999986, 5.88623e-09, 1, -3.43904e-16, 0.999986, -5.88631e-09, -0.000293652, -19.5358, 0, 17.8606)
+transform = Transform3D(-0.000293651, 1.72821e-12, -0.999983, 5.88622e-09, 1, -3.43903e-16, 0.999983, -5.88631e-09, -0.000293651, -19.5358, 0, 17.8606)
 progress = 54.1271
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D38" instance=ExtResource("3_k26un")]
@@ -1895,7 +1927,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_vu5gu")
 
 [node name="PathFollow3D39" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88625e-09, 1, -1.26308e-16, 0.999986, -5.88633e-09, -0.000293652, -18.0727, 0, 17.8611)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999983, 5.88623e-09, 1, -1.26307e-16, 0.999983, -5.88633e-09, -0.000293651, -18.0727, 0, 17.8611)
 progress = 55.59
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D39" instance=ExtResource("3_k26un")]
@@ -1904,7 +1936,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_aa5oq")
 
 [node name="PathFollow3D40" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88624e-09, 1, -1.23597e-16, 0.999986, -5.88632e-09, -0.000293652, -16.61, 0, 17.8615)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999983, 5.88622e-09, 1, -1.23597e-16, 0.999983, -5.88632e-09, -0.000293651, -16.61, 0, 17.8615)
 progress = 57.0529
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D40" instance=ExtResource("3_k26un")]
@@ -1913,7 +1945,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_eq55r")
 
 [node name="PathFollow3D41" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88624e-09, 1, -1.23597e-16, 0.999986, -5.88632e-09, -0.000293652, -15.1469, 0, 17.8619)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999983, 5.88622e-09, 1, -1.23597e-16, 0.999983, -5.88632e-09, -0.000293651, -15.1469, 0, 17.8619)
 progress = 58.5158
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D41" instance=ExtResource("3_k26un")]
@@ -1922,7 +1954,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_0krna")
 
 [node name="PathFollow3D42" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88623e-09, 1, -1.21863e-16, 0.999986, -5.88631e-09, -0.000293652, -13.6841, 0, 17.8623)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999983, 5.88622e-09, 1, -1.21862e-16, 0.999983, -5.88631e-09, -0.000293651, -13.6841, 0, 17.8623)
 progress = 59.9787
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D42" instance=ExtResource("3_k26un")]
@@ -1931,7 +1963,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_a4ovy")
 
 [node name="PathFollow3D43" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88623e-09, 1, -1.21863e-16, 0.999986, -5.88631e-09, -0.000293652, -12.2212, 0, 17.8628)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999983, 5.88622e-09, 1, -1.21862e-16, 0.999983, -5.88631e-09, -0.000293651, -12.2212, 0, 17.8628)
 progress = 61.4416
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D43" instance=ExtResource("3_k26un")]
@@ -1940,7 +1972,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_5ja3i")
 
 [node name="PathFollow3D44" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88623e-09, 1, -1.21863e-16, 0.999986, -5.88631e-09, -0.000293652, -10.7583, 0, 17.8632)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999983, 5.88622e-09, 1, -1.21862e-16, 0.999983, -5.88631e-09, -0.000293651, -10.7583, 0, 17.8632)
 progress = 62.9045
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D44" instance=ExtResource("3_k26un")]
@@ -1949,7 +1981,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_dnkwr")
 
 [node name="PathFollow3D45" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293771, 1.72887e-12, -0.999986, 5.88623e-09, 1, -3.79249e-16, 0.999986, -5.88631e-09, -0.000293771, -9.29531, 0, 17.8636)
+transform = Transform3D(-0.000293771, 1.72887e-12, -0.999983, 5.88622e-09, 1, -3.79248e-16, 0.999983, -5.88631e-09, -0.000293771, -9.29531, 0, 17.8636)
 progress = 64.3673
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D45" instance=ExtResource("3_k26un")]
@@ -1958,7 +1990,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_scqav")
 
 [node name="PathFollow3D46" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293533, 1.72799e-12, -0.999986, 5.88623e-09, 1, 1.35632e-16, 0.999986, -5.88631e-09, -0.000293533, -7.82634, 0, 17.8641)
+transform = Transform3D(-0.000293532, 1.72799e-12, -0.999983, 5.88622e-09, 1, 1.35631e-16, 0.999983, -5.88631e-09, -0.000293532, -7.82634, 0, 17.8641)
 progress = 65.8302
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D46" instance=ExtResource("3_k26un")]
@@ -1967,7 +1999,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_hgcos")
 
 [node name="PathFollow3D47" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999985, 5.88622e-09, 1, -1.21862e-16, 0.999985, -5.88631e-09, -0.000293652, -6.36952, 0, 17.8645)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999982, 5.88621e-09, 1, -1.21862e-16, 0.999982, -5.88631e-09, -0.000293651, -6.36952, 0, 17.8645)
 progress = 67.2931
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D47" instance=ExtResource("3_k26un")]
@@ -1976,7 +2008,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_60l6a")
 
 [node name="PathFollow3D48" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293533, 1.72821e-12, -0.999985, 5.88622e-09, 1, 3.57564e-16, 0.999985, -5.88631e-09, -0.000293533, -4.90662, 0, 17.8649)
+transform = Transform3D(-0.000293532, 1.72821e-12, -0.999982, 5.88621e-09, 1, 3.57564e-16, 0.999982, -5.88631e-09, -0.000293532, -4.90662, 0, 17.8649)
 progress = 68.756
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D48" instance=ExtResource("3_k26un")]
@@ -1985,7 +2017,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_mcwd2")
 
 [node name="PathFollow3D49" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999985, 5.88622e-09, 1, -1.21862e-16, 0.999985, -5.88631e-09, -0.000293652, -3.44371, 0, 17.8653)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999982, 5.88621e-09, 1, -1.21862e-16, 0.999982, -5.88631e-09, -0.000293651, -3.44371, 0, 17.8653)
 progress = 70.2189
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D49" instance=ExtResource("3_k26un")]
@@ -1994,7 +2026,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_assn2")
 
 [node name="PathFollow3D50" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88623e-09, 1, -1.21863e-16, 0.999986, -5.88631e-09, -0.000293652, -1.98082, 0, 17.8658)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999983, 5.88622e-09, 1, -1.21862e-16, 0.999983, -5.88631e-09, -0.000293651, -1.98082, 0, 17.8658)
 progress = 71.6818
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D50" instance=ExtResource("3_k26un")]
@@ -2003,7 +2035,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_w1wdn")
 
 [node name="PathFollow3D51" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999985, 5.88622e-09, 1, -1.21862e-16, 0.999985, -5.88631e-09, -0.000293652, -0.517892, 0, 17.8662)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999982, 5.88621e-09, 1, -1.21862e-16, 0.999982, -5.88631e-09, -0.000293651, -0.517892, 0, 17.8662)
 progress = 73.1447
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D51" instance=ExtResource("3_k26un")]
@@ -2012,7 +2044,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_37sf8")
 
 [node name="PathFollow3D52" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72821e-12, -0.999985, 5.88622e-09, 1, -3.43904e-16, 0.999985, -5.88631e-09, -0.000293652, 0.944977, 0, 17.8666)
+transform = Transform3D(-0.000293651, 1.72821e-12, -0.999982, 5.88621e-09, 1, -3.43903e-16, 0.999982, -5.88631e-09, -0.000293651, 0.944977, 0, 17.8666)
 progress = 74.6076
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D52" instance=ExtResource("3_k26un")]
@@ -2021,7 +2053,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_n573d")
 
 [node name="PathFollow3D53" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999985, 5.88622e-09, 1, -1.21862e-16, 0.999985, -5.88631e-09, -0.000293652, 2.40794, 0, 17.8671)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999982, 5.88621e-09, 1, -1.21862e-16, 0.999982, -5.88631e-09, -0.000293651, 2.40794, 0, 17.8671)
 progress = 76.0705
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D53" instance=ExtResource("3_k26un")]
@@ -2030,7 +2062,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_k1dt7")
 
 [node name="PathFollow3D54" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999985, 5.88622e-09, 1, -1.21862e-16, 0.999985, -5.88631e-09, -0.000293652, 3.87087, 0, 17.8675)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999982, 5.88621e-09, 1, -1.21862e-16, 0.999982, -5.88631e-09, -0.000293651, 3.87087, 0, 17.8675)
 progress = 77.5334
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D54" instance=ExtResource("3_k26un")]
@@ -2039,7 +2071,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_biwf8")
 
 [node name="PathFollow3D55" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999985, 5.88622e-09, 1, -1.21862e-16, 0.999985, -5.88631e-09, -0.000293652, 5.33375, 0, 17.8679)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999982, 5.88621e-09, 1, -1.21862e-16, 0.999982, -5.88631e-09, -0.000293651, 5.33375, 0, 17.8679)
 progress = 78.9963
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D55" instance=ExtResource("3_k26un")]
@@ -2048,7 +2080,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_rddlq")
 
 [node name="PathFollow3D56" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88623e-09, 1, -1.21863e-16, 0.999986, -5.88631e-09, -0.000293652, 6.79673, 0, 17.8684)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999983, 5.88622e-09, 1, -1.21862e-16, 0.999983, -5.88631e-09, -0.000293651, 6.79673, 0, 17.8684)
 progress = 80.4592
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D56" instance=ExtResource("3_k26un")]
@@ -2057,7 +2089,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_w4lls")
 
 [node name="PathFollow3D57" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293771, 1.72843e-12, -0.999985, 5.88624e-09, 1, -8.26692e-16, 0.999985, -5.88632e-09, -0.000293771, 8.25949, 0, 17.8688)
+transform = Transform3D(-0.00029377, 1.72843e-12, -0.999982, 5.88622e-09, 1, -8.2669e-16, 0.999982, -5.88632e-09, -0.00029377, 8.25949, 0, 17.8688)
 progress = 81.9221
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D57" instance=ExtResource("3_k26un")]
@@ -2066,7 +2098,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_rhrwc")
 
 [node name="PathFollow3D58" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293533, 1.72821e-12, -0.999985, 5.88624e-09, 1, 3.5442e-16, 0.999985, -5.88633e-09, -0.000293533, 9.72251, 0, 17.8692)
+transform = Transform3D(-0.000293532, 1.72821e-12, -0.999982, 5.88622e-09, 1, 3.5442e-16, 0.999982, -5.88633e-09, -0.000293532, 9.72251, 0, 17.8692)
 progress = 83.385
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D58" instance=ExtResource("3_k26un")]
@@ -2075,7 +2107,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_7fybc")
 
 [node name="PathFollow3D59" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999985, 5.88622e-09, 1, -1.21862e-16, 0.999985, -5.88631e-09, -0.000293652, 11.1786, 0, 17.8696)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999982, 5.88621e-09, 1, -1.21862e-16, 0.999982, -5.88631e-09, -0.000293651, 11.1786, 0, 17.8696)
 progress = 84.8479
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D59" instance=ExtResource("3_k26un")]
@@ -2084,7 +2116,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_g5mmx")
 
 [node name="PathFollow3D60" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.000293652, 1.72843e-12, -0.999985, 5.88623e-09, 1, -1.22838e-16, 0.999985, -5.88632e-09, -0.000293652, 12.6439, 0, 17.8701)
+transform = Transform3D(-0.000293651, 1.72843e-12, -0.999982, 5.88621e-09, 1, -1.22838e-16, 0.999982, -5.88632e-09, -0.000293651, 12.6439, 0, 17.8701)
 progress = 86.3108
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D60" instance=ExtResource("3_k26un")]
@@ -2282,7 +2314,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_3lcbj")
 
 [node name="PathFollow3D82" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.00287961, 1.69611e-11, 0.999979, 5.88978e-09, 1, -2.65408e-16, -0.999979, 5.88986e-09, -0.00287961, 11.6967, 0, -0.033683)
+transform = Transform3D(-0.0028796, 1.69611e-11, 0.999976, 5.88977e-09, 1, -2.65408e-16, -0.999976, 5.88986e-09, -0.0028796, 11.6967, 0, -0.033683)
 progress = 118.494
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D82" instance=ExtResource("3_k26un")]
@@ -2291,7 +2323,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_2n8pl")
 
 [node name="PathFollow3D83" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.00287961, 1.69611e-11, 0.999978, 5.88977e-09, 1, -2.65408e-16, -0.999978, 5.88986e-09, -0.00287961, 10.2404, 0, -0.0294892)
+transform = Transform3D(-0.0028796, 1.69611e-11, 0.999975, 5.88976e-09, 1, -2.65407e-16, -0.999975, 5.88986e-09, -0.0028796, 10.2404, 0, -0.0294892)
 progress = 119.957
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D83" instance=ExtResource("3_k26un")]
@@ -2300,7 +2332,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_bjifd")
 
 [node name="PathFollow3D84" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.00287961, 1.69611e-11, 0.999978, 5.88977e-09, 1, -2.65408e-16, -0.999978, 5.88986e-09, -0.00287961, 8.77736, 0, -0.0252761)
+transform = Transform3D(-0.0028796, 1.69611e-11, 0.999975, 5.88976e-09, 1, -2.65407e-16, -0.999975, 5.88986e-09, -0.0028796, 8.77736, 0, -0.0252761)
 progress = 121.42
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D84" instance=ExtResource("3_k26un")]
@@ -2309,7 +2341,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_05be6")
 
 [node name="PathFollow3D85" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.00287961, 1.69611e-11, 0.999978, 5.88977e-09, 1, -2.65408e-16, -0.999978, 5.88986e-09, -0.00287961, 7.31447, 0, -0.0210634)
+transform = Transform3D(-0.0028796, 1.69611e-11, 0.999975, 5.88976e-09, 1, -2.65407e-16, -0.999975, 5.88986e-09, -0.0028796, 7.31447, 0, -0.0210634)
 progress = 122.883
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D85" instance=ExtResource("3_k26un")]
@@ -2318,7 +2350,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_aouw2")
 
 [node name="PathFollow3D86" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.00287961, 1.69611e-11, 0.999978, 5.88977e-09, 1, -2.65408e-16, -0.999978, 5.88986e-09, -0.00287961, 5.85152, 0, -0.0168506)
+transform = Transform3D(-0.0028796, 1.69611e-11, 0.999975, 5.88976e-09, 1, -2.65407e-16, -0.999975, 5.88986e-09, -0.0028796, 5.85152, 0, -0.0168506)
 progress = 124.346
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D86" instance=ExtResource("3_k26un")]
@@ -2327,7 +2359,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_ymbnb")
 
 [node name="PathFollow3D87" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.00287961, 1.69611e-11, 0.999978, 5.88977e-09, 1, -2.65408e-16, -0.999978, 5.88986e-09, -0.00287961, 4.38859, 0, -0.0126378)
+transform = Transform3D(-0.0028796, 1.69611e-11, 0.999975, 5.88976e-09, 1, -2.65407e-16, -0.999975, 5.88986e-09, -0.0028796, 4.38859, 0, -0.0126378)
 progress = 125.809
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D87" instance=ExtResource("3_k26un")]
@@ -2336,7 +2368,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_hyxeo")
 
 [node name="PathFollow3D88" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.00287961, 1.69611e-11, 0.999978, 5.88977e-09, 1, -2.65408e-16, -0.999978, 5.88986e-09, -0.00287961, 2.9256, 0, -0.00842483)
+transform = Transform3D(-0.0028796, 1.69611e-11, 0.999975, 5.88976e-09, 1, -2.65407e-16, -0.999975, 5.88986e-09, -0.0028796, 2.9256, 0, -0.00842483)
 progress = 127.272
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D88" instance=ExtResource("3_k26un")]
@@ -2345,7 +2377,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_00v03")
 
 [node name="PathFollow3D89" type="PathFollow3D" parent="InnerRailing/Path3D"]
-transform = Transform3D(-0.00287961, 1.69611e-11, 0.999978, 5.88977e-09, 1, -2.65408e-16, -0.999978, 5.88986e-09, -0.00287961, 1.46599, 0, -0.0042216)
+transform = Transform3D(-0.0028796, 1.69611e-11, 0.999975, 5.88976e-09, 1, -2.65407e-16, -0.999975, 5.88986e-09, -0.0028796, 1.46599, 0, -0.0042216)
 progress = 128.735
 
 [node name="ProtoCSGCylinder3D3" parent="InnerRailing/Path3D/PathFollow3D89" instance=ExtResource("3_k26un")]
@@ -2820,7 +2852,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_k0n24")
 
 [node name="PathFollow3D86" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72821e-12, -0.99999, 5.88625e-09, 1, -3.43905e-16, 0.99999, -5.88631e-09, -0.000293653, -20.2827, 0, 17.8604)
+transform = Transform3D(-0.000293652, 1.72821e-12, -0.999987, 5.88624e-09, 1, -3.43905e-16, 0.999987, -5.88631e-09, -0.000293652, -20.2827, 0, 17.8604)
 progress = 53.381
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D86" instance=ExtResource("3_k26un")]
@@ -2829,7 +2861,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_iuww8")
 
 [node name="PathFollow3D87" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72821e-12, -0.99999, 5.88625e-09, 1, -3.43905e-16, 0.99999, -5.88631e-09, -0.000293653, -18.9799, 0, 17.8608)
+transform = Transform3D(-0.000293652, 1.72821e-12, -0.999987, 5.88624e-09, 1, -3.43905e-16, 0.999987, -5.88631e-09, -0.000293652, -18.9799, 0, 17.8608)
 progress = 54.683
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D87" instance=ExtResource("3_k26un")]
@@ -2838,7 +2870,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_7agp1")
 
 [node name="PathFollow3D88" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72843e-12, -0.99999, 5.88626e-09, 1, -1.25007e-16, 0.99999, -5.88632e-09, -0.000293653, -17.6777, 0, 17.8612)
+transform = Transform3D(-0.000293652, 1.72843e-12, -0.999987, 5.88625e-09, 1, -1.25007e-16, 0.999987, -5.88632e-09, -0.000293652, -17.6777, 0, 17.8612)
 progress = 55.985
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D88" instance=ExtResource("3_k26un")]
@@ -2847,7 +2879,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_hxvh6")
 
 [node name="PathFollow3D89" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72843e-12, -0.99999, 5.88626e-09, 1, -1.25007e-16, 0.99999, -5.88632e-09, -0.000293653, -16.3757, 0, 17.8616)
+transform = Transform3D(-0.000293652, 1.72843e-12, -0.999987, 5.88625e-09, 1, -1.25007e-16, 0.999987, -5.88632e-09, -0.000293652, -16.3757, 0, 17.8616)
 progress = 57.2869
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D89" instance=ExtResource("3_k26un")]
@@ -2856,7 +2888,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_ex6c0")
 
 [node name="PathFollow3D90" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72865e-12, -0.99999, 5.88626e-09, 1, 9.80109e-17, 0.99999, -5.88632e-09, -0.000293653, -15.0739, 0, 17.8619)
+transform = Transform3D(-0.000293652, 1.72865e-12, -0.999987, 5.88625e-09, 1, 9.80107e-17, 0.999987, -5.88632e-09, -0.000293652, -15.0739, 0, 17.8619)
 progress = 58.5889
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D90" instance=ExtResource("3_k26un")]
@@ -2865,7 +2897,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_dqtmr")
 
 [node name="PathFollow3D91" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72821e-12, -0.99999, 5.88625e-09, 1, -3.43797e-16, 0.99999, -5.88631e-09, -0.000293653, -13.7718, 0, 17.8623)
+transform = Transform3D(-0.000293652, 1.72821e-12, -0.999987, 5.88624e-09, 1, -3.43796e-16, 0.999987, -5.88631e-09, -0.000293652, -13.7718, 0, 17.8623)
 progress = 59.8909
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D91" instance=ExtResource("3_k26un")]
@@ -2874,7 +2906,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_fqvbq")
 
 [node name="PathFollow3D92" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293772, 1.72865e-12, -0.99999, 5.88625e-09, 1, -6.01509e-16, 0.99999, -5.88631e-09, -0.000293772, -12.4699, 0, 17.8627)
+transform = Transform3D(-0.000293772, 1.72865e-12, -0.999987, 5.88624e-09, 1, -6.01508e-16, 0.999987, -5.88631e-09, -0.000293772, -12.4699, 0, 17.8627)
 progress = 61.1929
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D92" instance=ExtResource("3_k26un")]
@@ -2883,7 +2915,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_drcw4")
 
 [node name="PathFollow3D93" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293772, 1.7291e-12, -0.99999, 5.88625e-09, 1, -1.57533e-16, 0.99999, -5.88631e-09, -0.000293772, -11.1679, 0, 17.8631)
+transform = Transform3D(-0.000293772, 1.7291e-12, -0.999987, 5.88624e-09, 1, -1.57533e-16, 0.999987, -5.88631e-09, -0.000293772, -11.1679, 0, 17.8631)
 progress = 62.4948
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D93" instance=ExtResource("3_k26un")]
@@ -2892,7 +2924,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_axory")
 
 [node name="PathFollow3D94" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72821e-12, -0.999989, 5.88625e-09, 1, -3.43797e-16, 0.999989, -5.88631e-09, -0.000293653, -9.86586, 0, 17.8635)
+transform = Transform3D(-0.000293652, 1.72821e-12, -0.999986, 5.88623e-09, 1, -3.43796e-16, 0.999986, -5.88631e-09, -0.000293652, -9.86586, 0, 17.8635)
 progress = 63.7968
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D94" instance=ExtResource("3_k26un")]
@@ -2901,7 +2933,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_n4xn0")
 
 [node name="PathFollow3D95" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72843e-12, -0.999989, 5.88625e-09, 1, -1.21863e-16, 0.999989, -5.88631e-09, -0.000293653, -8.56388, 0, 17.8638)
+transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88623e-09, 1, -1.21863e-16, 0.999986, -5.88631e-09, -0.000293652, -8.56388, 0, 17.8638)
 progress = 65.0988
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D95" instance=ExtResource("3_k26un")]
@@ -2910,7 +2942,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_sjt2c")
 
 [node name="PathFollow3D96" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72843e-12, -0.999989, 5.88625e-09, 1, -1.21863e-16, 0.999989, -5.88631e-09, -0.000293653, -7.26188, 0, 17.8642)
+transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88623e-09, 1, -1.21863e-16, 0.999986, -5.88631e-09, -0.000293652, -7.26188, 0, 17.8642)
 progress = 66.4008
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D96" instance=ExtResource("3_k26un")]
@@ -2919,7 +2951,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_37q3x")
 
 [node name="PathFollow3D97" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72843e-12, -0.999989, 5.88625e-09, 1, -1.21863e-16, 0.999989, -5.88631e-09, -0.000293653, -5.95991, 0, 17.8646)
+transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88623e-09, 1, -1.21863e-16, 0.999986, -5.88631e-09, -0.000293652, -5.95991, 0, 17.8646)
 progress = 67.7027
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D97" instance=ExtResource("3_k26un")]
@@ -2928,7 +2960,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_tucfn")
 
 [node name="PathFollow3D98" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72843e-12, -0.999989, 5.88625e-09, 1, -1.21863e-16, 0.999989, -5.88631e-09, -0.000293653, -4.65793, 0, 17.865)
+transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88623e-09, 1, -1.21863e-16, 0.999986, -5.88631e-09, -0.000293652, -4.65793, 0, 17.865)
 progress = 69.0047
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D98" instance=ExtResource("3_k26un")]
@@ -2937,7 +2969,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_ge63j")
 
 [node name="PathFollow3D99" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72843e-12, -0.999989, 5.88625e-09, 1, -1.21863e-16, 0.999989, -5.88631e-09, -0.000293653, -3.35594, 0, 17.8654)
+transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88623e-09, 1, -1.21863e-16, 0.999986, -5.88631e-09, -0.000293652, -3.35594, 0, 17.8654)
 progress = 70.3067
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D99" instance=ExtResource("3_k26un")]
@@ -2946,7 +2978,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_u7eeg")
 
 [node name="PathFollow3D100" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293653, 1.72843e-12, -0.999989, 5.88625e-09, 1, -1.21863e-16, 0.999989, -5.88631e-09, -0.000293653, -2.05396, 0, 17.8658)
+transform = Transform3D(-0.000293652, 1.72843e-12, -0.999986, 5.88623e-09, 1, -1.21863e-16, 0.999986, -5.88631e-09, -0.000293652, -2.05396, 0, 17.8658)
 progress = 71.6087
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D100" instance=ExtResource("3_k26un")]
@@ -2955,7 +2987,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_fk655")
 
 [node name="PathFollow3D31" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293654, 1.72843e-12, -0.999994, 5.88628e-09, 1, -1.21864e-16, 0.999994, -5.88631e-09, -0.000293654, -0.758355, 0, 17.8661)
+transform = Transform3D(-0.000293654, 1.72843e-12, -0.999991, 5.88626e-09, 1, -1.21863e-16, 0.999991, -5.88631e-09, -0.000293654, -0.758355, 0, 17.8661)
 progress = 72.9106
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D31" instance=ExtResource("3_k26un")]
@@ -2964,7 +2996,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_d8ia8")
 
 [node name="PathFollow3D32" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293535, 1.72799e-12, -0.999993, 5.88627e-09, 1, 1.35633e-16, 0.999993, -5.88631e-09, -0.000293535, 0.549991, 0, 17.8665)
+transform = Transform3D(-0.000293534, 1.72799e-12, -0.99999, 5.88626e-09, 1, 1.35632e-16, 0.99999, -5.88631e-09, -0.000293534, 0.549991, 0, 17.8665)
 progress = 74.2126
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D32" instance=ExtResource("3_k26un")]
@@ -2973,7 +3005,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_fcnkh")
 
 [node name="PathFollow3D33" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293535, 1.72821e-12, -0.999993, 5.88627e-09, 1, 3.57567e-16, 0.999993, -5.88631e-09, -0.000293535, 1.85202, 0, 17.8669)
+transform = Transform3D(-0.000293534, 1.72821e-12, -0.99999, 5.88626e-09, 1, 3.57566e-16, 0.99999, -5.88631e-09, -0.000293534, 1.85202, 0, 17.8669)
 progress = 75.5146
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D33" instance=ExtResource("3_k26un")]
@@ -2982,7 +3014,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_u47hk")
 
 [node name="PathFollow3D34" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293654, 1.72843e-12, -0.999994, 5.88628e-09, 1, -1.21864e-16, 0.999994, -5.88631e-09, -0.000293654, 3.15403, 0, 17.8673)
+transform = Transform3D(-0.000293654, 1.72843e-12, -0.999991, 5.88626e-09, 1, -1.21863e-16, 0.999991, -5.88631e-09, -0.000293654, 3.15403, 0, 17.8673)
 progress = 76.8166
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D34" instance=ExtResource("3_k26un")]
@@ -2991,7 +3023,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_7n1tl")
 
 [node name="PathFollow3D35" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293654, 1.72843e-12, -0.999992, 5.88627e-09, 1, -1.21863e-16, 0.999992, -5.88631e-09, -0.000293654, 4.456, 0, 17.8677)
+transform = Transform3D(-0.000293653, 1.72843e-12, -0.999989, 5.88625e-09, 1, -1.21863e-16, 0.999989, -5.88631e-09, -0.000293653, 4.456, 0, 17.8677)
 progress = 78.1186
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D35" instance=ExtResource("3_k26un")]
@@ -3000,7 +3032,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_rrmxo")
 
 [node name="PathFollow3D36" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293654, 1.72843e-12, -0.999992, 5.88627e-09, 1, -1.21863e-16, 0.999992, -5.88631e-09, -0.000293654, 5.75801, 0, 17.868)
+transform = Transform3D(-0.000293653, 1.72843e-12, -0.999989, 5.88625e-09, 1, -1.21863e-16, 0.999989, -5.88631e-09, -0.000293653, 5.75801, 0, 17.868)
 progress = 79.4205
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D36" instance=ExtResource("3_k26un")]
@@ -3009,7 +3041,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_wgtpr")
 
 [node name="PathFollow3D41" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293535, 1.72821e-12, -0.999992, 5.88627e-09, 1, 3.57567e-16, 0.999992, -5.88631e-09, -0.000293535, 7.05999, 0, 17.8684)
+transform = Transform3D(-0.000293534, 1.72821e-12, -0.999989, 5.88625e-09, 1, 3.57566e-16, 0.999989, -5.88631e-09, -0.000293534, 7.05999, 0, 17.8684)
 progress = 80.7225
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D41" instance=ExtResource("3_k26un")]
@@ -3018,7 +3050,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_2tcki")
 
 [node name="PathFollow3D42" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293654, 1.72843e-12, -0.999992, 5.88628e-09, 1, -1.25007e-16, 0.999992, -5.88632e-09, -0.000293654, 8.362, 0, 17.8688)
+transform = Transform3D(-0.000293653, 1.72843e-12, -0.999989, 5.88626e-09, 1, -1.25007e-16, 0.999989, -5.88632e-09, -0.000293653, 8.362, 0, 17.8688)
 progress = 82.0245
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D42" instance=ExtResource("3_k26un")]
@@ -3027,7 +3059,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_qqr5t")
 
 [node name="PathFollow3D43" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293654, 1.72843e-12, -0.999992, 5.88628e-09, 1, -1.25007e-16, 0.999992, -5.88632e-09, -0.000293654, 9.66404, 0, 17.8692)
+transform = Transform3D(-0.000293653, 1.72843e-12, -0.999989, 5.88626e-09, 1, -1.25007e-16, 0.999989, -5.88632e-09, -0.000293653, 9.66404, 0, 17.8692)
 progress = 83.3265
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D43" instance=ExtResource("3_k26un")]
@@ -3036,7 +3068,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_wce2y")
 
 [node name="PathFollow3D44" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293654, 1.72843e-12, -0.999992, 5.88627e-09, 1, -1.21863e-16, 0.999992, -5.88631e-09, -0.000293654, 10.9661, 0, 17.8696)
+transform = Transform3D(-0.000293653, 1.72843e-12, -0.999989, 5.88625e-09, 1, -1.21863e-16, 0.999989, -5.88631e-09, -0.000293653, 10.9661, 0, 17.8696)
 progress = 84.6284
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D44" instance=ExtResource("3_k26un")]
@@ -3045,7 +3077,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_d14a6")
 
 [node name="PathFollow3D45" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.000293535, 1.72821e-12, -0.999992, 5.88627e-09, 1, 3.55941e-16, 0.999992, -5.88632e-09, -0.000293535, 12.2689, 0, 17.87)
+transform = Transform3D(-0.000293534, 1.72821e-12, -0.999989, 5.88626e-09, 1, 3.5594e-16, 0.999989, -5.88632e-09, -0.000293534, 12.2689, 0, 17.87)
 progress = 85.9304
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D45" instance=ExtResource("3_k26un")]
@@ -3270,7 +3302,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_w33p5")
 
 [node name="PathFollow3D22" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.00287958, 1.69611e-11, 0.999968, 5.88971e-09, 1, -2.65405e-16, -0.999968, 5.88986e-09, -0.00287958, 11.7116, 0, -0.0337258)
+transform = Transform3D(-0.00287957, 1.69611e-11, 0.999965, 5.8897e-09, 1, -2.65405e-16, -0.999965, 5.88986e-09, -0.00287957, 11.7116, 0, -0.0337258)
 progress = 118.48
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D22" instance=ExtResource("3_k26un")]
@@ -3279,7 +3311,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_3qcj1")
 
 [node name="PathFollow3D23" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.00287961, 1.69611e-11, 0.99998, 5.88979e-09, 1, -2.65408e-16, -0.99998, 5.88986e-09, -0.00287961, 10.4159, 0, -0.0299946)
+transform = Transform3D(-0.00287961, 1.69611e-11, 0.999977, 5.88977e-09, 1, -2.65408e-16, -0.999977, 5.88986e-09, -0.00287961, 10.4159, 0, -0.0299946)
 progress = 119.782
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D23" instance=ExtResource("3_k26un")]
@@ -3288,7 +3320,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_omck5")
 
 [node name="PathFollow3D24" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.00287963, 1.69611e-11, 0.999985, 5.88981e-09, 1, -2.6541e-16, -0.999985, 5.88986e-09, -0.00287963, 9.11395, 0, -0.0262454)
+transform = Transform3D(-0.00287962, 1.69611e-11, 0.999982, 5.8898e-09, 1, -2.65409e-16, -0.999982, 5.88986e-09, -0.00287962, 9.11395, 0, -0.0262454)
 progress = 121.084
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D24" instance=ExtResource("3_k26un")]
@@ -3297,7 +3329,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_4bout")
 
 [node name="PathFollow3D25" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.00287963, 1.69611e-11, 0.999987, 5.88983e-09, 1, -2.6541e-16, -0.999987, 5.88986e-09, -0.00287963, 7.8119, 0, -0.0224959)
+transform = Transform3D(-0.00287963, 1.69611e-11, 0.999984, 5.88981e-09, 1, -2.6541e-16, -0.999984, 5.88986e-09, -0.00287963, 7.8119, 0, -0.0224959)
 progress = 122.386
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D25" instance=ExtResource("3_k26un")]
@@ -3306,7 +3338,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_tam17")
 
 [node name="PathFollow3D26" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.00287963, 1.69613e-11, 0.999987, 5.88983e-09, 1, -4.85718e-16, -0.999987, 5.88986e-09, -0.00287963, 6.50986, 0, -0.0187464)
+transform = Transform3D(-0.00287963, 1.69613e-11, 0.999984, 5.88981e-09, 1, -4.85717e-16, -0.999984, 5.88986e-09, -0.00287963, 6.50986, 0, -0.0187464)
 progress = 123.688
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D26" instance=ExtResource("3_k26un")]
@@ -3315,7 +3347,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_rv3ab")
 
 [node name="PathFollow3D27" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.00287963, 1.69611e-11, 0.999986, 5.88981e-09, 1, -2.6541e-16, -0.999985, 5.88986e-09, -0.00287963, 5.20782, 0, -0.0149969)
+transform = Transform3D(-0.00287962, 1.69611e-11, 0.999983, 5.8898e-09, 1, -2.65409e-16, -0.999982, 5.88986e-09, -0.00287962, 5.20782, 0, -0.0149969)
 progress = 124.99
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D27" instance=ExtResource("3_k26un")]
@@ -3324,7 +3356,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_hw024")
 
 [node name="PathFollow3D28" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.00287962, 1.69611e-11, 0.999984, 5.88981e-09, 1, -2.65409e-16, -0.999984, 5.88986e-09, -0.00287962, 3.90575, 0, -0.0112474)
+transform = Transform3D(-0.00287962, 1.69611e-11, 0.999981, 5.8898e-09, 1, -2.65409e-16, -0.999981, 5.88986e-09, -0.00287962, 3.90575, 0, -0.0112474)
 progress = 126.292
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D28" instance=ExtResource("3_k26un")]
@@ -3333,7 +3365,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_hsjby")
 
 [node name="PathFollow3D29" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.0028796, 1.69611e-11, 0.999976, 5.88976e-09, 1, -2.65407e-16, -0.999976, 5.88986e-09, -0.0028796, 2.60373, 0, -0.00749795)
+transform = Transform3D(-0.00287959, 1.69611e-11, 0.999973, 5.88975e-09, 1, -2.65407e-16, -0.999973, 5.88986e-09, -0.00287959, 2.60373, 0, -0.00749795)
 progress = 127.594
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D29" instance=ExtResource("3_k26un")]
@@ -3342,7 +3374,7 @@ height = 1.39771
 material = SubResource("StandardMaterial3D_wyyro")
 
 [node name="PathFollow3D30" type="PathFollow3D" parent="OuterRailing/Path3D"]
-transform = Transform3D(-0.00287962, 1.69611e-11, 0.999981, 5.88979e-09, 1, -2.65409e-16, -0.999981, 5.88986e-09, -0.00287962, 1.30713, 0, -0.00376414)
+transform = Transform3D(-0.00287961, 1.69611e-11, 0.999978, 5.88978e-09, 1, -2.65408e-16, -0.999978, 5.88986e-09, -0.00287961, 1.30713, 0, -0.00376414)
 progress = 128.896
 
 [node name="ProtoCSGCylinder3D3" parent="OuterRailing/Path3D/PathFollow3D30" instance=ExtResource("3_k26un")]
@@ -3669,7 +3701,7 @@ material = SubResource("StandardMaterial3D_sx8r1")
 
 [node name="StartTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 2.0
+wait_time = 3.5
 one_shot = true
 
 [node name="FinishLine" type="Area3D" parent="."]
@@ -3688,10 +3720,24 @@ gizmo_extents = 8.57
 transform = Transform3D(-1, 0, -8.74228e-08, -4.38791e-08, 0.864915, 0.501918, 7.56133e-08, 0.501918, -0.864915, -49.3469, 4.12008, 32.959)
 top_level = true
 script = ExtResource("11_rbx75")
-priority = 1
 follow_mode = 5
 follow_target = NodePath("../Horse")
 tween_resource = SubResource("Resource_q523l")
+host_layers = 2
+follow_offset = Vector3(0, 2.345, -3.995)
+dead_zone_width = 0.033
+dead_zone_height = 0.085
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="GroupCamera" type="Node3D" parent="." node_paths=PackedStringArray("follow_targets")]
+transform = Transform3D(-1, 0, -8.74228e-08, -4.38791e-08, 0.864915, 0.501918, 7.56133e-08, 0.501918, -0.864915, -49.3469, 4.12008, 36.8064)
+top_level = true
+script = ExtResource("11_rbx75")
+priority = 1
+follow_mode = 3
+follow_targets = [NodePath("../Horse"), NodePath("../Horse2"), NodePath("../Horse3"), NodePath("../Horse4"), NodePath("../Horse5"), NodePath("../Horse6"), NodePath("../Horse7"), NodePath("../Horse8")]
+tween_resource = SubResource("Resource_q523l")
+host_layers = 2
 follow_offset = Vector3(0, 2.345, -3.995)
 dead_zone_width = 0.033
 dead_zone_height = 0.085
@@ -3737,21 +3783,27 @@ follow_target = NodePath("../../Horse")
 follow_path = NodePath("..")
 tween_resource = SubResource("Resource_pgsk4")
 tween_on_load = false
-host_layers = 2
+host_layers = 0
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 physics_interpolation_mode = 1
-transform = Transform3D(-1, 0, -8.74228e-08, -4.38791e-08, 0.864915, 0.501918, 7.56133e-08, 0.501918, -0.864915, -49.3469, 4.12008, 32.959)
+transform = Transform3D(-1, -1.42109e-14, -8.74228e-08, -4.38791e-08, 0.864915, 0.501918, 7.56133e-08, 0.501918, -0.864915, -49.3469, 4.12008, 36.8064)
 environment = SubResource("Environment_338i0")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("10_k7obx")
+host_layers = 2
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Camera3D"]
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Camera3D"]
+
 [connection signal="race_progressed" from="." to="CanvasLayer/RaceUi" method="on_race_progressed"]
+[connection signal="standings_changed" from="." to="." method="_on_standings_changed"]
 [connection signal="standings_changed" from="." to="CanvasLayer/RaceUi" method="on_standings_changed"]
 [connection signal="child_entered_tree" from="InnerRailing/Path3D" to="InnerRailing/Path3D" method="_on_child_entered_tree"]
 [connection signal="child_entered_tree" from="OuterRailing/Path3D" to="OuterRailing/Path3D" method="_on_child_entered_tree"]
