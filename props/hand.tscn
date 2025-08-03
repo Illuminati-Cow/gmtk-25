@@ -290,6 +290,7 @@ libraries = {
 }
 
 [node name="NewspaperArea" type="Area3D" parent="." index="4"]
+input_ray_pickable = false
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NewspaperArea" index="0"]

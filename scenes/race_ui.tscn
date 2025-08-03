@@ -23,6 +23,7 @@ func on_standings_changed(new_standings: Array[HorseData]) -> void:
 		standing.horse_name = standing_data.horse_name
 		standing.number = standing_data.number
 		standing.odds = standing_data.odds
+		standing.color = standing_data.color
 "
 
 [sub_resource type="LabelSettings" id="LabelSettings_b1gl7"]
@@ -122,6 +123,7 @@ color = Color(0.730654, 0.589131, 1.34766e-06, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect/StandingsBox"]
 layout_mode = 2
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 1
 theme_override_constants/margin_bottom = 5
 

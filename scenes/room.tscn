@@ -153,6 +153,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_jxwrd")
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel"]
@@ -162,10 +165,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 89.9999
-offset_top = 83.0
-offset_right = 188.0
-offset_bottom = 167.0
+offset_left = 131.0
+offset_top = 110.0
+offset_right = 229.0
+offset_bottom = 194.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.258863

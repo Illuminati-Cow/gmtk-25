@@ -52,7 +52,7 @@ func reset():
 		.with_name(names.pick_random().to_upper().trim_suffix(" "))\
 		.with_number(5 * (i + 1) + randi() % 4)\
 		.with_odds(randf_range(3, 20))\
-		.with_color(Color.from_hsv(randf_range(0.05 * i, 0.05 * (i + 1)), .8, randf_range(.7, 1)))
+		.with_color(Color.from_hsv(1 / 8.0 * (i + 1), .8, randf_range(.5, .7)))
 		horse.initialize(horse_data[horse.name])
 		i += 1
 	var top6 = horses.slice(0, 6)

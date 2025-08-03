@@ -67,22 +67,27 @@ func _ready():
 	$HorseMesh/Armature/Skeleton3D/saddle/saddle.set_surface_override_material(0, saddle_trim_mat.duplicate())
 	var shirt_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/person.get_active_material(2)
 	$HorseMesh/Armature/Skeleton3D/person.set_surface_override_material(2, shirt_mat.duplicate())
+	var horse_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/horse.get_active_material(1)
+	$HorseMesh/Armature/Skeleton3D/horse.set_surface_override_material(1, horse_mat.duplicate())
  
 func reset() -> void:
 	linear_velocity = Vector3.ZERO
 
 func initialize(data: HorseData) -> void:
-	var texture: GradientTexture2D = $SubViewport/Panel/TextureRect.get(&"texture")
-	texture.set(&"colors", [data.color, data.color, Color.TRANSPARENT])
+	var texture: GradientTexture2D = $SubViewport/Panel/TextureRect.texture
+	texture.gradient = texture.gradient.duplicate()
+	print(texture.gradient.colors)
+	texture.gradient.set_color(0, data.color)
+	texture.gradient.set_color(1, data.color)
+	print(texture.gradient.colors)
 	$SubViewport/Panel/Label.text = "%d" % data.number
-	var saddle_trim_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/saddle/saddle.get_active_material(0)
-	$HorseMesh/Armature/Skeleton3D/saddle/saddle.set_surface_override_material(0, saddle_trim_mat.duplicate())
+	var saddle_trim_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/saddle/saddle.get_surface_override_material(0)
 	saddle_trim_mat.albedo_color = data.color
-	var helmet_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/person.get_active_material(3)
-	$HorseMesh/Armature/Skeleton3D/person.set_surface_override_material(3, helmet_mat.duplicate())
+	var helmet_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/person.get_surface_override_material(3)
 	helmet_mat.albedo_color = data.color.darkened(0.2)
-	var shirt_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/person.get_active_material(2)
-	$HorseMesh/Armature/Skeleton3D/person.set_surface_override_material(2, shirt_mat.duplicate())
+	var shirt_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/person.get_surface_override_material(2)
+	var horse_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/horse.get_surface_override_material(1)
+	horse_mat.albedo_color = get_random_horse_color()
 	shirt_mat.albedo_color = data.color
 
 func _physics_process(delta: float) -> void:
@@ -159,9 +164,6 @@ func _on_start_timer_timeout() -> void:
 	nav.avoidance_enabled = false
 	start_navigation(%FinishLine.global_position)
 	get_tree().create_timer(2).timeout.connect(func(): nav.avoidance_enabled = true)
-	if "1" in name:
-		var helmet_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/person.get_active_material(3)
-		helmet_mat.albedo_color = Color.BLACK
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	if nav.is_navigation_finished():
@@ -177,3 +179,22 @@ func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	apply_central_force(needed_accel * mass)
 	#DebugDraw2D.set_text("velocity", ground_vel)
 	#DebugDraw3D.draw_ray(global_position, safe_velocity, needed_accel.length(), Color.GREEN)
+
+func get_random_horse_color():
+	var h: float
+	var s: float
+	var v: float
+
+	# Randomly decide between a chromatic or achromatic horse.
+	var type_roll = randf()
+
+	if type_roll < 0.9:
+		h = randf_range(0.04, 0.09)
+		s = randf_range(0.35, 0.9)
+		v = randf_range(0.15, 0.7)
+	else:
+		h = 0.0
+		s = randf_range(0.0, 0.15)
+		v = randf_range(0.05, 0.95)
+
+	return Color.from_hsv(h, s, v)

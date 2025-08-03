@@ -25,6 +25,14 @@ var angular_velocity: Vector3
 var max_speed := 10
 @export var knee_slap_min_speed := 4.0
 
+var smack_tracks: Array[AudioStream] = [
+	preload("res://sounds/smack1.mp3"),
+	preload("res://sounds/smack2.mp3"),
+	preload("res://sounds/smack3.mp3"),
+	preload("res://sounds/smack4.mp3"),
+	preload("res://sounds/smack5.mp3"),
+]
+
 func _ready() -> void:
 	default_z_plane_depth = position.z - get_viewport().get_camera_3d().position.z
 
@@ -97,6 +105,7 @@ func _on_newspaper_area_area_entered(area: Area3D) -> void:
 	if "Slap" in area.name:
 		var speed := position.distance_to(last_position) / get_physics_process_delta_time()
 		if speed > knee_slap_min_speed:
+			$NewspaperArea/AudioStreamPlayer3D.stream = smack_tracks.pick_random()
 			$NewspaperArea/AudioStreamPlayer3D.play()
 			encouragement_sent.emit()
 
@@ -113,7 +122,7 @@ func _apply_spring_force(delta: float):
 	var net_torque := spring_torque + damping_torque
 	var angular_accel := net_torque / MOMENT_OF_INERTIA
 	angular_velocity.z += angular_accel * delta
-	DebugDraw2D.set_text("a_v", angular_velocity.z)
-	DebugDraw2D.set_text("a_a", angular_accel)
+	#DebugDraw2D.set_text("a_v", angular_velocity.z)
+	#DebugDraw2D.set_text("a_a", angular_accel)
 	rotation.z += angular_velocity.z * delta
-	DebugDraw2D.set_text("r_z", rotation.z)
+	#DebugDraw2D.set_text("r_z", rotation.z)

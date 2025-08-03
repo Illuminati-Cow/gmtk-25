@@ -1,7 +1,17 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cxl7ueoemi3uv"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cxl7ueoemi3uv"]
 
 [ext_resource type="FontFile" uid="uid://bcul51i8dqo80" path="res://themes/fonts/DoppioOne/DoppioOne-Regular.ttf" id="1_fr30a"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr30a"]
+bg_color = Color(0.0726804, 0.338413, 4.81308e-08, 1)
+
 [resource]
 Label/colors/font_color = Color(0.0646965, 0.0646965, 0.0646965, 1)
+Label/font_sizes/font_size = 28
 Label/fonts/font = ExtResource("1_fr30a")
+LineEdit/font_sizes/font_size = 32
+LineEdit/fonts/font = ExtResource("1_fr30a")
+SpinBox/colors/down_icon_modulate = Color(1, 1, 1, 1)
+SpinBox/constants/buttons_width = 30
+SpinBox/styles/down_background = SubResource("StyleBoxFlat_fr30a")
+SpinBox/styles/up_background = SubResource("StyleBoxFlat_fr30a")

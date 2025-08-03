@@ -265,19 +265,21 @@ node_connections = [&"RunBlend", 0, &"Animation", &"RunBlend", 1, &"RunAnim", &"
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2hmhm"]
 
-[sub_resource type="Gradient" id="Gradient_2hmhm"]
+[sub_resource type="Gradient" id="Gradient_i0k06"]
 resource_local_to_scene = true
 offsets = PackedFloat32Array(0, 0.675926, 0.712963)
 colors = PackedColorArray(0, 0.520546, 0.109192, 1, 0.0969, 0.57, 0.199405, 1, 0.0969, 0.57, 0.199405, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_n6iiu"]
-gradient = SubResource("Gradient_2hmhm")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ybggc"]
+gradient = SubResource("Gradient_i0k06")
+width = 128
+height = 128
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2hmhm"]
-font_size = 128
+font_size = 180
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_2hmhm"]
 viewport_path = NodePath("SubViewport")
@@ -289,6 +291,7 @@ albedo_texture = SubResource("ViewportTexture_2hmhm")
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_n6iiu"]
+size = Vector2(0.5, 0.5)
 
 [node name="Horse" type="RigidBody3D"]
 axis_lock_linear_y = true
@@ -306,7 +309,6 @@ ride_spring_strength = 200.0
 ride_spring_damper = 20.0
 acceleration_dir_factor = SubResource("Curve_htlp4")
 movement_modifier = 0.880163
-debug_path = true
 metadata/_custom_type_script = "uid://4y8ej74k2kjk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -358,10 +360,13 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2hmhm")
 
 [node name="TextureRect" type="TextureRect" parent="SubViewport/Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = SubResource("GradientTexture2D_n6iiu")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ybggc")
 
 [node name="Label" type="Label" parent="SubViewport/Panel"]
 layout_mode = 1
@@ -380,9 +385,10 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 text = "00"
 label_settings = SubResource("LabelSettings_2hmhm")
+horizontal_alignment = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.987356, -0.174113)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28279, 0.115898)
 material_override = SubResource("StandardMaterial3D_2hmhm")
 mesh = SubResource("QuadMesh_n6iiu")
 
