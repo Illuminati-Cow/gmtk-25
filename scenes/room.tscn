@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bdplp3us7r8rh"]
+[gd_scene load_steps=26 format=3 uid="uid://bdplp3us7r8rh"]
 
 [ext_resource type="Script" uid="uid://cqmopd1uel163" path="res://scripts/room.gd" id="1_3j2fx"]
 [ext_resource type="PackedScene" uid="uid://do0j3wuutw3vo" path="res://props/room.tscn" id="2_3j2fx"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://bxhncsfrmtyq" path="res://props/sofa.tscn" id="11_eom3m"]
 [ext_resource type="PackedScene" uid="uid://dd7nt8kkyhyl3" path="res://props/sofa_caddy.tscn" id="11_tk5fv"]
 [ext_resource type="PackedScene" uid="uid://b5ysplb6jgvyn" path="res://props/tv.tscn" id="12_tk5fv"]
+[ext_resource type="PackedScene" uid="uid://ba4lde2ldt611" path="res://meshes/radio/Boombox.glb" id="12_vfrn5"]
+[ext_resource type="Script" uid="uid://ce0dj2xn0wo07" path="res://scripts/radio.gd" id="13_katsu"]
 [ext_resource type="PackedScene" uid="uid://dx2yd0mag8h7a" path="res://props/cabinet.tscn" id="13_w68ji"]
 [ext_resource type="PackedScene" uid="uid://c0vwsywd7v1pf" path="res://props/big_slurp.tscn" id="14_23wr2"]
 [ext_resource type="PackedScene" uid="uid://pbesfay12u6r" path="res://props/hand.tscn" id="16_dynfe"]
@@ -101,6 +103,18 @@ script = ExtResource("9_3j2fx")
 [node name="GUIPanel3D" parent="Room/SofaCaddy/Laptop" instance=ExtResource("10_eom3m")]
 transform = Transform3D(0.274998, -0.000959929, 0, 0.000908175, 0.260172, 0.0890773, -0.000310938, -0.0890767, 0.260173, -0.000927175, 0.291634, -0.392087)
 
+[node name="Boombox" parent="Room/SofaCaddy" instance=ExtResource("12_vfrn5")]
+transform = Transform3D(-0.296696, 0, 0.402457, 0, 0.5, 0, -0.402457, 0, -0.296696, -7.23569, -0.0781921, 0.68424)
+script = ExtResource("13_katsu")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Room/SofaCaddy/Boombox"]
+transform = Transform3D(0.668831, 0, 1.88485, 0, 2, 0, -1.88485, 0, 0.668831, -7.74398, 2.50184, 12.8315)
+bus = &"Radio"
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Room/SofaCaddy/Boombox"]
+transform = Transform3D(0.668831, 0, 1.88485, 0, 2, 0, -1.88485, 0, 0.668831, -7.74398, 2.50184, 12.8315)
+bus = &"Radio"
+
 [node name="Cabinet" parent="Room" instance=ExtResource("13_w68ji")]
 transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -0.604139, 0.567382, 3.32538)
 
@@ -178,7 +192,7 @@ label_settings = SubResource("LabelSettings_dynfe")
 script = SubResource("GDScript_dynfe")
 
 [node name="Timer" type="Timer" parent="CanvasLayer/Panel/Label"]
-wait_time = 0.3
+wait_time = 0.2
 one_shot = true
 
 [node name="Marker2D" type="Marker2D" parent="CanvasLayer/Panel/Label"]
@@ -186,6 +200,7 @@ top_level = true
 position = Vector2(1808, 445)
 rotation = -0.197477
 
+[connection signal="game_started" from="." to="Room/SofaCaddy/Boombox" method="_on_room_game_started"]
 [connection signal="betting_locked" from="Room/SofaCaddy/Laptop" to="." method="_on_betting_locked"]
 [connection signal="mouse_entered" from="Room/SofaCaddy/Laptop/GUIPanel3D" to="Room/Hand" method="_on_gui_panel_3d_mouse_entered"]
 [connection signal="mouse_exited" from="Room/SofaCaddy/Laptop/GUIPanel3D" to="Room/Hand" method="_on_gui_panel_3d_mouse_exited"]

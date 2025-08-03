@@ -7,6 +7,9 @@ enum MoveMode
 }
 
 
+@export_category("Racing Stats")
+@export var energy := 10.0
+
 @export_category("Movement")
 @export_range(0, 10, 0.25) var base_walk_speed: float = 3
 @export_range(0, 10, 0.25) var base_run_speed: float = 8
@@ -72,6 +75,9 @@ func _ready():
  
 func reset() -> void:
 	linear_velocity = Vector3.ZERO
+	set_physics_process(false)
+	stop_navigation()
+	anim_tree.set(&"parameters/RunBlend/blend_amount", 0)
 
 func initialize(data: HorseData) -> void:
 	var texture: GradientTexture2D = $SubViewport/Panel/TextureRect.texture
@@ -94,8 +100,6 @@ func _physics_process(delta: float) -> void:
 	if nav.is_navigation_finished() and navigating:
 		stop_navigation()
 	
-	#apply_ride_force()
-	
 	if !navigating:
 		calculate_goal_velocity(Vector3.ZERO)
 		return
@@ -113,22 +117,11 @@ func start_navigation(target_pos: Vector3) -> void:
 		return
 	nav.target_position = target_pos
 	navigating = true
-	
+
+
 func stop_navigation():
 	navigating = false
-	
-func apply_ride_force() -> void:
-	groundcast.force_raycast_update()
-	if groundcast.is_colliding():
-		var ground_position: Vector3 = groundcast.get_collision_point()
-		var ground_dist : float = ground_position.distance_to(groundcast.global_position)
-		var ray_dir_vel_dot := Vector3.DOWN.dot(linear_velocity)
-		var x := ground_dist - ride_height
-		var spring_force := (x * ride_spring_strength) - (ray_dir_vel_dot * ride_spring_damper)
-		apply_central_force(Vector3.DOWN * spring_force * mass)
-		#DebugDraw2D.set_text("ground_force", "%2.2f" % spring_force)
-	#else:
-		#DebugDraw2D.set_text("ground_force", "not grounded")
+
 
 func calculate_goal_velocity(direction: Vector3) -> void:
 	var ground_vel: Vector3 = Vector3(linear_velocity.x, 0, linear_velocity.z)
@@ -162,6 +155,7 @@ func apply_rotation(delta: float):
 func _on_start_timer_timeout() -> void:
 	move_mode = MoveMode.RUN
 	nav.avoidance_enabled = false
+	set_physics_process(true)
 	start_navigation(%FinishLine.global_position)
 	get_tree().create_timer(2).timeout.connect(func(): nav.avoidance_enabled = true)
 

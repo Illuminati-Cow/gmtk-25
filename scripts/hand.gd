@@ -25,6 +25,7 @@ var angular_velocity: Vector3
 var max_speed := 10
 @export var knee_slap_min_speed := 4.0
 
+var last_smack_track: AudioStream
 var smack_tracks: Array[AudioStream] = [
 	preload("res://sounds/smack1.mp3"),
 	preload("res://sounds/smack2.mp3"),
@@ -105,8 +106,13 @@ func _on_newspaper_area_area_entered(area: Area3D) -> void:
 	if "Slap" in area.name:
 		var speed := position.distance_to(last_position) / get_physics_process_delta_time()
 		if speed > knee_slap_min_speed:
-			$NewspaperArea/AudioStreamPlayer3D.stream = smack_tracks.pick_random()
-			$NewspaperArea/AudioStreamPlayer3D.play()
+			var player := $NewspaperArea/AudioStreamPlayer3D
+			player.stream = smack_tracks.pick_random()
+			if last_smack_track:
+				smack_tracks.append(last_smack_track)
+			last_smack_track = player.stream
+			smack_tracks.remove_at(smack_tracks.find(last_smack_track))
+			player.play()
 			encouragement_sent.emit()
 
 func _apply_spring_force(delta: float):

@@ -1,4 +1,8 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://dovqw73f45cja"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://dovqw73f45cja"]
+
+[sub_resource type="AudioEffectPanner" id="AudioEffectPanner_j3pel"]
+resource_name = "Panner"
+pan = -0.2
 
 [resource]
 bus/1/name = &"TV"
@@ -29,5 +33,19 @@ bus/5/name = &"Effects"
 bus/5/solo = false
 bus/5/mute = false
 bus/5/bypass_fx = false
-bus/5/volume_db = -17.6573
+bus/5/volume_db = -10.9863
 bus/5/send = &"Room"
+bus/6/name = &"Laptop"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = &"Room"
+bus/6/effect/0/effect = SubResource("AudioEffectPanner_j3pel")
+bus/6/effect/0/enabled = true
+bus/7/name = &"Radio"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = -50.3433
+bus/7/send = &"Room"

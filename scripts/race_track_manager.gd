@@ -30,6 +30,7 @@ var cheer_tracks: Array[AudioStream] = [
 	preload("res://sounds/cheer8.mp3")
 ]
 
+signal race_initialized(horses: Array[HorseData])
 signal standings_changed(new_standings: Array[HorseData])
 signal race_progressed(progress_ratio: float)
 signal race_finished(placements: Array[HorseData])
@@ -38,7 +39,6 @@ func _ready() -> void:
 	horses.assign(get_children().filter(func(e): return e is HorseController3D).map(func(e): return e as HorseController3D))
 	spawn_points.assign($Spawns.get_children())
 	names.assign(preload("res://scripts/horse_names_data.json").data.names)
-	reset()
 	
 func reset():
 	cheer_tracks.shuffle()
@@ -48,23 +48,26 @@ func reset():
 	var i := 0
 	for horse in horses:
 		horse.global_position = spawn_points[i].global_position
+		horse.global_rotation = spawn_points[i].global_rotation
 		horse_data[horse.name] = HorseData.new()\
 		.with_name(names.pick_random().to_upper().trim_suffix(" "))\
 		.with_number(5 * (i + 1) + randi() % 4)\
 		.with_odds(randf_range(3, 20))\
 		.with_color(Color.from_hsv(1 / 8.0 * (i + 1), .8, randf_range(.5, .7)))
 		horse.initialize(horse_data[horse.name])
+		horse.reset()
 		i += 1
 	var top6 = horses.slice(0, 6)
 	var new_standings: Array[HorseData]
 	new_standings.assign(top6.map(func(h): return horse_data[h.name]))
 	standings_changed.emit(new_standings)
 	announcer.volume_db = 0
-	start_sequence()
+	race_initialized.emit(horse_data.values())
+	$CanvasLayer/RaceStartUi.visible = true
 	
 
 func start_sequence() -> void:
-	$CanvasLayer/RaceStartUi.visible = true
+	$CanvasLayer/RaceStartUi.visible = false
 	%StartTimer.start()
 	announcer.stream = announcer_tracks[announcer_track_index]
 	announcer_track_index += 1
@@ -76,6 +79,7 @@ func start_sequence() -> void:
 	race_active = true
 	await get_tree().create_timer(8).timeout
 	$CanvasLayer/RaceUi.visible = true
+	$CanvasLayer/RaceEndUi.visible = false
 
 func update_standings() -> void:
 	var order: Array[HorseController3D]
@@ -92,11 +96,14 @@ func update_standings() -> void:
 		var new_standings: Array[HorseData]
 		new_standings.assign(top6.map(func(h): return horse_data[h.name]))
 		standings_changed.emit(new_standings)
+		last_standings = order
+
 
 func _process(delta: float) -> void:
 	if !race_active:
 		return
 	update_standings()
+
 
 func _on_finish_line_body_entered(body: Node3D) -> void:
 	var horse := body as HorseController3D
@@ -107,17 +114,24 @@ func _on_finish_line_body_entered(body: Node3D) -> void:
 	placements.append(horse_data[horse.name])
 	race_active = false
 
+
 func end_sequence():
 	var wait_timer := get_tree().create_timer(8)
 	while wait_timer.time_left > 0 and len(placements) < 8:
 		await get_tree().physics_frame
 	race_finished.emit(placements)
 	fade_out(announcer)
+	reset()
+	$CanvasLayer/RaceEndUi.visible = true
+	$CanvasLayer/RaceStartUi.visible = false
+
 
 func _on_bet_placed(horse: StringName) -> void:
 	var index := horse_data.values().find_custom(func(hd): return hd.horse_name == horse)
-	selected_horse = horse_data.find_key(horse_data.values()[index])
+	var horse_name = horse_data.find_key(horse_data.values()[index])
+	selected_horse = horses.filter(func(h): return h.name == horse_name)[0]
 	start_sequence()
+
 
 func fade_out(player: AudioStreamPlayer) -> void:
 	const STEP = 0.01
@@ -126,10 +140,12 @@ func fade_out(player: AudioStreamPlayer) -> void:
 		await get_tree().physics_frame
 	player.stop()
 
+
 func _on_standings_changed(new_standings: Array[HorseData]) -> void:
 	if !ready_for_cheer:
 		return
-	if new_standings.slice(0, 3) == last_standings.map(func(h): return horse_data[h.horse_name]).slice(0, 3):
+	var last_standings_data = last_standings.map(func(h): return horse_data[h.name]).slice(0, 3)
+	if new_standings.slice(0, 3) == last_standings.map(func(h): return horse_data[h.name]).slice(0, 3):
 		return
 	crowd.stream = cheer_tracks[cheer_track_index]
 	cheer_track_index += 1
@@ -141,3 +157,7 @@ func _on_standings_changed(new_standings: Array[HorseData]) -> void:
 
 func _on_room_encouraged() -> void:
 	pass # Replace with function body.
+
+
+func _on_game_started() -> void:
+	reset()

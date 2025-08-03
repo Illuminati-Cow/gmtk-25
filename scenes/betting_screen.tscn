@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://cwjwkeg6i8chn"]
+[gd_scene load_steps=25 format=3 uid="uid://cwjwkeg6i8chn"]
 
+[ext_resource type="Script" uid="uid://duyp4m80ejlx4" path="res://scripts/betting_screen.gd" id="1_85wnm"]
 [ext_resource type="Theme" uid="uid://cxl7ueoemi3uv" path="res://themes/betting_theme.tres" id="1_jws04"]
 [ext_resource type="PackedScene" uid="uid://ch6vwfyqt0m57" path="res://scenes/elements/entry.tscn" id="2_t00i7"]
-
-[sub_resource type="GDScript" id="GDScript_t00i7"]
-script/source = "extends Control
-
-signal bet_placed
-"
+[ext_resource type="AudioStream" uid="uid://dl0yn5h8a8gxe" path="res://sounds/GUI_popup.mp3" id="3_halxw"]
+[ext_resource type="AudioStream" uid="uid://b05d8iig15yoh" path="res://sounds/GUI_decrease.mp3" id="4_3g078"]
+[ext_resource type="AudioStream" uid="uid://bl8w7y7tchb80" path="res://sounds/GUI_increase.mp3" id="5_85wnm"]
+[ext_resource type="AudioStream" uid="uid://i2q3pe8xnsxa" path="res://sounds/GUI_cancel.mp3" id="7_aqam2"]
+[ext_resource type="AudioStream" uid="uid://b3ok582uq7x4w" path="res://sounds/GUI_confirm.mp3" id="8_w1x4m"]
+[ext_resource type="AudioStream" uid="uid://cmi2uabsw1l8w" path="res://sounds/GUI_submit.mp3" id="9_7nyi1"]
 
 [sub_resource type="Gradient" id="Gradient_jws04"]
 offsets = PackedFloat32Array(0.753937, 1)
@@ -47,6 +48,61 @@ gradient = SubResource("Gradient_t00i7")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i1cmk"]
 texture = SubResource("GradientTexture1D_halxw")
 
+[sub_resource type="GDScript" id="GDScript_halxw"]
+script/source = "extends Panel
+
+signal confirmed
+signal cancelled
+
+@onready var timer := $Timer
+@onready var progress := $CancelProgress
+
+func _on_visibility_changed() -> void:
+	if !is_node_ready():
+		return
+	if is_visible_in_tree():
+		timer.start()
+		$AudioStreamPlayer.play()
+	set_process(visible)
+
+func _on_timer_timeout() -> void:
+	confirmed.emit()
+	$\"..\".visible = false
+
+func _on_button_pressed() -> void:
+	cancelled.emit()
+	timer.stop()
+	$\"..\".visible = false
+	%DeclinePlayer.play()
+
+func _process(delta: float) -> void:
+	progress.value = timer.time_left / timer.wait_time
+"
+
+[sub_resource type="Gradient" id="Gradient_halxw"]
+offsets = PackedFloat32Array(0.426136, 0.689394, 0.761364)
+colors = PackedColorArray(0.11, 0.11, 0.11, 0, 0.114897, 0.114897, 0.114897, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_i1cmk"]
+gradient = SubResource("Gradient_halxw")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.961538, 0.034188)
+
+[sub_resource type="Gradient" id="Gradient_i1cmk"]
+offsets = PackedFloat32Array(0.534091, 0.700758, 0.761364, 0.859848)
+colors = PackedColorArray(0.576333, 0.91, 0, 0, 0.569582, 0.909017, 0, 1, 0.317107, 0.984379, 0, 1, 0.0283333, 0.17, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3g078"]
+gradient = SubResource("Gradient_i1cmk")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.893162, 0.0726496)
+
 [node name="GUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -57,7 +113,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 1
-script = SubResource("GDScript_t00i7")
+script = ExtResource("1_85wnm")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -148,32 +204,33 @@ theme = ExtResource("1_jws04")
 theme_override_colors/font_color = Color(0.446777, 0.446777, 0.446777, 1)
 text = "Driver"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2"]
+[node name="HorseEntries" type="VBoxContainer" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_jws04")
 
-[node name="Entry" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_t00i7")]
+[node name="Entry" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/HorseEntries" instance=ExtResource("2_t00i7")]
 layout_mode = 2
 
-[node name="Entry2" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_t00i7")]
+[node name="Entry2" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/HorseEntries" instance=ExtResource("2_t00i7")]
 layout_mode = 2
 
-[node name="Entry3" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_t00i7")]
+[node name="Entry3" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/HorseEntries" instance=ExtResource("2_t00i7")]
 layout_mode = 2
 
-[node name="Entry4" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_t00i7")]
+[node name="Entry4" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/HorseEntries" instance=ExtResource("2_t00i7")]
 layout_mode = 2
 
-[node name="Entry5" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_t00i7")]
+[node name="Entry5" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/HorseEntries" instance=ExtResource("2_t00i7")]
 layout_mode = 2
 
-[node name="Entry6" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_t00i7")]
+[node name="Entry6" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/HorseEntries" instance=ExtResource("2_t00i7")]
 layout_mode = 2
 
-[node name="Entry7" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_t00i7")]
+[node name="Entry7" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/HorseEntries" instance=ExtResource("2_t00i7")]
 layout_mode = 2
 
-[node name="Entry8" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("2_t00i7")]
+[node name="Entry8" parent="Panel/Panel/Panel/MarginContainer/VBoxContainer2/HorseEntries" instance=ExtResource("2_t00i7")]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="Panel/Panel/Panel"]
@@ -185,7 +242,8 @@ offset_bottom = 52.0
 theme = ExtResource("1_jws04")
 text = "Account"
 
-[node name="Label2" type="SpinBox" parent="Panel/Panel/Panel"]
+[node name="AccountBalance" type="SpinBox" parent="Panel/Panel/Panel"]
+unique_name_in_owner = true
 layout_mode = 1
 offset_left = 288.0
 offset_top = 48.0
@@ -202,6 +260,7 @@ editable = false
 prefix = "$"
 
 [node name="BetField" type="SpinBox" parent="Panel/Panel/Panel"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(130, 0)
 layout_mode = 1
 anchors_preset = 1
@@ -223,6 +282,7 @@ prefix = "$"
 custom_arrow_step = 50.0
 
 [node name="BetButton" type="Button" parent="Panel/Panel/Panel"]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = 645.0
 offset_top = 55.0
@@ -231,3 +291,169 @@ offset_bottom = 99.0
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxTexture_i1cmk")
 text = "Place Bet"
+
+[node name="CancelPanel" type="Panel" parent="Panel/Panel/Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CancelPopup" type="Panel" parent="Panel/Panel/Panel/CancelPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = 87.435
+offset_right = 100.0
+offset_bottom = 374.435
+grow_horizontal = 2
+pivot_offset = Vector2(100, 0)
+script = SubResource("GDScript_halxw")
+
+[node name="Label" type="Label" parent="Panel/Panel/Panel/CancelPanel/CancelPopup"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -74.0
+offset_top = 14.015
+offset_right = 74.0
+offset_bottom = 50.015
+grow_horizontal = 2
+theme = ExtResource("1_jws04")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Placing Bet"
+
+[node name="CancelProgress" type="TextureProgressBar" parent="Panel/Panel/Panel/CancelPanel/CancelPopup"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -70.5
+offset_right = 52.0
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+theme = ExtResource("1_jws04")
+max_value = 1.0
+step = 0.01
+fill_mode = 5
+texture_under = SubResource("GradientTexture2D_i1cmk")
+texture_progress = SubResource("GradientTexture2D_3g078")
+
+[node name="Button" type="Button" parent="Panel/Panel/Panel/CancelPanel/CancelPopup"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -51.0
+offset_right = 41.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_jws04")
+text = "Cancel"
+
+[node name="Timer" type="Timer" parent="Panel/Panel/Panel/CancelPanel/CancelPopup"]
+wait_time = 3.0
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Panel/Panel/Panel/CancelPanel/CancelPopup"]
+stream = ExtResource("3_halxw")
+bus = &"Laptop"
+
+[node name="InProgressScreen" type="Panel" parent="Panel/Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/Panel/InProgressScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -280.5
+offset_top = 136.295
+offset_right = 280.5
+offset_bottom = 319.295
+grow_horizontal = 2
+theme = ExtResource("1_jws04")
+theme_override_colors/font_color = Color(0.95158, 0.95158, 0.95158, 1)
+theme_override_font_sizes/font_size = 71
+text = "Race in Progress"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Panel/Panel/InProgressScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -280.5
+offset_top = 136.295
+offset_right = 280.5
+offset_bottom = 319.295
+grow_horizontal = 2
+theme = ExtResource("1_jws04")
+theme_override_colors/font_color = Color(0.95158, 0.95158, 0.95158, 1)
+theme_override_font_sizes/font_size = 61
+text = "
+Awaiting Results"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel/InProgressScreen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 350.0
+offset_right = 20.0
+offset_bottom = 390.0
+grow_horizontal = 2
+
+[node name="DecreasePlayer" type="AudioStreamPlayer" parent="Panel"]
+unique_name_in_owner = true
+stream = ExtResource("4_3g078")
+bus = &"Laptop"
+
+[node name="IncreasePlayer" type="AudioStreamPlayer" parent="Panel"]
+unique_name_in_owner = true
+stream = ExtResource("5_85wnm")
+bus = &"Laptop"
+
+[node name="DeclinePlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("7_aqam2")
+bus = &"Laptop"
+
+[node name="ConfirmPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_w1x4m")
+bus = &"Laptop"
+
+[node name="SubmitPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_7nyi1")
+bus = &"Laptop"
+
+[connection signal="value_changed" from="Panel/Panel/Panel/BetField" to="." method="_on_bet_field_value_changed"]
+[connection signal="pressed" from="Panel/Panel/Panel/BetButton" to="." method="_on_bet_button_pressed"]
+[connection signal="confirmed" from="Panel/Panel/Panel/CancelPanel/CancelPopup" to="." method="_on_cancel_popup_confirmed"]
+[connection signal="visibility_changed" from="Panel/Panel/Panel/CancelPanel/CancelPopup" to="Panel/Panel/Panel/CancelPanel/CancelPopup" method="_on_visibility_changed"]
+[connection signal="pressed" from="Panel/Panel/Panel/CancelPanel/CancelPopup/Button" to="Panel/Panel/Panel/CancelPanel/CancelPopup" method="_on_button_pressed"]
+[connection signal="timeout" from="Panel/Panel/Panel/CancelPanel/CancelPopup/Timer" to="Panel/Panel/Panel/CancelPanel/CancelPopup" method="_on_timer_timeout"]

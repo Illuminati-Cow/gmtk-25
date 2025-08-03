@@ -1,9 +1,64 @@
-[gd_scene format=3 uid="uid://dew8hchk7j1mf"]
+[gd_scene load_steps=5 format=3 uid="uid://dew8hchk7j1mf"]
 
-[node name="RaceStartUi" type="Control"]
-layout_mode = 3
+[ext_resource type="Theme" uid="uid://cxl7ueoemi3uv" path="res://themes/betting_theme.tres" id="1_x00gl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x00gl"]
+bg_color = Color(0.529412, 0.396078, 0.027451, 1)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x00gl"]
+size = Vector2(512, 128)
+
+[sub_resource type="GDScript" id="GDScript_x00gl"]
+script/source = "extends TextureRect
+
+func _ready() -> void:
+	var tween = create_tween().set_loops(0)
+	tween.tween_property(self, ^\"self_modulate\", Color(1,1,1,0.5), 1)
+	tween.tween_property(self, ^\"self_modulate\", Color(1,1,1,1), 1)
+"
+
+[node name="RaceStartUi" type="Panel"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x00gl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.45098)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_x00gl")
+script = SubResource("GDScript_x00gl")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 131.0
+offset_right = 20.0
+offset_bottom = 154.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_x00gl")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.87, 0.6815, 0, 1)
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 76
+text = "Prestigious Derby"
+horizontal_alignment = 1

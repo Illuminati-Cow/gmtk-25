@@ -49,6 +49,7 @@ custom_minimum_size = Vector2(75.065, 0)
 layout_mode = 2
 theme = ExtResource("1_5sl3j")
 button_group = ExtResource("2_0khhi")
+expand_icon = true
 
 [node name="Odds" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(110.185, 0)
