@@ -9,6 +9,7 @@ bg_color = Color(0.0726804, 0.338413, 4.81308e-08, 1)
 Label/colors/font_color = Color(0.0646965, 0.0646965, 0.0646965, 1)
 Label/font_sizes/font_size = 28
 Label/fonts/font = ExtResource("1_fr30a")
+LineEdit/colors/font_uneditable_color = Color(1, 1, 1, 1)
 LineEdit/font_sizes/font_size = 32
 LineEdit/fonts/font = ExtResource("1_fr30a")
 SpinBox/colors/down_icon_modulate = Color(1, 1, 1, 1)
