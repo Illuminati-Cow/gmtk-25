@@ -55,6 +55,8 @@ func reset():
 		.with_odds(randf_range(3, 20))\
 		.with_color(Color.from_hsv(1 / 8.0 * (i + 1), .8, randf_range(.5, .7)))
 		horse.initialize(horse_data[horse.name])
+		horse.speed_mod = remap(1.0 / horse_data[horse.name].odds, 0, 1, 0.92, 1.08) + randf_range(0.01, 0.03)
+		horse.sprint_mod = remap(1 - 1.0 / horse_data[horse.name].odds, 0, 1, 1.03, 1.10) + randf_range(0.01, 0.03)
 		horse.reset()
 		i += 1
 	var top6 = horses.slice(0, 6)
@@ -64,7 +66,7 @@ func reset():
 	announcer.volume_db = 0
 	race_initialized.emit(horse_data.values())
 	$CanvasLayer/RaceStartUi.visible = true
-	
+	$CanvasLayer/RaceEndUi.visible = false
 
 func start_sequence() -> void:
 	$CanvasLayer/RaceStartUi.visible = false
@@ -75,16 +77,17 @@ func start_sequence() -> void:
 	announcer.play()
 	await %StartTimer.timeout
 	ready_for_cheer = true
-	$CanvasLayer/RaceStartUi.visible = false
 	race_active = true
-	await get_tree().create_timer(8).timeout
+	await get_tree().create_timer(6).timeout
 	$CanvasLayer/RaceUi.visible = true
-	$CanvasLayer/RaceEndUi.visible = false
+
+func calc_progress(horse: HorseController3D) -> float:
+	return race_path.curve.get_closest_offset(race_path.to_local(horse.global_position))
 
 func update_standings() -> void:
 	var order: Array[HorseController3D]
 	order.assign(horses)
-	order.sort_custom(func(a, b): return a.nav.distance_to_target() < b.nav.distance_to_target())
+	order.sort_custom(func(a, b): return calc_progress(a) > calc_progress(b))
 	progress_tracker.follow_target = order[0]
 	$LeadCamera.follow_target = order[0]
 	var offset = race_path.curve.get_closest_offset(race_path.to_local(progress_tracker.global_position))
@@ -124,11 +127,16 @@ func end_sequence():
 	reset()
 	$CanvasLayer/RaceEndUi.visible = true
 	$CanvasLayer/RaceStartUi.visible = false
+	$CanvasLayer/RaceUi.visible = false
+	get_tree().create_timer(2).timeout.connect(
+		func():
+			$CanvasLayer/RaceEndUi.visible = false
+			$CanvasLayer/RaceStartUi.visible = true
+	)
 
 
-func _on_bet_placed(horse: StringName) -> void:
-	var index := horse_data.values().find_custom(func(hd): return hd.horse_name == horse)
-	var horse_name = horse_data.find_key(horse_data.values()[index])
+func _on_bet_placed(horse: HorseData) -> void:
+	var horse_name = horse_data.find_key(horse)
 	selected_horse = horses.filter(func(h): return h.name == horse_name)[0]
 	start_sequence()
 
@@ -156,7 +164,9 @@ func _on_standings_changed(new_standings: Array[HorseData]) -> void:
 
 
 func _on_room_encouraged() -> void:
-	pass # Replace with function body.
+	if !selected_horse or !race_active:
+		return
+	selected_horse.encourage()
 
 
 func _on_game_started() -> void:

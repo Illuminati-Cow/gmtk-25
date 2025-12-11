@@ -4,13 +4,19 @@ enum MoveMode
 {
 	WALK,
 	RUN,
+	SPRINT
 }
 
 
 @export_category("Racing Stats")
-@export var energy := 10.0
+@export var speed_mod := 1.0
+@export var sprint_mod := 1.0
+var spend_mod := 1.0
+
 
 @export_category("Movement")
+@export var base_energy := 12.0
+@export var base_energy_spend := 0.3
 @export_range(0, 10, 0.25) var base_walk_speed: float = 3
 @export_range(0, 10, 0.25) var base_run_speed: float = 8
 @export var acceleration: float = 1
@@ -48,7 +54,12 @@ var debug_path: bool:
 @onready var groundcast = $GroundCast
 @onready var model := $HorseMesh
 @onready var anim_tree := $AnimationTree
+@onready var enc_timer: Timer = $EncouragementTimer
+@onready var sprint_timer: Timer = $SprintTimer
+@onready var sprint_cooldown_timer: Timer = $SprintCooldownTimer
 
+var energy: float
+var start_timer: SceneTreeTimer
 var goal_velocity: Vector3
 var navigating: bool = false
 var _move_mode_modifier: float = 1
@@ -75,17 +86,18 @@ func _ready():
  
 func reset() -> void:
 	linear_velocity = Vector3.ZERO
-	set_physics_process(false)
-	stop_navigation()
+	nav.set_velocity_forced(linear_velocity)
+	#set_physics_process(false)
+	stop_navigation()	
 	anim_tree.set(&"parameters/RunBlend/blend_amount", 0)
+	nav.avoidance_enabled = false
+	nav.target_position = Vector3.ZERO
 
 func initialize(data: HorseData) -> void:
 	var texture: GradientTexture2D = $SubViewport/Panel/TextureRect.texture
-	texture.gradient = texture.gradient.duplicate()
-	print(texture.gradient.colors)
+	texture = texture.duplicate(true)
 	texture.gradient.set_color(0, data.color)
 	texture.gradient.set_color(1, data.color)
-	print(texture.gradient.colors)
 	$SubViewport/Panel/Label.text = "%d" % data.number
 	var saddle_trim_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/saddle/saddle.get_surface_override_material(0)
 	saddle_trim_mat.albedo_color = data.color
@@ -95,6 +107,7 @@ func initialize(data: HorseData) -> void:
 	var horse_mat: StandardMaterial3D = $HorseMesh/Armature/Skeleton3D/horse.get_surface_override_material(1)
 	horse_mat.albedo_color = get_random_horse_color()
 	shirt_mat.albedo_color = data.color
+	energy = base_energy
 
 func _physics_process(delta: float) -> void:
 	if nav.is_navigation_finished() and navigating:
@@ -112,9 +125,6 @@ func _physics_process(delta: float) -> void:
 	calculate_goal_velocity(direction)
 
 func start_navigation(target_pos: Vector3) -> void:
-	if Engine.is_editor_hint() and Input.is_key_pressed(KEY_SHIFT):
-		global_position = target_pos
-		return
 	nav.target_position = target_pos
 	navigating = true
 
@@ -154,23 +164,29 @@ func apply_rotation(delta: float):
 
 func _on_start_timer_timeout() -> void:
 	move_mode = MoveMode.RUN
-	nav.avoidance_enabled = false
 	set_physics_process(true)
 	start_navigation(%FinishLine.global_position)
-	get_tree().create_timer(2).timeout.connect(func(): nav.avoidance_enabled = true)
+	nav.avoidance_enabled = true
+	start_timer = get_tree().create_timer(2)
 
 func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
 	if nav.is_navigation_finished():
 		return
-	
 	var ground_vel: Vector3 = Vector3(linear_velocity.x, 0, linear_velocity.z)
-	var goal_vel: Vector3 = (safe_velocity + goal_velocity).limit_length(_move_mode_modifier)
+	var goal_vel: Vector3 = safe_velocity.lerp(goal_velocity, start_timer.time_left / 2)
+	goal_vel = goal_vel.limit_length(_move_mode_modifier * movement_modifier * speed_mod * sprint_mod)
 	var vel_dot: float = goal_vel.normalized().dot(ground_vel.normalized())
 	var accel := acceleration_dir_factor.sample_baked(vel_dot) * acceleration
-	var needed_accel := (goal_vel - ground_vel) / (1.0 / Engine.physics_ticks_per_second)
-	var max_accel := acceleration_dir_factor.sample_baked(vel_dot) * max_acceleration
+	var needed_accel := (goal_vel - ground_vel) / get_physics_process_delta_time()
+	var max_accel := acceleration_dir_factor.sample_baked(vel_dot) * max_acceleration * movement_modifier * speed_mod * sprint_mod
+	if energy < 0:
+		needed_accel *= abs(energy) / 3. + 1
 	needed_accel = needed_accel.limit_length(max_accel)
 	apply_central_force(needed_accel * mass)
+	var run_frac := (ground_vel.length_squared() / (base_run_speed ** 2))
+	var energy_drain := base_energy_spend * run_frac * spend_mod
+	#print("%.2f  " % run_frac, "%.2f  " % energy_drain, "%.2f  " % energy)
+	energy -= energy_drain * get_physics_process_delta_time()
 	#DebugDraw2D.set_text("velocity", ground_vel)
 	#DebugDraw3D.draw_ray(global_position, safe_velocity, needed_accel.length(), Color.GREEN)
 
@@ -192,3 +208,25 @@ func get_random_horse_color():
 		v = randf_range(0.05, 0.95)
 
 	return Color.from_hsv(h, s, v)
+
+
+func encourage():
+	movement_modifier = 1.15
+	spend_mod = 2
+	#movement_modifier = 5
+	enc_timer.start()
+
+
+
+func _on_encouragement_timer_timeout() -> void:
+	movement_modifier = 0.999
+	spend_mod = 1.00
+
+
+
+func _on_sprint_cooldown_timer_timeout() -> void:
+	sprint_timer.start()
+	speed_mod += sprint_mod
+	await sprint_timer.timeout
+	speed_mod -= sprint_mod
+	sprint_cooldown_timer.start(randf_range(sprint_timer.wait_time, 8))

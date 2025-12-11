@@ -1,12 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://dew8hchk7j1mf"]
 
+[ext_resource type="Texture2D" uid="uid://cm2na0rrh5wga" path="res://textures/GAMB.L_logo.png" id="1_4hyt8"]
 [ext_resource type="Theme" uid="uid://cxl7ueoemi3uv" path="res://themes/betting_theme.tres" id="1_x00gl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x00gl"]
 bg_color = Color(0.529412, 0.396078, 0.027451, 1)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x00gl"]
-size = Vector2(512, 128)
 
 [sub_resource type="GDScript" id="GDScript_x00gl"]
 script/source = "extends TextureRect
@@ -26,20 +24,21 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_x00gl")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-self_modulate = Color(1, 1, 1, 0.45098)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -300.0
+offset_top = -128.0
+offset_right = 300.0
+offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_x00gl")
+texture = ExtResource("1_4hyt8")
+expand_mode = 2
+stretch_mode = 4
 script = SubResource("GDScript_x00gl")
 
 [node name="Label" type="Label" parent="."]

@@ -294,7 +294,7 @@ bones/41/rotation = Quaternion(0.279646, -0.346118, -0.710682, 0.544914)
 bones/43/rotation = Quaternion(-0.269852, -0.100421, -0.697165, 0.656549)
 
 [node name="saddle" parent="Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.122526, 0.0979123, -8.06439e-09, -0.0193146, 0.0241701, -0.153761, -0.0959883, 0.120119, 0.0309394, -0.0301893, -2.00528, -0.980623)
+transform = Transform3D(0.122526, 0.0979123, -8.06439e-09, -0.0193146, 0.0241701, -0.153761, -0.0959883, 0.120119, 0.0309394, -0.0301893, -2.00528, -0.980622)
 
 [node name="saddle" parent="Armature/Skeleton3D/saddle" index="0"]
 mesh = SubResource("ArrayMesh_r44y3")

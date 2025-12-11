@@ -1,9 +1,10 @@
 extends Control
 
-signal bet_placed(amount: float)
+signal bet_placed(amount: float, horse: HorseData)
 
 var old_bet
 var horse_entries: Array
+var horse_map: Dictionary
 var button_group := preload("res://scenes/elements/betting_button_group.tres")
 @onready var bet_field := %BetField
 
@@ -24,6 +25,7 @@ func initialize(horses: Array[HorseData]):
 	var i := 0
 	for entry: Control in horse_entries:
 		var data := horses[i]
+		horse_map[entry.name] = data
 		entry.get_node(^"HBoxContainer/Number").text = "%d" % data.number
 		entry.get_node(^"HBoxContainer/Odds").text = "%d-1" % data.odds
 		entry.get_node(^"HBoxContainer/Name").text = data.horse_name
@@ -43,6 +45,7 @@ func _on_bet_field_value_changed(value: float) -> void:
 	old_bet = value
 	
 func _on_cancel_popup_confirmed() -> void:
-	bet_placed.emit(bet_field.value)
+	var entry = button_group.get_pressed_button().get_parent().get_parent()
+	bet_placed.emit(bet_field.value, horse_map[entry.name])
 	%ConfirmPlayer.play()
 	%InProgressScreen.visible = true

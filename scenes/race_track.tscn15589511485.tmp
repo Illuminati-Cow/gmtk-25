@@ -145,7 +145,7 @@ adjustment_saturation = 1.2
 script = ExtResource("1_rbx75")
 
 [node name="track" parent="." instance=ExtResource("2_pgsk4")]
-transform = Transform3D(0.994992, 0, 0, 0, 0.505, 0, 0, 0, 0.991703, 8, 0, 9)
+transform = Transform3D(0.97, 0, 0, 0, 0.505, 0, 0, 0, 0.97, 8, 0, 9)
 
 [node name="tree_card_038" parent="track" index="6"]
 transform = Transform3D(22.2537, -0.926287, -3.87849, 0.722024, 29.9396, 0.0726645, 3.87424, -0.259072, 22.2646, -2.219, 8.588, 52.322)
@@ -443,27 +443,75 @@ mesh = ExtResource("5_338i0")
 
 [node name="Horse" parent="." instance=ExtResource("7_k7obx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.3469, 1.37316, 37.8189)
+speed_mod = 1.0
+base_energy = 10.0
+base_energy_spend = 0.3
+base_walk_speed = 3.0
+base_run_speed = 8.0
+debug_path = false
 
 [node name="Horse2" parent="." instance=ExtResource("7_k7obx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.3469, 1.37316, 38.8763)
+speed_mod = 1.0
+base_energy = 10.0
+base_energy_spend = 0.3
+base_walk_speed = 3.0
+base_run_speed = 8.0
+debug_path = false
 
 [node name="Horse3" parent="." instance=ExtResource("7_k7obx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.3469, 1.37316, 39.9789)
+speed_mod = 1.0
+base_energy = 10.0
+base_energy_spend = 0.3
+base_walk_speed = 3.0
+base_run_speed = 8.0
+debug_path = false
 
 [node name="Horse4" parent="." instance=ExtResource("7_k7obx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.3469, 1.37316, 41.0981)
+speed_mod = 1.0
+base_energy = 10.0
+base_energy_spend = 0.3
+base_walk_speed = 3.0
+base_run_speed = 8.0
+debug_path = false
 
 [node name="Horse5" parent="." instance=ExtResource("7_k7obx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.3469, 1.37316, 42.2472)
+speed_mod = 1.0
+base_energy = 10.0
+base_energy_spend = 0.3
+base_walk_speed = 3.0
+base_run_speed = 8.0
+debug_path = false
 
 [node name="Horse6" parent="." instance=ExtResource("7_k7obx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.3469, 1.37316, 43.5137)
+speed_mod = 1.0
+base_energy = 10.0
+base_energy_spend = 0.3
+base_walk_speed = 3.0
+base_run_speed = 8.0
+debug_path = false
 
 [node name="Horse7" parent="." instance=ExtResource("7_k7obx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.3469, 1.37316, 44.5137)
+speed_mod = 1.0
+base_energy = 10.0
+base_energy_spend = 0.3
+base_walk_speed = 3.0
+base_run_speed = 8.0
+debug_path = false
 
 [node name="Horse8" parent="." instance=ExtResource("7_k7obx")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -49.3469, 1.37316, 45.5137)
+speed_mod = 1.0
+base_energy = 10.0
+base_energy_spend = 0.3
+base_walk_speed = 3.0
+base_run_speed = 8.0
+debug_path = false
 
 [node name="StartTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -555,7 +603,7 @@ metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 physics_interpolation_mode = 1
-transform = Transform3D(-1, -1.59872e-14, -8.74228e-08, -4.38791e-08, 0.864915, 0.501918, 7.56133e-08, 0.501918, -0.864915, -49.3469, 5.91008, 32.7114)
+transform = Transform3D(-1, 0, -8.74228e-08, -4.38791e-08, 0.864915, 0.501918, 7.56133e-08, 0.501918, -0.864915, -49.3469, 5.91008, 32.7114)
 environment = SubResource("Environment_338i0")
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]

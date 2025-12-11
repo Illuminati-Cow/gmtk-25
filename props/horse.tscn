@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://cf2g0j46oq2cb"]
+[gd_scene load_steps=34 format=4 uid="uid://cf2g0j46oq2cb"]
 
 [ext_resource type="Script" uid="uid://4y8ej74k2kjk" path="res://scripts/horse_controller_3d.gd" id="1_nnoq3"]
 [ext_resource type="PackedScene" uid="uid://dcx86c23yhkji" path="res://props/horse_mesh.tscn" id="2_2hmhm"]
@@ -14,6 +14,9 @@
 [ext_resource type="Material" uid="uid://b08m6xwpx681s" path="res://materials/horse/horse_hair_top.tres" id="7_yyyae"]
 [ext_resource type="Material" uid="uid://v3sej0xxyogg" path="res://materials/horse/horse_hair_back.tres" id="8_cgvrk"]
 [ext_resource type="Material" uid="uid://cpipbd68672bm" path="res://materials/horse/hooves.tres" id="9_vuyhi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i0k06"]
+friction = 0.25
 
 [sub_resource type="Curve" id="Curve_0ddct"]
 _data = [Vector2(0, 0.507514), 0.0, 0.0, 0, 0, Vector2(0.503484, 0.50032), 0.0, 0.0, 0, 0, Vector2(1, 1), 2.95622, 0.0, 0, 0]
@@ -268,7 +271,7 @@ node_connections = [&"RunBlend", 0, &"Animation", &"RunBlend", 1, &"RunAnim", &"
 [sub_resource type="Gradient" id="Gradient_i0k06"]
 resource_local_to_scene = true
 offsets = PackedFloat32Array(0, 0.675926, 0.712963)
-colors = PackedColorArray(0, 0.520546, 0.109192, 1, 0.0969, 0.57, 0.199405, 1, 0.0969, 0.57, 0.199405, 0)
+colors = PackedColorArray(0.103744, 0.103744, 0.103744, 1, 0.400698, 0.400698, 0.400698, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ybggc"]
 gradient = SubResource("Gradient_i0k06")
@@ -299,6 +302,7 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 mass = 500.0
+physics_material_override = SubResource("PhysicsMaterial_i0k06")
 script = ExtResource("1_nnoq3")
 acceleration = 7.0
 max_acceleration = 4.0
@@ -323,12 +327,14 @@ radius = 0.55
 max_neighbors = 8
 time_horizon_agents = 0.6
 max_speed = 8.0
-debug_enabled = true
 
 [node name="GroundCast" type="RayCast3D" parent="."]
 
 [node name="HorseMesh" parent="." instance=ExtResource("2_2hmhm")]
 transform = Transform3D(6.03983e-09, 0, -0.08, 0, 0.08, 0, 0.08, 0, 6.03983e-09, 8.88178e-16, -0.975271, 0.407537)
+
+[node name="saddle" parent="HorseMesh/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.122526, 0.0979123, -8.06439e-09, -0.0193146, 0.0241701, -0.153761, -0.0959883, 0.120119, 0.0309394, -0.0301893, -2.00528, -0.980623)
 
 [node name="saddle" parent="HorseMesh/Armature/Skeleton3D/saddle" index="0"]
 mesh = SubResource("ArrayMesh_7aqyc")
@@ -388,10 +394,26 @@ label_settings = SubResource("LabelSettings_2hmhm")
 horizontal_alignment = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28279, 0.115898)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87359, 0.361456)
 material_override = SubResource("StandardMaterial3D_2hmhm")
 mesh = SubResource("QuadMesh_n6iiu")
 
+[node name="EncouragementTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="SprintTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="SprintCooldownTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="timeout" from="EncouragementTimer" to="." method="_on_encouragement_timer_timeout"]
+[connection signal="timeout" from="SprintCooldownTimer" to="." method="_on_sprint_cooldown_timer_timeout"]
 
 [editable path="HorseMesh"]

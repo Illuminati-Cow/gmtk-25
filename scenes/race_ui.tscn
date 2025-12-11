@@ -1,7 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://4cu0ofjimt1k"]
+[gd_scene load_steps=11 format=3 uid="uid://4cu0ofjimt1k"]
 
 [ext_resource type="Theme" uid="uid://duuroy3oaat4j" path="res://themes/race_ui_theme.tres" id="1_b1gl7"]
 [ext_resource type="PackedScene" uid="uid://wk6h2gu5k1dh" path="res://scenes/elements/standing.tscn" id="2_l2k7s"]
+[ext_resource type="Texture2D" uid="uid://b5wov7hibavu7" path="res://textures/horse_track.svg" id="3_u4gxi"]
+[ext_resource type="Texture2D" uid="uid://cm2na0rrh5wga" path="res://textures/GAMB.L_logo.png" id="4_vcm3a"]
 
 [sub_resource type="GDScript" id="GDScript_7wwxs"]
 script/source = "extends Control
@@ -41,26 +43,14 @@ colors = PackedColorArray(0.625597, 0.625597, 0.625597, 0.784314, 0.823529, 0.82
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_l2k7s"]
 gradient = SubResource("Gradient_b1gl7")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wwxs"]
-bg_color = Color(0.8, 0.8, 0.8, 0.305882)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vcm3a"]
 
 [sub_resource type="Curve2D" id="Curve2D_7wwxs"]
 bake_interval = 10.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, -24, 2.00868, 12.7399, -24, 24, -20.2694, -2.03051, 10.7738, 0, 0, 48, 0, 0, -11.7782, -0.0922959, 68, 48)
+"points": PackedVector2Array(0, 0, 0, 0, 98, 1, 18.6726, -0.368538, -18.6726, 0.368538, 0, 3, -0.107873, -16.9267, 0.107873, 16.9267, -44, 45, -21.414, -2.84805, 21.414, 2.84805, -10, 82, 0, 0, 0, 0, 131, 82)
 }
 point_count = 5
-
-[sub_resource type="Gradient" id="Gradient_7wwxs"]
-offsets = PackedFloat32Array(0, 0.766304)
-colors = PackedColorArray(0, 0, 0, 1, 0.176419, 0.176419, 0.176419, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_b1gl7"]
-gradient = SubResource("Gradient_7wwxs")
-width = 18
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7wwxs"]
-size = Vector2(64, 64)
 
 [node name="RaceUi" type="Control"]
 layout_mode = 3
@@ -155,43 +145,60 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -321.0
-offset_top = 32.0
+offset_left = -475.0
+offset_top = 11.0
 offset_right = -41.0
-offset_bottom = 114.0
+offset_bottom = 139.0
 grow_horizontal = 0
+theme_override_constants/separation = 20
 alignment = 2
 
 [node name="Panel" type="Panel" parent="HBoxContainer"]
-custom_minimum_size = Vector2(128, 64)
+custom_minimum_size = Vector2(256, 128)
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_7wwxs")
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vcm3a")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_u4gxi")
+expand_mode = 2
+stretch_mode = 4
 
 [node name="Path2D" type="Path2D" parent="HBoxContainer/Panel"]
-position = Vector2(41.505, 16)
-scale = Vector2(1.01087, 1)
+position = Vector2(63, 28)
 curve = SubResource("Curve2D_7wwxs")
+
+[node name="ColorRect2" type="ColorRect" parent="HBoxContainer/Panel/Path2D"]
+offset_left = 110.0
+offset_top = 75.0
+offset_right = 112.0
+offset_bottom = 88.22
+color = Color(0.816581, 0, 0.168238, 1)
 
 [node name="ProgressIndicator" type="PathFollow2D" parent="HBoxContainer/Panel/Path2D"]
 unique_name_in_owner = true
-position = Vector2(58, 9)
-rotation = 3.14159
+position = Vector2(98.1836, 9.99813)
+rotation = 3.12119
 v_offset = -9.0
 cubic_interp = false
 
-[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel/Path2D/ProgressIndicator"]
-offset_right = 40.0
-offset_bottom = 40.0
-rotation = 1.5708
-texture = SubResource("GradientTexture1D_b1gl7")
-stretch_mode = 2
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/Panel/Path2D/ProgressIndicator"]
+offset_top = 1.39
+offset_right = 2.0
+offset_bottom = 13.39
+color = Color(0, 0, 0, 1)
 
 [node name="StationIcon" type="TextureRect" parent="HBoxContainer"]
+self_modulate = Color(1, 1, 1, 0.729412)
+custom_minimum_size = Vector2(158.085, 42.065)
 layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_7wwxs")
-stretch_mode = 4
-
-[node name="RaceIcon" type="TextureRect" parent="HBoxContainer"]
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_7wwxs")
+size_flags_vertical = 4
+texture = ExtResource("4_vcm3a")
+expand_mode = 2
 stretch_mode = 4

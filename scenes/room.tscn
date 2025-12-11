@@ -100,6 +100,9 @@ transform = Transform3D(0.956666, 0, 0.291186, 0, 1, 0, -0.291186, 0, 0.956666, 
 transform = Transform3D(-0.957011, 0, -0.290051, 0, 1, 0, 0.290051, 0, -0.957011, 0.226061, 1.17273, -0.00619695)
 script = ExtResource("9_3j2fx")
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Room/SofaCaddy/Laptop"]
+transform = Transform3D(-0.831082, 0, 0.556151, 0, 1, 0, -0.556151, 0, -0.831082, 0.21418, -1.82398, 0.572767)
+
 [node name="GUIPanel3D" parent="Room/SofaCaddy/Laptop" instance=ExtResource("10_eom3m")]
 transform = Transform3D(0.274998, -0.000959929, 0, 0.000908175, 0.260172, 0.0890773, -0.000310938, -0.0890767, 0.260173, -0.000927175, 0.291634, -0.392087)
 
@@ -108,11 +111,11 @@ transform = Transform3D(-0.296696, 0, 0.402457, 0, 0.5, 0, -0.402457, 0, -0.2966
 script = ExtResource("13_katsu")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Room/SofaCaddy/Boombox"]
-transform = Transform3D(0.668831, 0, 1.88485, 0, 2, 0, -1.88485, 0, 0.668831, -7.74398, 2.50184, 12.8315)
+transform = Transform3D(0.668831, 0, 1.88485, 0, 2, 0, -1.88485, 0, 0.668831, 0, 0, 0)
 bus = &"Radio"
 
 [node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Room/SofaCaddy/Boombox"]
-transform = Transform3D(0.668831, 0, 1.88485, 0, 2, 0, -1.88485, 0, 0.668831, -7.74398, 2.50184, 12.8315)
+transform = Transform3D(0.668831, 0, 1.88485, 0, 2, 0, -1.88485, 0, 0.668831, 0, 0, 0)
 bus = &"Radio"
 
 [node name="Cabinet" parent="Room" instance=ExtResource("13_w68ji")]

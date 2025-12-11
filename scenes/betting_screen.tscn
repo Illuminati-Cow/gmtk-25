@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://i2q3pe8xnsxa" path="res://sounds/GUI_cancel.mp3" id="7_aqam2"]
 [ext_resource type="AudioStream" uid="uid://b3ok582uq7x4w" path="res://sounds/GUI_confirm.mp3" id="8_w1x4m"]
 [ext_resource type="AudioStream" uid="uid://cmi2uabsw1l8w" path="res://sounds/GUI_submit.mp3" id="9_7nyi1"]
+[ext_resource type="Texture2D" uid="uid://cm2na0rrh5wga" path="res://textures/GAMB.L_logo.png" id="10_4un7h"]
 
 [sub_resource type="Gradient" id="Gradient_jws04"]
 offsets = PackedFloat32Array(0.753937, 1)
@@ -26,13 +27,6 @@ axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hg4e"]
 bg_color = Color(0.955963, 0.955963, 0.955963, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_t00i7"]
-font_size = 81
-outline_size = 7
-outline_color = Color(0.307562, 2.94801e-07, 1.56425e-07, 1)
-shadow_size = 11
-shadow_color = Color(0.156023, 0.383277, 0, 0.694118)
 
 [sub_resource type="ImageTexture" id="ImageTexture_t00i7"]
 
@@ -137,17 +131,6 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="Panel/Panel"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8hg4e")
-
-[node name="Label" type="Label" parent="Panel/Panel/Panel"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 22.0
-offset_right = -554.0
-offset_bottom = 111.0
-grow_horizontal = 2
-text = "Steak"
-label_settings = SubResource("LabelSettings_t00i7")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel/Panel/Panel"]
 layout_mode = 1
@@ -377,6 +360,16 @@ one_shot = true
 stream = ExtResource("3_halxw")
 bus = &"Laptop"
 
+[node name="TextureRect" type="TextureRect" parent="Panel/Panel/Panel"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 26.0
+offset_right = 269.0
+offset_bottom = 84.0
+texture = ExtResource("10_4un7h")
+expand_mode = 2
+stretch_mode = 4
+
 [node name="InProgressScreen" type="Panel" parent="Panel/Panel"]
 unique_name_in_owner = true
 visible = false
@@ -429,11 +422,13 @@ grow_horizontal = 2
 [node name="DecreasePlayer" type="AudioStreamPlayer" parent="Panel"]
 unique_name_in_owner = true
 stream = ExtResource("4_3g078")
+volume_db = -8.667
 bus = &"Laptop"
 
 [node name="IncreasePlayer" type="AudioStreamPlayer" parent="Panel"]
 unique_name_in_owner = true
 stream = ExtResource("5_85wnm")
+volume_db = -8.395
 bus = &"Laptop"
 
 [node name="DeclinePlayer" type="AudioStreamPlayer" parent="."]

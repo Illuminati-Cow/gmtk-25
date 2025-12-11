@@ -42,7 +42,7 @@ func _input(event: InputEvent) -> void:
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 func _physics_process(delta: float) -> void:
-	DebugDraw2D.set_text("hand_state", States.find_key(state))
+	#DebugDraw2D.set_text("hand_state", States.find_key(state))
 	match state:
 		FREE: 
 			_move_to_mouse(delta)

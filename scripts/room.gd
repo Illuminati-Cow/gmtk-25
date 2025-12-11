@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var betting: BettingSite = $Room/SofaCaddy/Laptop
 
-signal bet_placed(horse: StringName)
+signal bet_placed(horse: HorseData)
 signal encouraged
 signal game_started
 

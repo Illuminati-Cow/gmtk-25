@@ -47,5 +47,5 @@ bus/7/name = &"Radio"
 bus/7/solo = false
 bus/7/mute = false
 bus/7/bypass_fx = false
-bus/7/volume_db = -50.3433
+bus/7/volume_db = -17.6645
 bus/7/send = &"Room"
